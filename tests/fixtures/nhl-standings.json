@@ -1,0 +1,39 @@
+{
+ "standingsDateTimeUtc": "2026-09-28T21:26:30Z",
+ "standings": [
+  {
+   "gamesPlayed": 0,
+   "wins": 0,
+   "losses": 0,
+   "otLosses": 0,
+   "points": 0,
+   "divisionName": "Atlantic",
+   "divisionSequence": 2,
+   "teamAbbrev": {
+    "default": "BUF"
+   },
+   "teamName": {
+    "default": "Buffalo Sabres",
+    "fr": "Sabres de Buffalo"
+   },
+   "seasonId": 20262027
+  },
+  {
+   "gamesPlayed": 0,
+   "wins": 0,
+   "losses": 0,
+   "otLosses": 0,
+   "points": 0,
+   "divisionName": "Atlantic",
+   "divisionSequence": 8,
+   "teamAbbrev": {
+    "default": "TOR"
+   },
+   "teamName": {
+    "default": "Toronto Maple Leafs",
+    "fr": "Maple Leafs de Toronto"
+   },
+   "seasonId": 20262027
+  }
+ ]
+}

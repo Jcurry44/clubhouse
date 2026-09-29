@@ -1,0 +1,8607 @@
+:root {
+  /* Premium clubhouse palette: warm cream paper, masters green, brass.
+     Tokens are the single source of truth — most of the reskin lives in
+     these values + the "Premium pass" overrides at the end of the file. */
+  --bg: #f1efe6;
+  --panel: #fffefa;
+  --panel-soft: #f6f4ea;
+  --ink: #1c241f;
+  --muted: #68705f;
+  --line: #ddd8c4;
+  --green: #1e6b4a;
+  --green-dark: #11422c;
+  --navy: #18344a;
+  --blue: #2f6f9f;
+  --gold: #a8853b;
+  --gold-soft: #d9c08a;
+  --red: #b64b42;
+  --cream: #faf7ec;
+  --shadow: 0 10px 28px rgba(25, 38, 30, 0.08);
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    linear-gradient(180deg, #eae8da 0, var(--bg) 340px),
+    var(--bg);
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button,
+select,
+label.file-button {
+  min-height: 40px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app-shell {
+  width: min(1480px, 100%);
+  margin: 0 auto;
+  padding: 18px 18px 28px;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+  padding: 18px;
+  /* Clubhouse masthead: deep masters green with a brass hairline. The old
+     gradient drifted into navy at the right edge, which read corporate
+     rather than golf. */
+  border: 1px solid rgba(217, 192, 138, 0.35);
+  border-radius: 16px;
+  background:
+    linear-gradient(150deg, #0d3322 0%, #124530 62%, #175539 100%);
+  box-shadow: 0 14px 40px rgba(13, 51, 34, 0.22), inset 0 -2px 0 rgba(217, 192, 138, 0.4);
+  color: #fff;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+/* Mini app-icon — the flag + ball motif from icon.svg, scaled down and
+   shown against the dark header background. The SVG draws on top of a
+   subtle cream tile so the cream flag pole / ball read against the dark
+   header gradient. */
+.brand-mark {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #1f7a59 0%, #143f2e 100%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+}
+
+.brand-mark svg {
+  width: 30px;
+  height: 30px;
+  display: block;
+}
+
+.eyebrow {
+  margin: 0 0 4px;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+h1,
+h2 {
+  margin: 0;
+  letter-spacing: 0;
+}
+
+h1 {
+  font-size: 1.95rem;
+  line-height: 1.05;
+}
+
+h2 {
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.header-actions,
+.form-actions,
+.panel-heading,
+.round-row,
+.course-row,
+.course-stat-row,
+.lookup-row,
+.toolbar {
+  display: flex;
+  align-items: center;
+}
+
+.header-actions {
+  position: relative;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.header-actions-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.header-actions-toggle {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--white, #fff);
+  font-weight: 800;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.header-actions-toggle .caret {
+  font-size: 0.8rem;
+  transition: transform 140ms ease;
+}
+
+.header-actions.open .header-actions-toggle .caret {
+  transform: rotate(180deg);
+}
+
+.primary-button,
+.ghost-button,
+.danger-button,
+.file-button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 9px 13px;
+  font-weight: 750;
+  white-space: nowrap;
+  transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease, background 140ms ease;
+}
+
+.primary-button {
+  background: var(--green);
+  color: #fff;
+  box-shadow: 0 10px 20px rgba(31, 122, 89, 0.2);
+}
+
+.primary-button:hover {
+  background: var(--green-dark);
+  transform: translateY(-1px);
+}
+
+.ghost-button,
+.file-button {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(255, 255, 255, 0.22);
+  color: var(--ink);
+}
+
+.ghost-button:hover,
+.file-button:hover {
+  border-color: #b8c8bd;
+}
+
+.danger-button {
+  background: #fff4f1;
+  border-color: #efccc6;
+  color: var(--red);
+}
+
+.danger-button:hover {
+  background: #ffe9e4;
+}
+
+/* First-launch welcome callout — visible only when state.rounds is empty.
+   Sits at the top of the Home Overview section in place of the empty
+   KPI tiles, so a fresh install shows a friendly "you're here, here's
+   what to do" instead of a wall of "--" placeholders. */
+.welcome-callout {
+  background: linear-gradient(135deg, #ffffff 0%, var(--panel-soft) 100%);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 22px 22px 20px;
+  margin: 0 0 18px;
+  box-shadow: var(--shadow);
+}
+
+/* Shared voice recap inbox. Kept intentionally distinct from the local
+   scorecard UI: a draft is review material, never a saved round. */
+.voice-draft-inbox {
+  display: grid;
+  gap: 10px;
+  margin: 0 0 18px;
+}
+.voice-inbox-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  width: 100%;
+  padding: 16px;
+  border: 1px solid #dbc781;
+  border-radius: 14px;
+  background: linear-gradient(130deg, #fffdf5, #f6efda);
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+}
+.voice-inbox-card strong,.voice-inbox-card span { display:block; }
+.voice-inbox-card strong { font-size: 1rem; }
+.voice-inbox-card span { color: var(--muted); font-size: .84rem; margin-top: 3px; }
+.voice-inbox-card em { color: #8c6417; font-style: normal; font-weight: 800; white-space: nowrap; }
+.voice-inbox-empty { padding: 14px 16px; border: 1px dashed var(--line); border-radius: 12px; color: var(--muted); font-size: .9rem; }
+.voice-settings-grid { display: grid; gap: 9px; margin: 12px 0; }
+.voice-settings-grid input { min-width: 0; padding: 11px 12px; border: 1px solid var(--line); border-radius: 8px; font: inherit; }
+.voice-code-row { margin-top: 8px; }
+.voice-draft-sheet { max-width: 700px; }
+.voice-draft-body { display:grid; gap: 14px; max-height: min(64vh, 620px); overflow:auto; padding: 4px 2px 14px; }
+.voice-draft-summary { margin: 0; line-height: 1.5; white-space: pre-wrap; }
+.voice-draft-section { border-top: 1px solid var(--line); padding-top: 13px; }
+.voice-draft-section h4 { margin: 0 0 8px; font-size: .84rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.voice-draft-coaching,.voice-draft-holes { margin:0; padding-left: 20px; display:grid; gap:9px; }
+.voice-draft-holes li { padding-bottom: 9px; border-bottom: 1px solid #edf0ea; }
+.voice-draft-holes p { margin:4px 0 0; line-height:1.45; white-space:pre-wrap; }
+.voice-draft-holes .voice-coaching { color: #725418; font-size:.9rem; }
+.voice-draft-actions { display:flex; flex-wrap:wrap; gap:8px; padding-top: 12px; border-top: 1px solid var(--line); }
+
+.welcome-callout h2 {
+  margin: 0 0 6px;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.welcome-callout p {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.4;
+}
+
+.welcome-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.welcome-primary,
+.welcome-secondary {
+  appearance: none;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.12s ease, transform 0.08s ease;
+}
+
+.welcome-primary {
+  background: var(--green);
+  color: #ffffff;
+  border-color: var(--green-dark);
+}
+
+.welcome-primary:hover {
+  background: var(--green-dark);
+}
+
+.welcome-primary:active {
+  transform: scale(0.98);
+}
+
+.welcome-secondary {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--line);
+}
+
+.welcome-secondary:hover {
+  border-color: #b8c4b9;
+}
+
+.export-stale {
+  background: #fff7e3;
+  border-color: #e8c97a;
+  color: #7a5510;
+}
+
+.export-stale:hover {
+  background: #ffeec1;
+}
+
+.export-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  margin-left: 6px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: #c98b21;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 800;
+  vertical-align: middle;
+}
+
+.export-badge[hidden] {
+  display: none;
+}
+
+.file-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.file-button input {
+  display: none;
+}
+
+.app-header .eyebrow {
+  color: #bcd8cb;
+}
+
+.app-tabs {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  gap: 6px;
+  margin-bottom: 14px;
+  padding: 7px;
+  border: 1px solid rgba(216, 223, 215, 0.85);
+  border-radius: 8px;
+  background: rgba(251, 250, 243, 0.9);
+  box-shadow: 0 12px 30px rgba(22, 32, 28, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.tab-button {
+  min-height: 42px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--muted);
+  padding: 10px 14px;
+  font-weight: 850;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+/* Line icons replaced the old colored-dot ::before — five text labels with
+   dots read as one squeezed word-salad on a phone. */
+.tab-icon {
+  width: 19px;
+  height: 19px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.tab-button.active {
+  background: #102f26;
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(16, 47, 38, 0.18);
+}
+
+.tab-button.active .tab-icon {
+  stroke: var(--gold-soft, #d9c08a);
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+.workflow-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.home-insights {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.insight-card {
+  min-height: 116px;
+  display: grid;
+  align-content: space-between;
+  gap: 8px;
+  padding: 16px;
+  border: 1px solid #d9e1d6;
+  border-radius: 8px;
+  background: #fffefa;
+  box-shadow: 0 14px 34px rgba(20, 32, 28, 0.06);
+}
+
+.insight-card span,
+.insight-card small {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.insight-card strong {
+  font-size: 1.35rem;
+  line-height: 1.1;
+}
+
+.insight-card.dark {
+  background: #102f26;
+  border-color: #102f26;
+  color: #fff;
+}
+
+.insight-card.dark span,
+.insight-card.dark small {
+  color: #c9ded3;
+}
+
+.metric-card,
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.handicap-card {
+  background: #102f26;
+  border-color: #102f26;
+  color: #fff;
+}
+
+.handicap-card span {
+  color: #c9ded3;
+}
+
+.metric-card {
+  min-height: 110px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+.metric-card::after {
+  content: "";
+  position: absolute;
+  right: 14px;
+  bottom: 12px;
+  width: 44px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--gold);
+  opacity: 0.58;
+}
+
+.metric-card span {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.metric-card strong {
+  display: block;
+  font-size: 2rem;
+  line-height: 1.05;
+}
+
+.toolbar {
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+  padding: 14px;
+  background: #f8faf5;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(20, 32, 28, 0.04);
+}
+
+label {
+  color: var(--muted);
+  display: grid;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 750;
+}
+
+input,
+select {
+  width: 100%;
+  border: 1px solid #cfdacf;
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  padding: 10px 11px;
+  outline: none;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(33, 122, 87, 0.14);
+}
+
+.toolbar label {
+  min-width: 180px;
+  flex: 1;
+}
+
+.analytics-grid,
+.course-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.analytics-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 12px;
+}
+
+.course-grid {
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  margin-top: 12px;
+}
+
+.course-detail-panel {
+  grid-column: 1 / -1;
+}
+
+.panel {
+  padding: 18px;
+  min-width: 0;
+  border-color: #dce3da;
+  background:
+    linear-gradient(180deg, #ffffff 0%, #fbfcfa 100%);
+}
+
+.wide-panel {
+  grid-column: span 2;
+}
+
+.panel-heading {
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #edf1eb;
+  flex-wrap: wrap;
+}
+
+.panel-heading > * {
+  min-width: 0;
+}
+
+.form-grid,
+.compact-controls,
+.lookup-form {
+  display: grid;
+  gap: 10px;
+}
+
+.form-grid {
+  grid-template-columns: 140px minmax(190px, 1.1fr) 120px minmax(160px, 1fr) 110px minmax(220px, 1.2fr);
+}
+
+/* When the round-setup form uses chip rows, every field becomes its own
+   full-width row — the dropdown grid layout doesn't fit chip rows well. */
+.form-grid:has(.has-chips) {
+  grid-template-columns: 1fr;
+}
+
+.has-chips {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Same hidden-attribute defense as .start-round-container — without this,
+   the class's display: flex would override [hidden]'s display: none and
+   the Deerwood-only Layout / Front 9 / Back 9 / Tee fields would leak
+   into view on non-Deerwood courses. */
+.has-chips[hidden] {
+  display: none;
+}
+
+/* Hide native selects on chip-enabled fields. The selects stay in the DOM
+   as the source of truth — every existing reader of .value still works,
+   and dispatching a synthetic 'change' from chip clicks fires every
+   existing listener. */
+select[data-use-chips] {
+  display: none !important;
+}
+
+.select-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.select-chip {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: #ffffff;
+  color: var(--ink);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  min-height: 38px;
+  transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease, transform 0.08s ease;
+}
+
+.select-chip:hover {
+  border-color: #b8c4b9;
+}
+
+.select-chip:active {
+  transform: scale(0.97);
+}
+
+.select-chip.active {
+  background: var(--green);
+  color: #ffffff;
+  border-color: var(--green-dark);
+  box-shadow: 0 2px 6px rgba(31, 122, 89, 0.25);
+}
+
+.select-chip.active:hover {
+  background: var(--green-dark);
+}
+
+.compact-controls {
+  grid-template-columns: 1fr 92px;
+  margin-bottom: 14px;
+}
+
+.lookup-form {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+}
+
+/* Start Round container — visible when the user is on Add Round but
+   hasn't yet committed to playing. Holds the hint + the big CTA. */
+.start-round-container {
+  margin: 18px 0 10px;
+  padding: 18px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #ffffff 0%, var(--panel-soft) 100%);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+}
+
+/* Class declaration sits at the same specificity as the user-agent
+   [hidden] rule and comes later in cascade, which would otherwise let
+   display: flex win against display: none — defeating the hidden
+   attribute. Pin the hidden state explicitly. */
+.start-round-container[hidden] {
+  display: none;
+}
+
+.start-round-hint {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.start-round-button {
+  appearance: none;
+  border: 1px solid var(--green-dark);
+  background: var(--green);
+  color: #ffffff;
+  padding: 14px 22px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.12s ease, transform 0.08s ease, opacity 0.12s ease;
+}
+
+.start-round-button:hover:not(:disabled) {
+  background: var(--green-dark);
+}
+
+.start-round-button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.start-round-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Setup placeholder — replaces the live scorecard when the round
+   hasn't been started yet. Quiet, doesn't compete with the form above. */
+.scorecard-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 38px 18px;
+  background: var(--panel-soft);
+  border: 1px dashed #c7d3c7;
+  border-radius: 12px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  text-align: center;
+  min-height: 200px;
+}
+
+.scorecard-placeholder strong {
+  color: var(--ink);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.scorecard {
+  margin-top: 14px;
+  max-height: 560px;
+  overflow-x: auto;
+  overflow-y: auto;
+  display: grid;
+  gap: 14px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.round-live-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+
+/* Collapsible in-round chrome: once a round is underway the setup fields tuck
+   behind this banner so the screen is just the scorecard. Tap to re-open. */
+/* One-tap "Play it again" replay card — the clubhouse-green hero material,
+   sized as a full-width tappable card above the blank setup form. */
+.quick-start-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  width: 100%;
+  margin: 0 0 16px;
+  padding: 18px 20px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(217, 192, 138, 0.35);
+  background: linear-gradient(150deg, #0d3322 0%, #124530 62%, #175539 100%);
+  box-shadow: 0 14px 40px rgba(13, 51, 34, 0.22), inset 0 -2px 0 rgba(217, 192, 138, 0.4);
+  color: #fff;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+}
+.quick-start-card:active { transform: translateY(1px); }
+.quick-start-card .qs-eyebrow {
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #d8c79b;
+}
+.quick-start-card .qs-course {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 600;
+  line-height: 1.15;
+}
+.quick-start-card .qs-meta {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.82);
+}
+.quick-start-card .qs-go {
+  margin-top: 9px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: rgba(217, 192, 138, 0.16);
+  border: 1px solid rgba(217, 192, 138, 0.5);
+  color: #f0e3c2;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.round-collapse-banner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 4px 0 14px;
+  padding: 12px 14px;
+  border: 1px solid var(--line, #d8dfd7);
+  border-radius: 10px;
+  background: #f3f7f1;
+  color: var(--green-dark, #123f32);
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-align: left;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.round-collapse-banner:active {
+  transform: scale(0.995);
+}
+
+.round-collapse-banner.is-open {
+  background: #eef4ec;
+  margin-bottom: 4px;
+}
+
+.round-collapse-banner .rcb-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.round-collapse-banner .rcb-action {
+  flex-shrink: 0;
+  font-size: 0.74rem;
+  font-weight: 850;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--green, #1f7a59);
+}
+
+.round-brief {
+  margin-top: 16px;
+  padding: 18px;
+  border: 1px solid #d6e2d9;
+  border-radius: 10px;
+  background:
+    linear-gradient(135deg, #f6fbf5 0%, #eaf3ee 100%);
+}
+
+.round-brief[hidden] {
+  display: none;
+}
+
+.brief-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.brief-header h3 {
+  margin: 2px 0 0;
+  font-size: 1.2rem;
+  color: var(--ink);
+}
+
+.brief-tee {
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.brief-toggle {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--green-dark);
+  padding: 6px 10px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.brief-toggle:hover {
+  border-color: #a8b8ad;
+}
+
+.brief-summary {
+  margin: 4px 0 14px;
+  font-size: 1rem;
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+.brief-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.brief-block {
+  background: #fff;
+  border: 1px solid #e3ebe1;
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.brief-block-title {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.brief-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.brief-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: var(--ink);
+}
+
+.brief-list-leaks li,
+.brief-list-strengths li {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+}
+
+.brief-list li .subtext {
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.brief-list-leaks .score-chip,
+.brief-list-strengths .score-chip {
+  margin-left: auto;
+}
+
+.brief-list-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.brief-list-note {
+  margin: 4px 0 0;
+  padding: 6px 10px;
+  background: rgba(255, 247, 227, 0.7);
+  border-left: 3px solid #e8c97a;
+  border-radius: 0 6px 6px 0;
+  color: #4a3503;
+  font-size: 0.82rem;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.brief-list-note .subtext {
+  margin-left: 4px;
+  font-style: normal;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.brief-counterfactual {
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  background: #fff7e3;
+  border: 1px solid #e8c97a;
+  border-radius: 8px;
+  font-size: 0.94rem;
+  line-height: 1.5;
+  color: #5a4308;
+}
+
+.brief-counterfactual strong {
+  color: #4a3503;
+}
+
+.brief-note {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-style: italic;
+}
+
+@media (max-width: 640px) {
+  .brief-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.live-summary-card {
+  min-height: 76px;
+  display: grid;
+  align-content: center;
+  gap: 6px;
+  padding: 12px;
+  border: 1px solid #d7e0d4;
+  border-radius: 8px;
+  background: #fffefa;
+}
+
+.live-summary-card span {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.live-summary-card strong {
+  font-size: 1.45rem;
+  line-height: 1;
+}
+
+.live-summary-card.accent {
+  background: #102f26;
+  color: #fff;
+}
+
+.live-summary-card.accent span {
+  color: #c9ded3;
+}
+
+/* GIR / FIR cards are tappable to drill into which holes were hit/missed. */
+.live-summary-card-drill {
+  cursor: pointer;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.live-summary-card-drill::after {
+  content: "tap ›";
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  font-size: 0.55rem;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--green, #1f7a59);
+}
+
+.live-summary-card-drill:active {
+  background: #eef4ec;
+  transform: scale(0.98);
+}
+
+.stat-drill-flag {
+  flex-shrink: 0;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.stat-drill-hit {
+  background: #d6eedf;
+  color: #15573c;
+}
+
+.stat-drill-miss {
+  background: #f8dad4;
+  color: #843c33;
+}
+
+.stat-drill-none {
+  background: #eef2eb;
+  color: var(--muted);
+}
+
+.scorecard-section {
+  min-width: 920px;
+  overflow: hidden;
+  border: 1px solid #cfdacf;
+  border-radius: 8px;
+  background: #fffefa;
+  box-shadow: 0 12px 26px rgba(20, 32, 28, 0.06);
+}
+
+.scorecard-section-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  background: #173c32;
+  color: #fff;
+}
+
+.scorecard-section-heading span {
+  color: #c9ded3;
+  font-size: 0.84rem;
+  font-weight: 750;
+}
+
+.scorecard-matrix {
+  display: grid;
+  grid-template-columns: 92px repeat(var(--hole-count), minmax(76px, 1fr));
+}
+
+.scorecard-matrix > * {
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px;
+  border-right: 1px solid #e3ebe1;
+  border-bottom: 1px solid #e3ebe1;
+}
+
+.scorecard-label {
+  justify-content: flex-start;
+  background: #f3f7f1;
+  color: #53625a;
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.scorecard-hole-number {
+  color: var(--green-dark);
+  font-weight: 900;
+}
+
+.scorecard-static {
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.compact-input,
+.compact-select {
+  min-height: 34px;
+  width: 100%;
+  padding: 6px 8px;
+  text-align: center;
+}
+
+.score-input::placeholder {
+  color: #b5c2b5;
+  font-weight: 500;
+}
+
+.round-entry-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.scorecard.mode-card {
+  /* Grid-mode .scorecard uses overflow-x:auto + max-height for the wide */
+  /* 18-column scorecard. Card mode needs the page to scroll naturally so */
+  /* children stay within the viewport width. */
+  display: block;
+  max-height: none;
+  overflow: visible;
+}
+
+.scorecard.mode-card .scorecard-section {
+  display: none;
+}
+
+.scorecard.mode-grid .scorecard-cards,
+.scorecard.mode-grid .scorecard-card-nav {
+  display: none;
+}
+
+.scorecard-cards,
+.scorecard-card,
+.scorecard-card-nav {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.scorecard-cards {
+  display: block;
+  margin-top: 12px;
+}
+
+.scorecard-card {
+  display: none;
+  padding: 14px;
+  border: 1px solid #d6e2d9;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(20, 32, 28, 0.04);
+  /* Clears the sticky tab bar when a card is scrolled to the top. */
+  scroll-margin-top: 70px;
+}
+
+.scorecard-card.active {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.card-position {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: 1px solid var(--line, #d6e2d9);
+  border-radius: 999px;
+  background: #f3f7f1;
+  color: var(--ink);
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 140ms ease, border-color 140ms ease, transform 100ms ease;
+}
+
+.card-position:hover {
+  background: #e9f1e7;
+  border-color: #b8c8bd;
+}
+
+.card-position:active {
+  transform: scale(0.98);
+}
+
+.card-position-caret {
+  color: var(--green-dark, #15573c);
+  font-size: 0.8rem;
+}
+
+/* Forward / back hole arrows, right next to the hole label. */
+.card-step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border: 1px solid var(--line, #d6e2d9);
+  border-radius: 999px;
+  background: #f3f7f1;
+  color: var(--green-dark, #15573c);
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.card-step:hover {
+  background: #e9f1e7;
+  border-color: #b8c8bd;
+}
+
+.card-step:active {
+  transform: scale(0.94);
+}
+
+/* Floating mid-screen prev/next tabs. Tuck against the left and right
+   edges of the viewport, vertically centred, so they're in thumb reach
+   no matter how far you've scrolled within a hole's card. Visibility is
+   driven by body.floating-card-nav-visible (Add Round + card view +
+   review closed). */
+.floating-card-nav {
+  display: none;
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 40;
+  width: 44px;
+  height: 64px;
+  padding: 0;
+  border: 1px solid var(--line, #d8dfd7);
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--green-dark, #15573c);
+  font-size: 1.7rem;
+  font-weight: 800;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: 0 4px 14px rgba(20, 32, 28, 0.12);
+  backdrop-filter: blur(8px);
+}
+
+body.floating-card-nav-visible .floating-card-nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.floating-card-nav:active {
+  transform: translateY(-50%) scale(0.94);
+}
+
+.floating-card-nav:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.floating-card-nav-prev {
+  left: 0;
+  border-left: none;
+  border-radius: 0 32px 32px 0;
+  padding-right: 4px;
+}
+
+.floating-card-nav-next {
+  right: 0;
+  border-right: none;
+  border-radius: 32px 0 0 32px;
+  padding-left: 4px;
+}
+
+/* "More on this hole" toggle — collapses 1st putt, Fairway, Pen, Clubs Hit,
+   Note, and Shot tracker into a single tap. Sticky open within a session. */
+/* Container for the per-hole secondary inputs (1st putt, fairway, pen,
+   clubs, note, shots). Used to live behind a "More on this hole" toggle;
+   the toggle was removed because the collapse never actually hid the
+   children (display: flex won over the hidden attribute). Everything
+   is just always visible now — simpler and matches what most users
+   expected anyway. */
+.card-extra {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.card-headline {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-bottom: 1px solid #edf1eb;
+  padding-bottom: 12px;
+  position: relative;
+}
+
+/* Live score mark badge in the top-right of the card headline. */
+.card-hole-mark {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.card-hole-mark .score-mark {
+  min-width: 40px;
+  height: 40px;
+  margin: 4px;
+  font-size: 1.35rem;
+}
+
+.card-hole-label {
+  margin: 0;
+  font-size: 1.6rem;
+  color: var(--ink);
+}
+
+.card-hole-meta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.card-hole-meta span {
+  display: inline-flex;
+  align-items: center;
+}
+
+.card-score-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+}
+
+.card-score-row .score-input {
+  flex: 0 1 140px;
+  min-height: 64px;
+  font-size: 2rem;
+  font-weight: 900;
+  text-align: center;
+  border-radius: 12px;
+  border: 2px solid #cfdacf;
+  background: #fbfdfa;
+}
+
+.card-score-row .score-input:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 4px rgba(31, 122, 89, 0.18);
+}
+
+.card-score-shortcut {
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #fff;
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: var(--green-dark);
+  cursor: pointer;
+  transition: transform 120ms ease, background 120ms ease;
+}
+
+.card-score-shortcut:hover {
+  background: #f1f7f1;
+}
+
+.card-score-shortcut:active {
+  transform: scale(0.96);
+}
+
+.card-secondary {
+  display: grid;
+  /* min(140px, 100%) prevents the grid from forcing its container wider */
+  /* than the viewport on narrow phones — it caps each column to the */
+  /* container width instead of the unconstrained 140px minimum. */
+  grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr));
+  gap: 12px;
+}
+
+.card-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+.card-field input,
+.card-field select {
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--ink);
+  min-height: 44px;
+}
+
+.card-field-toggle {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 12px;
+  background: #fbfdfa;
+}
+
+.card-field-toggle .compact-toggle span {
+  width: 32px;
+  height: 32px;
+}
+
+.card-note-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+.card-note-input {
+  width: 100%;
+  min-height: 52px;
+  padding: 8px 10px;
+  border: 1px solid var(--line, #d6e2d9);
+  border-radius: 8px;
+  background: #fbfdfa;
+  color: var(--ink);
+  font-size: 0.92rem;
+  font-weight: 500;
+  font-family: inherit;
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-transform: none;
+  resize: vertical;
+  transition: border-color 140ms ease, box-shadow 140ms ease, background 140ms ease;
+}
+
+.card-note-input::placeholder {
+  color: #9aab9d;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.card-note-input:focus {
+  outline: none;
+  border-color: var(--green, #217a57);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(31, 122, 89, 0.15);
+}
+
+/* Pill-based fast entry — replaces typed number inputs in card view.
+   Hidden inputs (.card-hidden-inputs) keep the data layer unchanged. */
+
+.card-hidden-inputs[hidden] {
+  display: none;
+}
+
+.card-pill-row,
+.card-penalty-club-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 6px 0;
+  border-top: 1px solid #edf1eb;
+}
+
+.card-penalty-club-row .penalty-club-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 36px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1.5px solid var(--line, #d6e2d9);
+  background: #fff;
+  color: var(--ink);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+/* Penalty-club selects container — one row per penalty stroke when
+   penalties >= 2. Each row gets a small "Pen N" tag so the user can
+   see which select is for which stroke. */
+.penalty-club-selects {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.penalty-club-select-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.penalty-club-index {
+  flex: 0 0 auto;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted, #6c7a72);
+  min-width: 44px;
+}
+
+.card-pill-row:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.card-pill-label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.card-pill-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+}
+
+.card-pill-na {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.pill {
+  /* position: relative is REQUIRED — child badges (TEE, ×N count, clear ×)
+     all use position: absolute and need the pill as their containing
+     block. Without it the badges fall back to the viewport, which is why
+     for months only the FIRST pill's badge appeared visible (it happened
+     to be near the viewport's bottom-right corner). All other pills'
+     badges were stacked off-screen on top of each other. */
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* 44px = Apple's minimum comfortable target — these pills are the app's
+     primary input surface, tapped in wind with a glove half-off. */
+  min-height: 44px;
+  min-width: 44px;
+  padding: 4px 12px;
+  border: 1.5px solid var(--line, #d6e2d9);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--ink);
+  font-size: 0.88rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 100ms ease, border-color 100ms ease, color 100ms ease, transform 80ms ease;
+}
+
+.pill:hover {
+  border-color: #a8b8ad;
+}
+
+.pill:active {
+  transform: scale(0.96);
+}
+
+.pill.active {
+  background: var(--green, #217a57);
+  border-color: var(--green, #217a57);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(31, 122, 89, 0.28);
+}
+
+/* Par marker on the score row: a gold ring + tint on the par pill so the
+   player can spot par at a glance. Par is also the smart default — leaving a
+   hole untouched fills in par — so this doubles as "tap Next to accept par".
+   When selected, .pill.active (defined above, higher specificity) takes over
+   with the solid green treatment. */
+.pill-par:not(.active) {
+  border-color: var(--gold, #c58b2e);
+  background: #fdf6e7;
+  color: var(--green-dark, #123f32);
+}
+
+/* Score pills carry their scoring-tier shape: birdie/eagle stay round,
+   bogey/double bogey turn square — so the row telegraphs the tiers before
+   you tap. Tapping fills green (par or better) or red (bogey or worse). */
+.pill-tier-bogey,
+.pill-tier-double,
+.pill-tier-triple {
+  border-radius: 11px;
+}
+
+/* Triple bogey or worse: a solid filled red box (placed after .pill.active
+   so it wins the fill even when selected). */
+.pill.pill-tier-triple {
+  background: #c0492f;
+  border-color: #c0492f;
+  color: #ffffff;
+}
+
+.pill.active.pill-tier-triple {
+  box-shadow: 0 4px 14px rgba(192, 73, 47, 0.3);
+}
+
+.pill-tier-birdie:not(.active),
+.pill-tier-eagle:not(.active) {
+  border-color: #9cc8b0;
+  background: #f1f8f3;
+}
+
+.pill-tier-bogey:not(.active),
+.pill-tier-double:not(.active) {
+  border-color: #e3b3a6;
+  background: #fcf3f0;
+}
+
+.pill.active.pill-tier-bogey,
+.pill.active.pill-tier-double {
+  background: #c0492f;
+  border-color: #c0492f;
+  box-shadow: 0 4px 14px rgba(192, 73, 47, 0.3);
+}
+
+/* Eagle = double circle, double bogey or worse = double box. The second
+   ring is drawn inside the pill so it never bleeds into the tight pill-row
+   gap. (Birdie stays a single circle, bogey a single box, par plain.) */
+.pill-tier-eagle,
+.pill-tier-double {
+  position: relative;
+}
+
+.pill-tier-eagle::after,
+.pill-tier-double::after {
+  content: "";
+  position: absolute;
+  inset: 3.5px;
+  border: 1.5px solid;
+  pointer-events: none;
+}
+
+.pill-tier-eagle::after {
+  border-radius: 999px;
+}
+
+.pill-tier-double::after {
+  border-radius: 7px;
+}
+
+.pill-tier-eagle:not(.active)::after {
+  border-color: #9cc8b0;
+}
+
+.pill-tier-double:not(.active)::after {
+  border-color: #e3b3a6;
+}
+
+.pill.active.pill-tier-eagle::after,
+.pill.active.pill-tier-double::after {
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.card-pill-custom {
+  width: 52px;
+  min-height: 36px;
+  padding: 4px 8px;
+  border: 1.5px dashed #cfd9d2;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  background: #fbfdfa;
+  color: var(--ink);
+}
+
+.card-pill-options-no-custom {
+  /* For fairway etc. where a custom input doesn't make sense */
+}
+
+.card-field-gir {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--line, #d6e2d9);
+  border-radius: 10px;
+  background: #fbfdfa;
+}
+
+.card-field-gir span {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink);
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.card-clubs-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 6px 0;
+  border-top: 1px solid #edf1eb;
+}
+
+.card-clubs-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.pill-club {
+  min-height: 32px;
+  min-width: 0;
+  padding: 3px 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+/* Inline "Fringe" toggle on the Putts row. Visually distinct from the
+   numeric putts pills so the user can tell the two affordances apart
+   even at a glance — separator margin, italic label, gold-tinted
+   accent when active. */
+.pill-fringe-toggle {
+  margin-left: 12px;
+  font-style: italic;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  border-color: #d8c79a;
+  color: #6b4a14;
+  background: #fffaee;
+}
+
+.pill-fringe-toggle:hover {
+  border-color: #c58b2e;
+}
+
+.pill-fringe-toggle.active {
+  background: #c58b2e;
+  color: #fff;
+  border-color: #a3711d;
+  box-shadow: 0 4px 10px rgba(197, 139, 46, 0.2);
+}
+
+/* Inline "OB" toggle on the Pen row. Red-tinted because OB = bad
+   thing happened; same affordance pattern as Fringe (sibling chip
+   sitting after the count pills + custom input). Tap = +1 penalty
+   + 1 re-tee swing logged into clubsHit. Tap again to undo both. */
+.pill-ob-toggle {
+  margin-left: 12px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  border-color: #efccc6;
+  color: #b03a2e;
+  background: #fff4f1;
+}
+
+.pill-ob-toggle:hover {
+  border-color: #b03a2e;
+}
+
+.pill-ob-toggle.active {
+  background: #b03a2e;
+  color: #fff;
+  border-color: #8a2d23;
+  box-shadow: 0 4px 10px rgba(176, 58, 46, 0.2);
+}
+
+.pill-club.active {
+  background: var(--green-dark, #15573c);
+  border-color: var(--green-dark, #15573c);
+}
+
+.pill-club-tee {
+  position: relative;
+  padding-right: 38px;
+  border-color: #c98b21;
+  box-shadow: 0 0 0 2px rgba(201, 139, 33, 0.18);
+}
+
+.pill-club-tee.active {
+  background: #b07908;
+  border-color: #8a5c05;
+}
+
+.pill-tee-badge {
+  position: absolute;
+  top: -6px;
+  right: -4px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: #c98b21;
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Count badge for multi-use clubs: appears on a selected pill once the user
+   has tapped the same club ≥2 times on a hole. Sits at the bottom-left so
+   it doesn't collide with the top-right TEE badge. */
+.pill-count {
+  position: absolute;
+  bottom: -6px;
+  left: -4px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: #1f7a59;
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* × clear badge — visible on every ACTIVE club pill. Tapping it removes
+   every instance of that club from the hole (explicit "undo this club"
+   affordance). The primary tap on the pill BODY now adds another
+   instance — Rob's "I hit my 58° twice" scenario should be one tap
+   per hit, no hunting for a small + button required.
+
+   Sized at 26px with an invisible 10px pad zone via ::before so the
+   touch target is ~46px (above Apple HIG's 44pt minimum) without
+   visually overwhelming the pill. Positioned bottom-right, warm red
+   so it reads clearly as the "remove" action. */
+.pill-clear {
+  position: absolute;
+  bottom: -10px;
+  right: -8px;
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  background: #b03a2e;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 900;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  user-select: none;
+  border: 2.5px solid #ffffff;
+  z-index: 2;
+}
+
+.pill-clear::before {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  border-radius: 999px;
+}
+
+.pill-clear:hover {
+  background: #8a2d23;
+}
+
+.pill-clear:active {
+  transform: scale(0.92);
+}
+
+.card-pill-sublabel {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: normal;
+  text-transform: none;
+  margin-left: 6px;
+}
+
+/* "Best-scoring club" recommendation hint above the clubs row. Shows only
+   when the user has multi-club history on this physical hole AND there's a
+   meaningful gap (≥0.4 strokes) between their most-used club and their
+   best-scoring one. Computed in getBestScoringTeeClubForHole. */
+.club-hint {
+  margin: 6px 0 8px;
+  padding: 8px 10px;
+  background: #eaf3ed;
+  border: 1px solid #c8dccf;
+  border-radius: 8px;
+  color: var(--ink, #1d2c25);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+}
+
+.club-hint-icon {
+  flex: 0 0 auto;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.club-hint strong {
+  font-weight: 750;
+}
+
+/* Tee Club Performance panel — aggregate by tee club across rounds. */
+
+.tee-club-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tee-club-total {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.tee-club-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* One section per par tier (Par 3s / Par 4s / Par 5s). Splitting like this
+   makes the panel about 3× taller, but the comparisons inside each tier
+   are the actually-useful question — "is my 3-wood better than my driver
+   on par 4s?" — not "how does my driver do across everything." */
+.tee-club-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.tee-club-section:first-of-type {
+  margin-top: 6px;
+}
+
+.tee-club-section-title {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.tee-club-section-count {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--muted);
+  opacity: 0.85;
+}
+
+.tee-club-section-empty .tee-club-section-msg {
+  margin: 0;
+  padding: 8px 10px;
+  background: #f4f6f3;
+  border: 1px dashed var(--line, #d8dfd7);
+  border-radius: 8px;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.penalty-club-section {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line, #d8dfd7);
+}
+
+.penalty-club-title {
+  margin: 0 0 8px;
+  font-size: 0.76rem;
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.penalty-club-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.penalty-club-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 7px 10px;
+  background: #faf3f0;
+  border-radius: 6px;
+}
+
+.penalty-club-row strong {
+  font-size: 0.95rem;
+}
+
+.penalty-club-row .subtext {
+  flex: 1;
+}
+
+.penalty-club-count {
+  font-weight: 800;
+  color: #843c33;
+  font-size: 0.9rem;
+}
+
+.tee-club-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fbfdfa;
+}
+
+.tee-club-row.is-best {
+  background: #eaf4ed;
+  border-color: #b6d6c1;
+}
+
+.tee-club-row-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.tee-club-row-main strong {
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tee-club-row-main .subtext {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.tee-club-row-stats {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.tee-club-sg {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* Deerwood "scoring by nine" panel — one row per physical nine, pooled
+   across every routing that nine appears in. */
+.deerwood-by-nine-panel .dwbn-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dwbn-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fbfdfa;
+}
+
+.dwbn-row-empty {
+  opacity: 0.6;
+}
+
+.dwbn-row-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.dwbn-row-main strong {
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.dwbn-row-main .subtext {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.dwbn-row-stats {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.dwbn-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1px;
+}
+
+.dwbn-stat small {
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.dwbn-stat strong {
+  color: var(--green-dark, #15573c);
+  font-size: 1.05rem;
+  font-weight: 900;
+}
+
+/* Subtext under a metric KPI, e.g. "9 of 12 rounds (9-hole excluded)". */
+.metric-card-note {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* Home tab — chip nav. A row of 4 chips below the hero swaps between
+   thematic sections (Overview / Trends / Holes / Clubs). Each piece of Home
+   content carries data-home-section; the tab panel itself carries
+   data-active-section; CSS hides everything that doesn't match. */
+.home-chips {
+  display: flex;
+  gap: 4px;
+  margin: 12px 0 18px;
+  padding: 5px;
+  border: 1px solid var(--line, #d8dfd7);
+  border-radius: 12px;
+  background: #fbfdfa;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.home-chips::-webkit-scrollbar { display: none; }
+
+.home-chip {
+  /* Take natural width so labels never get squished into overlapping
+     text. The parent .home-chips has overflow-x: auto, so on narrow
+     screens (mobile) the row scrolls horizontally instead of jamming
+     6 chips into 360px. On wide screens the flex-grow keeps them
+     spread evenly across the row. */
+  flex: 1 1 auto;
+  min-width: max-content;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--ink, #1c2a22);
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  text-align: center;
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 640px) {
+  .home-chip {
+    /* Tighter on mobile to fit more chips before scrolling. */
+    padding: 8px 12px;
+    font-size: 0.88rem;
+  }
+}
+
+.home-chip:hover {
+  background: #eef4ec;
+}
+
+.home-chip.active {
+  background: var(--green, #1f7a59);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(31, 122, 89, 0.22);
+}
+
+/* Filter icon button — tucked at the right end of the chip strip. Tap to
+   open the filters bottom sheet. A gold dot signals an active filter. */
+.home-filter-button {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  margin-left: 4px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink, #1c2a22);
+  cursor: pointer;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 120ms ease, border-color 120ms ease;
+}
+
+.home-filter-button:hover {
+  background: #eef4ec;
+  border-color: var(--line, #d8dfd7);
+}
+
+.home-filter-button:active {
+  transform: scale(0.96);
+}
+
+.home-filter-button.has-active-filter::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold, #c58b2e);
+  border: 2px solid #fbfdfa;
+}
+
+/* Hide everything tagged for a non-active section. */
+[data-tab-panel="home"][data-active-section="overview"] [data-home-section]:not([data-home-section="overview"]) { display: none; }
+[data-tab-panel="home"][data-active-section="trends"] [data-home-section]:not([data-home-section="trends"]) { display: none; }
+[data-tab-panel="home"][data-active-section="holes"] [data-home-section]:not([data-home-section="holes"]) { display: none; }
+[data-tab-panel="home"][data-active-section="clubs"] [data-home-section]:not([data-home-section="clubs"]) { display: none; }
+[data-tab-panel="home"][data-active-section="records"] [data-home-section]:not([data-home-section="records"]) { display: none; }
+
+/* Second-row sub-chips, contextual to the active section. Each section's
+   sub-chip nav narrows the view further to a single panel — no scrolling
+   between panels inside a section either. */
+.home-subchips {
+  display: flex;
+  gap: 4px;
+  margin: -10px 0 18px;
+  padding: 2px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.home-subchips::-webkit-scrollbar { display: none; }
+
+.home-subchip {
+  flex: 0 0 auto;
+  padding: 7px 14px;
+  border: 1px solid var(--line, #d8dfd7);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--ink, #1c2a22);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
+  -webkit-tap-highlight-color: transparent;
+  white-space: nowrap;
+}
+
+.home-subchip:hover {
+  background: #eef4ec;
+  border-color: #b8c8bd;
+}
+
+.home-subchip.active {
+  background: var(--green, #1f7a59);
+  color: #ffffff;
+  border-color: var(--green, #1f7a59);
+}
+
+/* Subsection filtering — applied by JS based on the active sub-chip. */
+.subsection-hidden { display: none; }
+
+/* Filters bottom sheet — opened from the chip-strip filter icon. */
+.filters-sheet-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 8px 4px 4px;
+}
+
+.filters-sheet-body label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--green-dark, #15573c);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.filters-sheet-body select {
+  font-size: 1rem;
+  padding: 10px 12px;
+  border: 1.5px solid var(--line, #d8dfd7);
+  border-radius: 10px;
+  background: #ffffff;
+  color: var(--ink, #1c2a22);
+  font-weight: 700;
+}
+
+.filters-sheet-body .ghost-button {
+  margin-top: 6px;
+  align-self: flex-start;
+}
+
+/* Profile tab — bag editor. */
+.profile-bag-hint {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.profile-bag-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.profile-bag-grid .pill-club {
+  min-height: 44px;
+  padding: 6px 14px;
+  font-size: 0.92rem;
+}
+
+.profile-bag-summary {
+  margin: 14px 0 0;
+  color: var(--green-dark, #15573c);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.round-summary-field {
+  margin-top: 18px;
+  padding: 16px 18px;
+  border: 1px solid #d6e2d9;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #f6fbf5 0%, #eaf3ee 100%);
+}
+
+.round-summary-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--green-dark, #15573c);
+  margin-bottom: 8px;
+}
+
+.round-summary-field textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 12px 13px;
+  border: 1px solid var(--line, #d6e2d9);
+  border-radius: 10px;
+  background: #ffffff;
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-weight: 500;
+  font-family: inherit;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.round-summary-field textarea:focus {
+  outline: none;
+  border-color: var(--green, #217a57);
+  box-shadow: 0 0 0 3px rgba(31, 122, 89, 0.15);
+}
+
+.round-summary-field textarea::placeholder {
+  color: #9aab9d;
+  font-style: italic;
+}
+
+.round-summary-hint {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+/* ---------- Optional post-round reflection survey ----------
+   Sits above the free-form Round Summary textarea. Collapsed by default so
+   users who don't want it never see more than a one-line header. Each
+   chip-row mirrors the chip pattern used elsewhere in the app. */
+.round-survey {
+  margin-top: 18px;
+  border: 1px solid #d6e2d9;
+  border-radius: 12px;
+  background: #fbfdf9;
+  overflow: hidden;
+}
+
+.round-survey-summary {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px 16px;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  transition: background 0.12s ease;
+}
+
+.round-survey-summary:hover {
+  background: #f4f8f1;
+}
+
+.round-survey-summary::-webkit-details-marker {
+  display: none;
+}
+
+.round-survey-summary::after {
+  content: "›";
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--muted);
+  transition: transform 0.15s ease;
+  display: inline-block;
+}
+
+.round-survey[open] .round-survey-summary::after {
+  transform: rotate(90deg);
+}
+
+.round-survey-summary-title {
+  font-size: 0.78rem;
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--green-dark, #15573c);
+}
+
+.round-survey-summary-hint {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+  margin-left: auto;
+  margin-right: 6px;
+}
+
+.round-survey-body {
+  padding: 6px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-top: 1px solid #e5ede3;
+}
+
+.survey-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.survey-label {
+  font-size: 0.74rem;
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.survey-label-hint {
+  font-weight: 600;
+  font-size: 0.66rem;
+  text-transform: none;
+  letter-spacing: 0;
+  margin-left: 6px;
+  opacity: 0.85;
+}
+
+.survey-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.survey-chip {
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line, #d6e2d9);
+  background: #ffffff;
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.1s ease, border-color 0.1s ease, color 0.1s ease;
+}
+
+.survey-chip:hover {
+  background: #eef4eb;
+  border-color: #b6d1a5;
+}
+
+.survey-chip.is-active {
+  background: var(--green, #217a57);
+  border-color: var(--green-dark, #15573c);
+  color: #ffffff;
+}
+
+/* The 1-5 rating chips are smaller and laid out in a grid so they line up
+   across the four club rows (Driver/Irons/Wedges/Putter). */
+.survey-rating-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.survey-rating-row {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 10px;
+  align-items: center;
+}
+
+.survey-rating-label {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.survey-rating-chips {
+  gap: 4px;
+}
+
+.survey-rating-chip {
+  flex: 1;
+  min-width: 36px;
+  padding: 6px 0;
+  border-radius: 8px;
+  border: 1px solid var(--line, #d6e2d9);
+  background: #ffffff;
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 800;
+  color: var(--ink);
+  cursor: pointer;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  transition: background 0.1s ease, border-color 0.1s ease, color 0.1s ease;
+}
+
+.survey-rating-chip:hover {
+  background: #eef4eb;
+  border-color: #b6d1a5;
+}
+
+.survey-rating-chip.is-active {
+  background: var(--green, #217a57);
+  border-color: var(--green-dark, #15573c);
+  color: #ffffff;
+}
+
+.survey-textarea {
+  width: 100%;
+  min-height: 50px;
+  padding: 10px 12px;
+  border: 1px solid var(--line, #d6e2d9);
+  border-radius: 10px;
+  background: #ffffff;
+  color: var(--ink);
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-family: inherit;
+  line-height: 1.45;
+  resize: vertical;
+}
+
+.survey-textarea:focus {
+  outline: none;
+  border-color: var(--green, #217a57);
+  box-shadow: 0 0 0 3px rgba(31, 122, 89, 0.15);
+}
+
+.survey-textarea::placeholder {
+  color: #9aab9d;
+  font-style: italic;
+}
+
+@media (max-width: 480px) {
+  .survey-rating-row {
+    grid-template-columns: 60px 1fr;
+    gap: 8px;
+  }
+}
+
+/* Review section — wraps completion check, round summary, and Save into
+   a dedicated post-entry phase. Hidden in card view until the user taps
+   "Review & save round" on a card; always visible in grid view. */
+
+.review-section {
+  margin-top: 20px;
+  padding: 18px 18px 14px;
+  border: 1px solid #d6e2d9;
+  border-radius: 14px;
+  background:
+    linear-gradient(135deg, #fbfdfa 0%, #eef4f0 100%);
+  box-shadow: 0 12px 28px rgba(20, 32, 28, 0.06);
+}
+
+.review-section[hidden] {
+  display: none;
+}
+
+.review-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.review-header h3 {
+  margin: 2px 0 0;
+  font-size: 1.15rem;
+  color: var(--ink);
+}
+
+.review-back {
+  border: 1px solid var(--line, #d6e2d9);
+  background: #fff;
+  color: var(--green-dark, #15573c);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-weight: 800;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.review-back:hover {
+  border-color: #a8b8ad;
+}
+
+.scorecard-review-cta {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.card-review-button {
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1.5px solid var(--green, #217a57);
+  background: #ffffff;
+  color: var(--green-dark, #15573c);
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 140ms ease, transform 100ms ease;
+}
+
+.card-review-button:hover {
+  background: #f1f7f1;
+}
+
+.card-review-button:active {
+  transform: scale(0.99);
+}
+
+/* Completion check banner — surfaces missing fields above Save. */
+
+.completion-check {
+  margin-top: 16px;
+}
+
+.completion-check[hidden] {
+  display: none;
+}
+
+/* Review-and-save preview panel — Summary + Scorecard collapsible blocks
+   so the user can see exactly what's about to be saved without leaving
+   the entry flow. */
+.review-preview {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.review-preview[hidden] {
+  display: none;
+}
+
+.review-preview-block {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fbfdfa;
+  overflow: hidden;
+}
+
+.review-preview-block > summary {
+  cursor: pointer;
+  padding: 10px 14px;
+  font-weight: 800;
+  color: var(--ink);
+  font-size: 0.9rem;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.review-preview-block > summary::-webkit-details-marker {
+  display: none;
+}
+
+.review-preview-block > summary::after {
+  content: "▾";
+  color: var(--muted);
+  font-size: 0.75rem;
+  margin-left: 8px;
+}
+
+.review-preview-block[open] > summary::after {
+  content: "▴";
+}
+
+.review-preview-body {
+  padding: 4px 14px 14px;
+}
+
+.review-preview-body p {
+  margin: 0 0 8px;
+  font-size: 0.88rem;
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+.review-preview-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* Speed mode — strips the per-hole card down to just the score row.
+   Hides every non-score input row (clubs, fairway, GIR, putts, first-putt,
+   penalty, bunker, note) and any pill groups that aren't the score
+   selector. The score auto-calc in app.js short-circuits on total=0, so
+   with all the input rows hidden and empty, score becomes a pure
+   user-typed value with no fighting auto-fill. */
+
+.scorecard-cards[data-entry-mode="speed"] .card-extra,
+.scorecard[data-entry-mode="speed"] .card-extra {
+  display: none !important;
+}
+
+.scorecard-cards[data-entry-mode="speed"] .card-pill-row:not([data-pill-group="score-input"]),
+.scorecard[data-entry-mode="speed"] .card-pill-row:not([data-pill-group="score-input"]) {
+  display: none !important;
+}
+
+/* Tighten the card vertical rhythm — without the extra rows, the card
+   would feel oddly empty at the bottom. */
+.scorecard-cards[data-entry-mode="speed"] .scorecard-card {
+  padding-bottom: 12px;
+}
+
+/* Lightweight badge so it's obvious the card is intentionally minimal,
+   not bugged. */
+.scorecard-cards[data-entry-mode="speed"] .card-headline::after {
+  content: "Speed mode — score only";
+  display: block;
+  margin-top: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.completion-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid;
+}
+
+.completion-banner strong {
+  display: block;
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.completion-banner span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.completion-icon {
+  font-size: 1.4rem;
+  line-height: 1;
+  flex: 0 0 auto;
+}
+
+.completion-ok {
+  background: #eaf6ef;
+  border-color: #b9d8c5;
+}
+
+.completion-ok .completion-icon {
+  color: var(--green-dark, #15573c);
+}
+
+.completion-warn {
+  background: #fff7e3;
+  border-color: #e8c97a;
+}
+
+.completion-warn .completion-icon {
+  color: #b07908;
+}
+
+.completion-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.completion-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: baseline;
+  font-size: 0.86rem;
+}
+
+.completion-section-label {
+  color: var(--muted) !important;
+  font-weight: 800;
+  font-size: 0.78rem !important;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.completion-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid #d8b65a;
+  background: #fff;
+  color: #5a4308;
+  font-size: 0.82rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.completion-chip:hover {
+  background: #fff1c8;
+}
+
+.completion-hint {
+  color: var(--muted) !important;
+  font-size: 0.78rem !important;
+  font-style: italic;
+}
+
+/* Hole picker — highlight rows with no score yet. */
+
+.hp-row-needs-entry {
+  border-style: dashed !important;
+  border-color: #e8c97a !important;
+}
+
+/* Best/worst hole cards become clickable buttons. */
+
+/* ============================================================
+   Course Heatmap
+   ============================================================
+   Visual scorecard: each physical hole is a color-coded cell
+   showing average score and delta-vs-par. Color encodes how the
+   user is performing on that hole — green = under, red = over.
+   Replaces the Spotlight + Best Holes + Worst Holes panels.
+   Future commits: tap-to-drill-down sheet, metric toggle. */
+
+/* Heatmap palette — derived from the app's existing light theme variables
+   (--green, --gold, --red) so it sits naturally next to the other panels.
+   Each tier has a darker text color so the delta number stays readable. */
+
+.heatmap-course-chips,
+.heatmap-nine-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 14px;
+}
+
+.heatmap-chip {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: var(--panel-soft);
+  color: var(--muted);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+  font-family: inherit;
+}
+
+.heatmap-chip:hover {
+  color: var(--ink);
+  border-color: #b8c4b9;
+}
+
+.heatmap-chip.active {
+  background: var(--green);
+  color: #ffffff;
+  border-color: var(--green-dark);
+}
+
+/* Summary band above the grid — gives the heatmap a headline number
+   (avg gross + vs-par) so it works as both an overview AND a per-hole
+   exploration. Sits between the chips and the grid. */
+.heatmap-summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 18px;
+  padding: 12px 14px;
+  margin: 0 0 12px;
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.heatmap-summary-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-right: auto;
+}
+
+.heatmap-summary-main {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.heatmap-summary-gross {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.heatmap-summary-gross-unit {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin-left: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.heatmap-summary-vspar {
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.heatmap-summary-vspar.under { color: var(--green); }
+.heatmap-summary-vspar.over  { color: var(--gold); }
+.heatmap-summary-vspar.way-over { color: var(--red); }
+.heatmap-summary-vspar.even { color: var(--muted); }
+
+.heatmap-summary-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  font-size: 0.78rem;
+  color: var(--muted);
+  width: 100%;
+  margin-top: 4px;
+}
+
+.heatmap-summary-meta strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.heatmap-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 6px;
+  margin: 0;
+}
+
+/* On phones, 9-across gets tight. Wrap to two rows of ~5. */
+@media (max-width: 540px) {
+  .heatmap-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.heatmap-cell {
+  appearance: none;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  padding: 10px 4px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.12s ease;
+  font-family: inherit;
+  color: inherit;
+  min-height: 72px;
+  text-align: center;
+}
+
+.heatmap-cell:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(20, 32, 28, 0.12);
+}
+
+.heatmap-cell:active {
+  transform: scale(0.97);
+}
+
+.heatmap-cell-num {
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.78;
+}
+
+.heatmap-cell-delta {
+  font-size: 1.05rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.heatmap-cell-par {
+  font-size: 0.66rem;
+  opacity: 0.6;
+  font-variant-numeric: tabular-nums;
+}
+
+.heatmap-cell-rounds {
+  font-size: 0.6rem;
+  opacity: 0.5;
+  margin-top: 2px;
+}
+
+/* Color scale — tuned for the light theme. Better-than-par leans green,
+   bogey leans gold, double+ leans red. Saturation increases as you drift
+   further from par so extremes pop visually. */
+.heatmap-cell.tier-eagle {
+  background: #14633f;
+  color: #f3fff5;
+  border-color: #0c4a2f;
+}
+.heatmap-cell.tier-birdie {
+  background: #1f7a59;
+  color: #ffffff;
+  border-color: #155c41;
+}
+.heatmap-cell.tier-under {
+  background: #c5e3d1;
+  color: #123f32;
+  border-color: #9ec8ae;
+}
+.heatmap-cell.tier-par {
+  background: #f1f2ec;
+  color: var(--ink);
+  border-color: var(--line);
+}
+.heatmap-cell.tier-bogey {
+  background: #f1d39b;
+  color: #6b4513;
+  border-color: #d8b271;
+}
+.heatmap-cell.tier-double {
+  background: #d97a6a;
+  color: #ffffff;
+  border-color: #b54a3b;
+}
+.heatmap-cell.tier-triple {
+  background: #8e2419;
+  color: #fff0ec;
+  border-color: #631710;
+}
+.heatmap-cell.tier-empty {
+  background: var(--panel-soft);
+  border: 1px dashed #c8d0c8;
+  color: var(--muted);
+  cursor: default;
+}
+.heatmap-cell.tier-empty:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.heatmap-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  margin-top: 14px;
+  font-size: 0.72rem;
+  color: var(--muted);
+  align-items: center;
+}
+
+.heatmap-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.heatmap-legend-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  display: inline-block;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+/* ============================================================
+   Heatmap drill-down sheet
+   ============================================================
+   Slides up from the bottom when a heatmap cell is tapped. Shows
+   the full picture for one physical hole: headline stats, scoring
+   distribution, per-round history, and any notes written on that
+   hole. Replaces the Spotlight panel's job. */
+
+.heatmap-drilldown-sheet {
+  max-height: 88vh;
+  overflow-y: auto;
+}
+
+.heatmap-drilldown-body {
+  padding: 0 18px 28px;
+}
+
+.hd-meta {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 0 0 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.hd-meta strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.hd-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.hd-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 12px;
+  gap: 2px;
+}
+
+.hd-stat-num {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.hd-stat-num.under  { color: var(--green); }
+.hd-stat-num.over   { color: var(--gold); }
+.hd-stat-num.way-over { color: var(--red); }
+
+.hd-stat-label {
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+.hd-section-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 18px 0 10px;
+}
+
+.hd-distribution {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.hd-dist-chip {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+
+.hd-dist-chip .hd-dist-count {
+  font-size: 0.95rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.hd-dist-chip.zero {
+  opacity: 0.4;
+  border-color: var(--line);
+  background: transparent;
+  color: var(--muted);
+}
+
+.hd-dist-chip.eagle  { background: #14633f; color: #f3fff5; }
+.hd-dist-chip.birdie { background: #1f7a59; color: #ffffff; }
+.hd-dist-chip.par    { background: #f1f2ec; color: var(--ink); border-color: var(--line); }
+.hd-dist-chip.bogey  { background: #f1d39b; color: #6b4513; }
+.hd-dist-chip.double { background: #d97a6a; color: #ffffff; }
+.hd-dist-chip.triple { background: #8e2419; color: #fff0ec; }
+
+.hd-rounds-list,
+.hd-notes-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hd-round-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.hd-round-date {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.hd-round-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.hd-round-score-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 6px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  border: 1px solid transparent;
+}
+
+.hd-round-score-num.eagle  { background: #14633f; color: #f3fff5; }
+.hd-round-score-num.birdie { background: #1f7a59; color: #ffffff; }
+.hd-round-score-num.par    { background: #f1f2ec; color: var(--ink); border-color: var(--line); }
+.hd-round-score-num.bogey  { background: #f1d39b; color: #6b4513; }
+.hd-round-score-num.double { background: #d97a6a; color: #ffffff; }
+.hd-round-score-num.triple { background: #8e2419; color: #fff0ec; }
+
+.hd-round-meta {
+  font-size: 0.75rem;
+  color: var(--muted);
+  display: flex;
+  gap: 8px;
+}
+
+.hd-note-row {
+  padding: 10px 12px;
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.hd-note-row .hd-note-date {
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.hd-note-row .hd-note-text {
+  font-size: 0.9rem;
+  color: var(--ink);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.hd-empty {
+  color: var(--muted);
+  font-size: 0.85rem;
+  padding: 6px 0;
+}
+
+/* Per-hole tee-club breakdown in the drill-down sheet. Compact rows;
+   each row: club name | count | avg score with a colored vs-par chip.
+   The lowest-avg club (when it has 2+ rounds) gets a subtle highlight. */
+.hd-tc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hd-tc-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+.hd-tc-row.is-best {
+  background: #eaf4ed;
+  border-color: #b6d6c1;
+}
+
+.hd-tc-club {
+  font-weight: 700;
+  color: var(--ink);
+  font-size: 0.92rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.hd-tc-best-flag {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--green);
+  color: #ffffff;
+  padding: 2px 6px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.hd-tc-count {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.hd-tc-avg {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  border: 1px solid transparent;
+  min-width: 70px;
+  justify-content: center;
+}
+
+.hd-tc-avg small {
+  font-size: 0.72rem;
+  font-weight: 700;
+  opacity: 0.9;
+}
+
+.hd-tc-avg.tier-eagle  { background: #14633f; color: #f3fff5; }
+.hd-tc-avg.tier-birdie { background: #1f7a59; color: #ffffff; }
+.hd-tc-avg.tier-under  { background: #c5e3d1; color: #123f32; border-color: #9ec8ae; }
+.hd-tc-avg.tier-par    { background: #f1f2ec; color: var(--ink); border-color: var(--line); }
+.hd-tc-avg.tier-bogey  { background: #f1d39b; color: #6b4513; }
+.hd-tc-avg.tier-double { background: #d97a6a; color: #ffffff; }
+.hd-tc-avg.tier-triple { background: #8e2419; color: #fff0ec; }
+.hd-tc-avg.tier-empty  { background: var(--panel-soft); color: var(--muted); border-color: var(--line); }
+
+/* Scoring distribution panel — birdies/pars/bogeys/etc with drill-down. */
+
+.scoring-distribution {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.scoring-distribution-total {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.scoring-distribution-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(108px, 1fr));
+  gap: 8px;
+}
+
+.scoring-bucket {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 12px 14px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 100ms ease, box-shadow 140ms ease, opacity 140ms ease;
+  text-align: left;
+}
+
+.scoring-bucket:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.scoring-bucket:not(:disabled):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(20, 32, 28, 0.08);
+}
+
+.scoring-bucket-label {
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.scoring-bucket-count {
+  font-size: 1.8rem;
+  line-height: 1.05;
+  font-weight: 900;
+}
+
+.scoring-bucket-pct {
+  font-size: 0.74rem;
+  font-weight: 700;
+  opacity: 0.7;
+}
+
+.scoring-eagle { background: #fef3c7; border-color: #f4d75e; color: #6d4d00; }
+.scoring-birdie { background: #d6eedf; border-color: #8cc9a2; color: #15573c; }
+.scoring-par { background: #eef2eb; border-color: #cfdacf; color: var(--ink); }
+.scoring-bogey { background: #fde7d6; border-color: #f0b97f; color: #7a3d05; }
+.scoring-double { background: #f8dad4; border-color: #e9a89c; color: #843c33; }
+.scoring-triple { background: #f1c4bb; border-color: #d68b7d; color: #6b2018; }
+.scoring-worse { background: #c97d72; border-color: #a85950; color: #fff; }
+
+/* ---------- Par 3/4/5 cards (Home → Scoring) ----------
+   Replaces the old three-line stat-bar with a richer per-par card. Each card
+   is a button so the whole tile is the drill-down hit target — tapping it
+   opens the par-detail sheet (more breakdowns, by-course, recent holes). */
+.par-card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.par-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 14px;
+  background: #fbfdfa;
+  border: 1px solid var(--line, #d8dfd7);
+  border-radius: 12px;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+  font: inherit;
+  color: inherit;
+  transition: background 0.12s ease, border-color 0.12s ease, transform 0.06s ease;
+}
+
+.par-card:hover,
+.par-card:focus-visible {
+  background: #f4f8f1;
+  border-color: #b6d1a5;
+  outline: none;
+}
+
+.par-card:active {
+  transform: translateY(1px);
+}
+
+.par-card-empty {
+  cursor: default;
+  background: #f7f8f5;
+}
+
+.par-card-empty:hover {
+  background: #f7f8f5;
+  border-color: var(--line, #d8dfd7);
+}
+
+.par-card-empty-msg {
+  margin: 4px 0 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.par-card-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.par-card-head-main {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
+}
+
+.par-card-head-main strong {
+  font-size: 1.02rem;
+  font-weight: 850;
+}
+
+.par-card-count {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.par-card-chevron {
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 1.1rem;
+  opacity: 0.7;
+}
+
+.par-card-headline {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.par-card-headline-main {
+  font-size: 1.4rem;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+  padding: 2px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  line-height: 1.15;
+}
+
+.par-card-headline-sub {
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.par-card-headline-sg {
+  margin-left: auto;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Scoring distribution mini-bar — stacked segments, color-coded. */
+.par-card-dist {
+  display: flex;
+  height: 8px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #ecefe9;
+}
+
+.par-card-dist-seg {
+  height: 100%;
+  display: block;
+  min-width: 2px;
+  border: none;
+}
+
+.par-card-dist-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 0.72rem;
+}
+
+.par-card-dist-key {
+  padding: 1px 7px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.par-card-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  padding-top: 4px;
+  border-top: 1px dashed #e3e8df;
+}
+
+.par-card-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+  font-variant-numeric: tabular-nums;
+}
+
+.par-card-stat small {
+  font-size: 0.68rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+}
+
+.par-card-stat strong {
+  font-size: 0.94rem;
+  font-weight: 800;
+}
+
+.par-card-foot {
+  font-size: 0.78rem;
+  color: var(--muted);
+  padding-top: 4px;
+  border-top: 1px dashed #e3e8df;
+}
+
+@media (max-width: 540px) {
+  .par-card-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px 12px;
+  }
+  .par-card-headline-main {
+    font-size: 1.25rem;
+  }
+}
+
+/* ---------- Par-type drill-down sheet ---------- */
+.par-type-sheet {
+  max-height: 88vh;
+}
+
+.par-type-sheet-body {
+  overflow-y: auto;
+  padding: 4px 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.par-detail-lead {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.par-detail-empty {
+  margin: 16px 16px 24px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.par-detail-summary {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+}
+
+.par-detail-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 4px;
+  background: #f6f9f3;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.par-detail-tile small {
+  font-size: 0.62rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+}
+
+.par-detail-tile strong {
+  font-size: 0.94rem;
+  font-weight: 850;
+}
+
+@media (max-width: 480px) {
+  .par-detail-summary {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.par-detail-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.par-detail-h {
+  margin: 0;
+  font-size: 0.74rem;
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.par-detail-dist-list,
+.par-detail-skill-list,
+.par-detail-course-list,
+.par-detail-club-list,
+.par-detail-recent-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Each distribution row is a <details>/<summary>. Summary stays the bucket
+   chip; expanding it reveals the matching holes in a sub-list below. */
+.par-detail-dist-row-wrap {
+  list-style: none;
+}
+
+.par-detail-dist-details {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Hide the native triangle (we draw our own caret on the right). */
+.par-detail-dist-details > summary {
+  list-style: none;
+}
+.par-detail-dist-details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.par-detail-dist-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 8px;
+  align-items: baseline;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  user-select: none;
+}
+
+.par-detail-dist-row:hover {
+  filter: brightness(0.98);
+}
+
+.par-detail-dist-row strong {
+  font-weight: 850;
+}
+
+.par-detail-dist-caret {
+  font-weight: 700;
+  font-size: 1rem;
+  opacity: 0.6;
+  transition: transform 0.15s ease;
+  display: inline-block;
+}
+
+.par-detail-dist-details[open] > summary .par-detail-dist-caret {
+  transform: rotate(90deg);
+}
+
+.par-detail-h-hint {
+  font-size: 0.66rem;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--muted);
+  margin-left: 6px;
+  opacity: 0.85;
+}
+
+.par-detail-bucket-holes {
+  list-style: none;
+  margin: 6px 0 2px 8px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-left: 2px solid var(--line, #d8dfd7);
+  padding-left: 10px;
+}
+
+.par-detail-bucket-holes li {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 8px;
+  align-items: baseline;
+  padding: 6px 10px;
+  background: #fbfdfa;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+.par-detail-bucket-when {
+  font-size: 0.76rem;
+  color: var(--muted);
+}
+
+.par-detail-bucket-where {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.par-detail-bucket-where small {
+  color: var(--muted);
+  font-weight: 700;
+  margin-left: 4px;
+}
+
+.par-detail-bucket-score {
+  padding: 2px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  font-weight: 850;
+}
+
+.par-detail-bucket-score small {
+  font-weight: 700;
+  margin-left: 2px;
+}
+
+.par-detail-skill-list li {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 8px;
+  align-items: baseline;
+  padding: 7px 10px;
+  background: #fbfdfa;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+.par-detail-skill-list li > span:first-child {
+  font-weight: 700;
+}
+
+.par-detail-skill-list li strong {
+  font-size: 0.98rem;
+  font-weight: 850;
+}
+
+.par-detail-skill-list li small {
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.par-detail-course-list li,
+.par-detail-club-list li {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 8px;
+  align-items: baseline;
+  padding: 8px 10px;
+  background: #fbfdfa;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+.par-detail-course-name,
+.par-detail-club-name {
+  font-weight: 700;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.par-detail-course-meta,
+.par-detail-club-meta {
+  font-size: 0.74rem;
+  color: var(--muted);
+}
+
+.par-detail-course-val,
+.par-detail-club-val {
+  padding: 2px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  font-weight: 850;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.88rem;
+}
+
+.par-detail-recent-list li {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 8px;
+  align-items: baseline;
+  padding: 7px 10px;
+  background: #fbfdfa;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+.par-detail-recent-when {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.par-detail-recent-where {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.par-detail-recent-where small {
+  color: var(--muted);
+  font-weight: 700;
+  margin-left: 4px;
+}
+
+.par-detail-recent-score {
+  padding: 2px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  font-weight: 850;
+}
+
+.par-detail-recent-score small {
+  font-weight: 700;
+  margin-left: 2px;
+}
+
+/* Bucket sheet — drill-down list when a scoring tier is tapped. */
+
+.bucket-sheet-list .bucket-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fbfdfa;
+  margin: 0 0 6px;
+}
+
+.bucket-sheet-list .bucket-row-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.bucket-sheet-list .bucket-row-main strong {
+  color: var(--ink);
+  font-size: 0.95rem;
+}
+
+.bucket-sheet-list .bucket-row-main .subtext {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.bucket-sheet-list .bucket-row-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.bucket-sheet-list .bucket-row-score {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: var(--green-dark, #15573c);
+}
+
+.bucket-sheet-list .bucket-row-date {
+  color: var(--muted);
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+.bucket-empty {
+  text-align: center;
+  color: var(--muted);
+  font-style: italic;
+  padding: 16px;
+}
+
+/* Bucket breakdown — multi-dimensional summary view at the top of the
+   sheet (by par type, by course, top holes, recent trend) before the
+   collapsed raw list. */
+
+.bucket-sheet-list .bucket-breakdown-overall {
+  font-size: 0.92rem;
+  color: var(--ink);
+  line-height: 1.4;
+  padding: 4px 4px 12px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 12px;
+}
+
+.bucket-sheet-list .bucket-breakdown-section {
+  list-style: none;
+  margin: 0 0 14px;
+  padding: 0;
+}
+
+.bucket-sheet-list .bucket-breakdown-header {
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 6px;
+}
+
+.bucket-sheet-list .bucket-breakdown-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bucket-sheet-list .bucket-breakdown-line {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfdfa;
+}
+
+.bucket-sheet-list .bucket-breakdown-label {
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--ink);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bucket-sheet-list .bucket-breakdown-value {
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--green-dark, #15573c);
+  white-space: nowrap;
+}
+
+.bucket-sheet-list .bucket-breakdown-sub {
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 0.78rem;
+}
+
+.bucket-sheet-list .bucket-breakdown-details {
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+  margin-top: 4px;
+}
+
+.bucket-sheet-list .bucket-breakdown-summary {
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  padding: 6px 0;
+}
+
+.bucket-sheet-list .bucket-breakdown-summary::-webkit-details-marker {
+  display: none;
+}
+
+.bucket-sheet-list .bucket-row-list {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+}
+
+.hazard-chip-list {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.hazard-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #f3f7f1;
+  border: 1px solid #d7e2d9;
+  font-size: 0.82rem;
+  color: var(--ink);
+  line-height: 1.25;
+}
+
+.hazard-chip-water {
+  background: #e3f0fa;
+  border-color: #b9d6ec;
+  color: #1d4a6e;
+}
+
+.hazard-chip-bunker {
+  background: #fbf3e0;
+  border-color: #e6d3a3;
+  color: #5d4810;
+}
+
+.hazard-chip-ob {
+  background: #f8dad4;
+  border-color: #e9b9b0;
+  color: #843c33;
+}
+
+.hazard-chip-trees {
+  background: #e2efe1;
+  border-color: #bcd5ba;
+  color: #1c4b1f;
+}
+
+.hazard-chip-hill {
+  background: #f0e7d6;
+  border-color: #d8c8a8;
+  color: #5a4308;
+}
+
+.hazard-chip-other {
+  background: #ecebf0;
+  border-color: #cfcedb;
+  color: #3a3a4c;
+}
+
+.hazard-chip-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.hazard-chip-body {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.hazard-chip-type {
+  font-weight: 800;
+}
+
+.hazard-chip-details {
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+.hazard-chip-note {
+  font-style: italic;
+  opacity: 0.85;
+}
+
+.hazard-chip-delete {
+  border: none;
+  background: transparent;
+  color: inherit;
+  opacity: 0.55;
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 0 2px;
+  cursor: pointer;
+}
+
+.hazard-chip-delete:hover {
+  opacity: 1;
+}
+
+.hazard-count {
+  margin-left: auto;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--green-dark, #15573c);
+}
+
+.hazard-count-empty {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.course-hole-block {
+  border: 1px solid var(--line, #d6e2d9);
+  border-radius: 10px;
+  background: #fff;
+  margin-bottom: 8px;
+}
+
+.course-hole-block[open] {
+  border-color: #bccfc1;
+}
+
+.course-hole-block .course-hole-row {
+  cursor: pointer;
+  list-style: none;
+  padding: 12px 14px;
+  border: none;
+  margin: 0;
+  background: transparent;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.course-hole-block .course-hole-row::-webkit-details-marker {
+  display: none;
+}
+
+.course-hole-hazards {
+  padding: 0 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hazard-empty {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.hazard-form {
+  display: grid;
+  grid-template-columns: minmax(120px, 1fr) minmax(110px, 1fr) minmax(90px, 110px) minmax(160px, 2fr) auto;
+  gap: 8px;
+  align-items: center;
+}
+
+.hazard-form select,
+.hazard-form input {
+  min-height: 38px;
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  border: 1px solid var(--line, #d6e2d9);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+}
+
+.hazard-form-add {
+  min-height: 38px;
+  padding: 6px 16px;
+  border: 1px solid var(--green, #217a57);
+  border-radius: 8px;
+  background: var(--green, #217a57);
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.hazard-form-add:hover {
+  background: var(--green-dark, #15573c);
+  border-color: var(--green-dark, #15573c);
+}
+
+@media (max-width: 720px) {
+  .hazard-form {
+    grid-template-columns: 1fr 1fr;
+  }
+  .hazard-form-add {
+    grid-column: 1 / -1;
+  }
+}
+
+.hazard-chip-list-compact {
+  margin-top: 4px;
+  gap: 4px;
+}
+
+.hazard-chip-list-compact .hazard-chip {
+  padding: 3px 8px;
+  font-size: 0.74rem;
+  border-radius: 999px;
+}
+
+.hazard-chip-list-compact .hazard-chip-icon {
+  font-size: 0.86rem;
+}
+
+.round-row-main {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  flex: 1 1 0;
+}
+
+.round-row-summary {
+  margin-top: 6px;
+}
+
+.round-row-summary summary {
+  cursor: pointer;
+  color: var(--green-dark, #15573c);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  user-select: none;
+}
+
+.round-row-summary summary::-webkit-details-marker {
+  display: none;
+}
+
+.round-row-summary summary::after {
+  content: "▾";
+  font-size: 0.7rem;
+  transition: transform 140ms ease;
+}
+
+.round-row-summary[open] summary::after {
+  transform: rotate(180deg);
+}
+
+/* The narrative is multi-paragraph; we render them inside one
+   ".round-row-summary-body" container so all paragraphs share a single
+   green-bordered card rather than each one getting its own border. */
+.round-row-summary-body {
+  margin: 6px 0 0;
+  padding: 10px 12px;
+  border-left: 3px solid var(--green, #217a57);
+  background: #f3f7f1;
+  border-radius: 0 8px 8px 0;
+  color: var(--ink);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.round-row-summary-body p {
+  margin: 0 0 8px;
+}
+
+.round-row-summary-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* Legacy single-paragraph fallback (in case an old details renders direct
+   <p> children somewhere we haven't migrated yet). */
+.round-row-summary > p {
+  margin: 6px 0 0;
+  padding: 10px 12px;
+  border-left: 3px solid var(--green, #217a57);
+  background: #f3f7f1;
+  border-radius: 0 8px 8px 0;
+  color: var(--ink);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Expandable per-round scorecard — reuses the summary <details> styling. */
+.round-row-scorecard {
+  margin-top: 6px;
+}
+
+.round-row-scorecard summary {
+  cursor: pointer;
+  color: var(--green-dark, #15573c);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  user-select: none;
+}
+
+.round-row-scorecard summary::-webkit-details-marker {
+  display: none;
+}
+
+.round-row-scorecard summary::after {
+  content: "▾";
+  font-size: 0.7rem;
+  transition: transform 140ms ease;
+}
+
+.round-row-scorecard[open] summary::after {
+  transform: rotate(180deg);
+}
+
+.round-scorecard {
+  margin: 8px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 12px;
+  background: #f3f7f1;
+  border-radius: 8px;
+}
+
+.rsc-nine-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--green-dark, #15573c);
+  margin-bottom: 4px;
+}
+
+.rsc-nine-head span {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+/* CSS grid with exactly 9 columns guarantees a 9-hole nine stays on one
+   row at any viewport width — the previous flex-wrap layout would push
+   the 9th cell to its own row whenever min-width × 9 exceeded the
+   container, which made every 18-hole round show as 4 ragged rows on
+   phones. minmax(0, 1fr) lets cells shrink below their content width
+   so the layout never overflows. */
+.rsc-holes {
+  display: grid;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  gap: 2px;
+}
+
+.rsc-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  padding: 4px 0;
+  min-width: 0;
+}
+
+.rsc-cell-label {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.rsc-cell-par {
+  font-size: 0.58rem;
+  color: #9aa8a0;
+}
+
+.rsc-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-top: 1px solid #dde6da;
+  padding-top: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.rsc-total strong {
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.putting-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Scrambling panel — three big rows: Scrambling % / Sand save % /
+   Bunker frequency. Each row is label + headline + meta sub-line. */
+.scrambling-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.scrambling-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.scrambling-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 14px;
+  align-items: center;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel-soft);
+}
+
+.scrambling-row-label {
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.scrambling-row-value {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.scrambling-row-value strong {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.05;
+}
+
+.scrambling-row-value strong.scrambling-muted {
+  color: var(--muted);
+  font-size: 1.2rem;
+}
+
+.scrambling-row-value span {
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+@media (max-width: 540px) {
+  .scrambling-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
+.putting-headline {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.putting-kpi {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 14px;
+  border: 1px solid #d9e1d6;
+  border-radius: 8px;
+  background: #fbfdfa;
+}
+
+.putting-kpi span {
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.putting-kpi strong {
+  font-size: 1.55rem;
+  color: var(--ink);
+  line-height: 1.05;
+}
+
+.putting-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.putting-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 12px;
+  border: 1px solid #e3ebe1;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.putting-row-empty {
+  background: #fbfcfa;
+}
+
+.putting-row-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.putting-row-label {
+  color: var(--ink);
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+
+.putting-row-rate {
+  color: var(--green-dark, #15573c);
+  font-size: 1.1rem;
+  font-weight: 900;
+}
+
+.putting-row-empty .putting-row-rate {
+  color: var(--muted);
+}
+
+.putting-row-track {
+  height: 8px;
+  border-radius: 999px;
+  background: #eef2eb;
+  overflow: hidden;
+}
+
+.putting-row-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #217a57, #15573c);
+  transition: width 240ms ease;
+}
+
+.putting-row-empty .putting-row-fill {
+  background: transparent;
+}
+
+.putting-row-meta {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.scorecard-card-nav {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.card-nav-button {
+  flex: 1 1 0;
+  min-height: 48px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--green-dark);
+  font-weight: 800;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 100ms ease, border-color 140ms ease, background 140ms ease;
+}
+
+.card-nav-button:hover {
+  border-color: #a8b8ad;
+}
+
+.card-nav-button:active {
+  transform: scale(0.98);
+}
+
+.card-nav-button-primary {
+  background: var(--green, #217a57);
+  border-color: var(--green, #217a57);
+  color: #fff;
+}
+
+.card-nav-button-primary:hover {
+  background: var(--green-dark, #15573c);
+  border-color: var(--green-dark, #15573c);
+}
+
+.hole-picker-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.hole-picker-overlay[hidden] {
+  display: none;
+}
+
+.hole-picker-backdrop {
+  position: absolute;
+  inset: 0;
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: rgba(8, 26, 21, 0.55);
+  cursor: pointer;
+  animation: hp-fade 180ms ease both;
+}
+
+.hole-picker-sheet {
+  position: relative;
+  width: min(520px, 100%);
+  max-height: min(78vh, 720px);
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 18px 18px 0 0;
+  box-shadow: 0 -18px 50px rgba(8, 26, 21, 0.32);
+  animation: hp-slide-up 220ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hole-picker-handle {
+  width: 42px;
+  height: 4px;
+  border-radius: 999px;
+  background: #d6dfd9;
+  margin: 10px auto 0;
+}
+
+.hole-picker-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px 10px;
+}
+
+.hole-picker-header h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+
+.hole-picker-close {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: none;
+  background: #f1f5f0;
+  color: var(--ink);
+  font-size: 1.4rem;
+  font-weight: 700;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.hole-picker-close:hover {
+  background: #e3ebe1;
+}
+
+.hole-picker-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 12px 18px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hp-row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 32px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 11px 12px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  transition: background 120ms ease, border-color 140ms ease;
+}
+
+.hp-row:hover {
+  background: #f3f7f1;
+}
+
+.hp-row.active {
+  background: rgba(31, 122, 89, 0.1);
+  border-color: rgba(31, 122, 89, 0.35);
+}
+
+.hp-row-index {
+  font-weight: 800;
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.hp-row.active .hp-row-index {
+  color: var(--green-dark, #15573c);
+}
+
+.hp-row-label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.hp-row-label strong {
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+.hp-row-label small {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.hp-row-score {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+}
+
+/* Traditional scorecard score marks: circle = birdie, double circle = eagle+,
+   square = bogey, double square = double bogey or worse, plain = par. */
+.score-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: 26px;
+  height: 26px;
+  margin: 4px;
+  padding: 0 3px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.score-mark-empty {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.score-mark-birdie,
+.score-mark-eagle {
+  border: 2px solid var(--green, #1f7a59);
+  border-radius: 50%;
+  color: var(--green-dark, #123f32);
+}
+
+.score-mark-eagle {
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px var(--green, #1f7a59);
+}
+
+.score-mark-bogey,
+.score-mark-double {
+  border: 2px solid #c0492f;
+  border-radius: 6px;
+  color: #8f2f1c;
+}
+
+.score-mark-double {
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #c0492f;
+}
+
+/* Triple bogey or worse: solid filled red box — the heaviest mark. */
+.score-mark-triple {
+  border: 2px solid #c0492f;
+  border-radius: 6px;
+  background: #c0492f;
+  color: #ffffff;
+}
+
+body.hole-picker-open {
+  overflow: hidden;
+}
+
+@keyframes hp-slide-up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes hp-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (min-width: 720px) {
+  .hole-picker-overlay {
+    align-items: center;
+  }
+  .hole-picker-sheet {
+    border-radius: 18px;
+    max-height: min(80vh, 760px);
+    animation: hp-pop 200ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .hole-picker-handle {
+    display: none;
+  }
+  @keyframes hp-pop {
+    from { transform: scale(0.96); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+}
+
+@media (max-width: 640px) {
+  .card-score-row .score-input {
+    flex-basis: 110px;
+    min-height: 60px;
+    font-size: 1.8rem;
+  }
+  .card-score-shortcut {
+    width: 52px;
+    height: 52px;
+  }
+}
+
+.compact-toggle {
+  justify-content: center;
+}
+
+.compact-toggle span {
+  width: 26px;
+  height: 26px;
+  border: 1px solid #bfcec2;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.compact-toggle input {
+  position: absolute;
+  opacity: 0;
+}
+
+.compact-toggle input:checked + span {
+  border-color: var(--green);
+  background: var(--green);
+  box-shadow: inset 0 0 0 6px #fff;
+}
+
+.course-meta-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.course-meta-strip span {
+  border: 1px solid #d1ddcf;
+  border-radius: 999px;
+  background: #f6faf4;
+  color: #425449;
+  padding: 6px 10px;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.scorecard-row {
+  min-width: 900px;
+  display: grid;
+  grid-template-columns: 100px 44px 64px 54px 72px 72px 100px 64px 72px;
+  gap: 7px;
+  align-items: center;
+  padding: 8px 10px;
+  border-bottom: 1px solid #e6ece5;
+  background: #fff;
+}
+
+.scorecard-row:last-child {
+  border-bottom: 0;
+}
+
+.scorecard-row:nth-child(odd):not(.scorecard-header) {
+  background: #fbfcf8;
+}
+
+.scorecard-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  color: #d9e7df;
+  background: #173c32;
+  font-size: 0.74rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.scorecard-row input,
+.scorecard-row select {
+  min-height: 34px;
+  padding: 6px 8px;
+  border-color: #cbd8cd;
+  background: #fffefa;
+}
+
+.hole-number {
+  color: var(--ink);
+  font-size: 0.88rem;
+  font-weight: 850;
+}
+
+.par-pill {
+  width: 34px;
+  border-radius: 999px;
+  background: #e1efe5;
+  color: var(--green-dark);
+  text-align: center;
+  padding: 4px 0;
+  font-size: 0.84rem;
+  font-weight: 850;
+}
+
+.yardage-cell,
+.hcp-cell {
+  color: var(--muted);
+  font-size: 0.84rem;
+  font-weight: 800;
+}
+
+.gir-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink);
+  font-size: 0.84rem;
+  font-weight: 750;
+}
+
+.gir-toggle input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--green);
+}
+
+.form-actions {
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.round-preview {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 750;
+  text-align: right;
+}
+
+.chart-frame {
+  min-height: 220px;
+}
+
+.trend-bars {
+  min-height: 220px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(58px, 1fr));
+  align-items: end;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid #e3ebe1;
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, #fffefa 0%, #f5f8f3 100%);
+}
+
+.trend-item {
+  min-height: 184px;
+  display: grid;
+  grid-template-rows: 24px 1fr 34px;
+  align-items: end;
+  justify-items: center;
+  gap: 6px;
+}
+
+.trend-value {
+  color: var(--ink);
+  font-weight: 850;
+}
+
+.trend-column {
+  width: min(100%, 54px);
+  height: 124px;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  border-bottom: 2px solid #c4d1c3;
+}
+
+.trend-bar {
+  width: 100%;
+  min-height: 4px;
+  border-radius: 7px 7px 0 0;
+  background: linear-gradient(180deg, #d16055 0%, var(--red) 100%);
+}
+
+.trend-bar.good {
+  background: linear-gradient(180deg, #36a979 0%, var(--green) 100%);
+}
+
+.trend-date {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Empty state — used when a panel has nothing to show yet. Friendly
+   tone, not a "broken" feel. Centered, light, with optional CTA. */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 120px;
+  padding: 22px 18px;
+  color: var(--muted);
+  border: 1px dashed #c7d3c7;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #fbfcfa 0%, #f5f8f3 100%);
+  text-align: center;
+}
+
+.empty-state-message {
+  font-size: 0.9rem;
+  line-height: 1.45;
+  max-width: 320px;
+}
+
+.empty-state-cta {
+  appearance: none;
+  border: 1px solid var(--green-dark);
+  background: var(--green);
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.12s ease, transform 0.08s ease;
+}
+
+.empty-state-cta:hover {
+  background: var(--green-dark);
+}
+
+.empty-state-cta:active {
+  transform: scale(0.97);
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 0;
+  table-layout: fixed;
+}
+
+th,
+td {
+  padding: 10px 8px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+th {
+  color: var(--muted);
+  font-size: 0.76rem;
+  text-transform: uppercase;
+}
+
+td {
+  font-weight: 700;
+}
+
+.bar-list,
+.round-list,
+.course-list,
+.course-stat-list,
+.lookup-results,
+.handicap-panel {
+  display: grid;
+  gap: 10px;
+}
+
+.stat-bar {
+  display: grid;
+  gap: 7px;
+}
+
+.stat-bar-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-weight: 800;
+}
+
+.track {
+  height: 10px;
+  border-radius: 999px;
+  background: #e5ece5;
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  min-width: 3px;
+  border-radius: inherit;
+  background: var(--green);
+}
+
+.fill.gold {
+  background: var(--gold);
+}
+
+.fill.blue {
+  background: var(--blue);
+}
+
+.round-row,
+.course-row,
+.course-stat-row,
+.lookup-row {
+  justify-content: space-between;
+  gap: 10px;
+  padding: 11px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fffefa;
+  transition: border-color 140ms ease, transform 140ms ease, box-shadow 140ms ease;
+}
+
+.round-row:hover,
+.course-row:hover,
+.course-stat-row:hover,
+.lookup-row:hover {
+  border-color: #bfcdbf;
+  box-shadow: 0 10px 22px rgba(20, 32, 28, 0.06);
+  transform: translateY(-1px);
+}
+
+.course-row.selected {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(31, 122, 89, 0.12);
+}
+
+.row-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.round-row strong,
+.course-row strong,
+.course-stat-row strong,
+.lookup-row strong {
+  display: block;
+}
+
+.course-stat-row {
+  align-items: flex-start;
+}
+
+/* "18 holes" / "9 holes" pill sitting next to the course name in
+   the Scoring By Course rows. Keeps 9- and 18-hole averages visually
+   separate at the same physical course (Deerwood especially). */
+.course-stat-holes-badge {
+  display: inline-block;
+  padding: 1px 8px;
+  margin-left: 6px;
+  border-radius: 999px;
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  vertical-align: middle;
+}
+
+.course-stat-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(70px, 1fr));
+  gap: 8px;
+  min-width: 180px;
+}
+
+.course-stat-metrics span {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 750;
+}
+
+.course-stat-metrics b {
+  color: var(--ink);
+  display: block;
+  font-size: 0.98rem;
+}
+
+.subtext {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 650;
+}
+
+.score-chip {
+  border-radius: 999px;
+  padding: 6px 9px;
+  background: #e7f1e8;
+  color: var(--green-dark);
+  font-weight: 850;
+  white-space: nowrap;
+}
+
+.score-chip.bad {
+  background: #ffeae5;
+  color: var(--red);
+}
+
+.score-chip.neutral {
+  background: #e8f0f8;
+  color: var(--blue);
+}
+
+.handicap-index-box {
+  min-height: 132px;
+  display: grid;
+  align-content: center;
+  gap: 8px;
+  padding: 16px;
+  border-radius: 8px;
+  background: #102f26;
+  color: #fff;
+}
+
+.handicap-index-box span {
+  color: #c9ded3;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.handicap-index-box strong {
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.handicap-details {
+  display: grid;
+  gap: 8px;
+}
+
+.handicap-detail-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--line);
+  font-weight: 750;
+}
+
+.handicap-detail-row span {
+  color: var(--muted);
+}
+
+.handicap-note {
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.round-row button,
+.course-row button,
+.lookup-row button {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--green-dark);
+  padding: 7px 9px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.round-row button[data-delete-round],
+.course-row button[data-delete-course] {
+  border-color: #efccc6;
+  color: var(--red);
+}
+
+.round-row button:hover,
+.course-row button:hover,
+.lookup-row button:hover {
+  border-color: #a8b8ad;
+}
+
+.round-row.editing {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(31, 122, 89, 0.12);
+}
+
+.editing-pill {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--green);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+/* Round-tag badge (League / Casual / Tournament / Practice) shown next to
+   the headline score in Recent Scorecards. One color per tag so the user
+   can scan their history at a glance. */
+.round-tag-badge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  vertical-align: middle;
+  background: #e7efe9;
+  color: #1d2c25;
+}
+
+.round-tag-league {
+  background: #fff4ce;
+  color: #6b4a14;
+}
+
+.round-tag-tournament {
+  background: #ffe9e4;
+  color: #b03a2e;
+}
+
+.round-tag-casual {
+  background: #e0eedd;
+  color: #285c20;
+}
+
+.round-tag-practice {
+  background: #e6eff8;
+  color: #1f4f7a;
+}
+
+/* Trophy Room (Home → Records) — card grid of lifetime personal-best
+   records. Each card is tappable when it's anchored to a specific round
+   (opens that round in edit/inspect mode). Streaks and aces with no
+   single anchor render without the tap affordance. */
+.trophy-room-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 10px;
+}
+
+.trophy-card {
+  background: #f7faf8;
+  border: 1px solid var(--line, #e2e9e3);
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
+  cursor: default;
+  transition: border-color 140ms ease, transform 140ms ease, box-shadow 140ms ease;
+}
+
+.trophy-card-tap {
+  cursor: pointer;
+}
+
+.trophy-card-tap:hover {
+  border-color: var(--green, #1f7a59);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(31, 122, 89, 0.12);
+}
+
+.trophy-card-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted, #6c7a72);
+}
+
+.trophy-card-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--ink, #1d2c25);
+  line-height: 1.1;
+}
+
+.trophy-card-sub {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--green, #1f7a59);
+}
+
+.trophy-card-context {
+  font-size: 0.78rem;
+  color: var(--muted, #6c7a72);
+}
+
+/* Round-detail sheet — opens from a Trophy card tap. Shows the scorecard
+   read-only. Body scrolls when the scorecard is taller than the sheet. */
+.round-detail-sheet {
+  width: min(720px, 100%);
+  max-height: min(86vh, 820px);
+}
+
+.round-detail-subtitle {
+  padding: 0 18px 6px;
+  color: var(--muted, #6c7a72);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.round-detail-body {
+  padding: 6px 18px 12px;
+  overflow-y: auto;
+}
+
+.round-detail-actions {
+  padding: 12px 18px 18px;
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid var(--line, #e2e9e3);
+}
+
+/* Stats Explorer (Home → Explorer) — pre-built query cards. Same visual
+   model as Trophy Room but the framing is "questions about your game"
+   rather than "achievements". */
+.stats-explorer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+}
+
+.stats-card {
+  background: #f7faf8;
+  border: 1px solid var(--line, #e2e9e3);
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stats-card-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted, #6c7a72);
+}
+
+.stats-card-value {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--ink, #1d2c25);
+  line-height: 1.15;
+}
+
+.stats-card-sub {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--green, #1f7a59);
+}
+
+.stats-card-context {
+  font-size: 0.78rem;
+  color: var(--muted, #6c7a72);
+}
+
+/* Profile → Scorecard flow preference */
+.card-flow-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.card-flow-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--line, #e2e9e3);
+  border-radius: 10px;
+  background: #f7faf8;
+  cursor: pointer;
+  font-size: 0.92rem;
+  color: var(--ink, #1d2c25);
+}
+
+.card-flow-option input {
+  margin-top: 3px;
+  accent-color: var(--green, #1f7a59);
+}
+
+.card-flow-option:hover {
+  border-color: var(--green, #1f7a59);
+}
+
+.course-detail {
+  display: grid;
+  gap: 14px;
+}
+
+.course-profile-hero {
+  min-height: 132px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px;
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, #102f26 0%, #1c4c3d 58%, #1d3f57 100%);
+  color: #fff;
+}
+
+.course-profile-hero .eyebrow {
+  color: #c9ded3;
+}
+
+.course-profile-hero h3 {
+  margin: 0;
+  font-size: 1.55rem;
+}
+
+.course-profile-score {
+  min-width: 92px;
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 900;
+}
+
+.course-profile-score span {
+  display: block;
+  color: #c9ded3;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+}
+
+.course-profile-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.course-profile-grid div {
+  padding: 13px;
+  border: 1px solid #d9e1d6;
+  border-radius: 8px;
+  background: #fffefa;
+}
+
+.course-profile-grid span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.course-profile-grid strong {
+  display: block;
+  margin-top: 5px;
+  font-size: 1.3rem;
+}
+
+.course-hole-table {
+  display: grid;
+  gap: 8px;
+}
+
+.course-hole-row {
+  display: grid;
+  grid-template-columns: 1.2fr repeat(5, minmax(72px, 0.6fr));
+  gap: 8px;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #e0e7de;
+  border-radius: 8px;
+  background: #fffefa;
+}
+
+.course-hole-row span {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 750;
+}
+
+.panel-note {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  margin-left: auto;
+}
+
+.strokes-gained-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sg-headline {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.sg-kpi {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 14px;
+  border: 1px solid #d9e1d6;
+  border-radius: 8px;
+  background: #fbfdfa;
+}
+
+.sg-kpi span {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.sg-kpi strong {
+  font-size: 1.6rem;
+  line-height: 1.05;
+  color: var(--ink);
+}
+
+.sg-kpi small {
+  color: var(--muted);
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+.sg-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sg-section-title {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.sg-par-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 8px;
+}
+
+.sg-par-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 12px;
+  border: 1px solid #e3ebe1;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.sg-par-row span {
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.sg-par-row strong {
+  font-size: 1.15rem;
+  color: var(--ink);
+}
+
+.sg-par-row small {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.sg-hole-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.sg-hole-column {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sg-hole-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 10px;
+  border: 1px solid #e3ebe1;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.sg-hole-row strong {
+  display: block;
+  color: var(--ink);
+  font-size: 0.9rem;
+}
+
+.sg-hole-row .subtext {
+  font-size: 0.74rem;
+}
+
+.sg-trend-svg {
+  width: 100%;
+  height: 140px;
+  display: block;
+}
+
+@media (max-width: 720px) {
+  .sg-hole-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+.toast {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  max-width: min(380px, calc(100vw - 36px));
+  padding: 12px 14px;
+  background: var(--ink);
+  color: #fff;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 160ms ease, transform 160ms ease;
+  font-weight: 750;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 1100px) {
+  .metrics-grid {
+    grid-template-columns: repeat(3, minmax(130px, 1fr));
+  }
+
+  .home-insights {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .primary-grid,
+  .course-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .analytics-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .app-shell {
+    padding: 12px;
+  }
+
+  .app-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .header-actions {
+    justify-content: flex-end;
+    width: auto;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+  }
+
+  .header-actions-toggle {
+    display: inline-flex;
+  }
+
+  .header-actions-list {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 200px;
+    flex-direction: column;
+    align-items: stretch;
+    background: var(--panel, #ffffff);
+    border: 1px solid var(--line, #d6e2d9);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 16px 40px rgba(20, 32, 28, 0.28);
+    z-index: 50;
+  }
+
+  .header-actions.open .header-actions-list {
+    display: flex;
+  }
+
+  .header-actions-list > * {
+    width: 100%;
+    text-align: left;
+    justify-content: flex-start;
+  }
+
+  .app-header {
+    padding-right: 88px;
+  }
+
+  /* Sticky bottom tab bar: mid-card (cards run 2+ screens) the top tabs
+     used to scroll away, so any Rounds↔Games switch meant scrolling all the
+     way up. Fixed to the thumb zone instead, clear of the home indicator. */
+  .app-tabs {
+    overflow-x: auto;
+    position: fixed;
+    /* top: auto is LOAD-BEARING — the base rule's sticky top: 0 otherwise
+       combines with bottom: 0 and stretches the bar into a full-screen
+       overlay (the 2026-07-22 hotfix). */
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 60;
+    margin: 0;
+    border-radius: 0;
+    border-top: 1px solid var(--line);
+    box-shadow: 0 -8px 24px rgba(25, 38, 30, 0.10);
+    gap: 4px;
+    padding: 5px 5px calc(5px + env(safe-area-inset-bottom));
+  }
+
+  /* Keep page content (and the round Save button) clear of the fixed bar. */
+  body {
+    padding-bottom: 76px;
+  }
+
+  /* Toasts ride above the fixed tab bar instead of hiding behind it. */
+  .toast {
+    bottom: calc(84px + env(safe-area-inset-bottom));
+  }
+
+  /* Phone tab bar: classic icon-over-label segments, equal widths. Five
+     side-by-side text labels always read "jammed" no matter the padding —
+     stacking gives every tab air without costing fit. */
+  .tab-button {
+    flex: 1 1 0;
+    min-width: 0;
+    flex-direction: column;
+    gap: 3px;
+    padding: 7px 2px 6px;
+    min-height: 52px;
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+
+  .tab-icon {
+    width: 21px;
+    height: 21px;
+  }
+
+  .home-hero {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .round-live-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .analytics-grid,
+  .form-grid,
+  .lookup-form,
+  .compact-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .metrics-grid,
+  .home-insights {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .metric-card {
+    min-height: 82px;
+    padding: 12px;
+  }
+
+  .metric-card span {
+    font-size: 0.74rem;
+  }
+
+  .metric-card strong {
+    font-size: 1.5rem;
+  }
+
+  .metric-card::after {
+    right: 10px;
+    bottom: 10px;
+  }
+
+  .insight-card {
+    min-height: 96px;
+    padding: 12px;
+  }
+
+  .insight-card strong {
+    font-size: 1.1rem;
+  }
+
+  .wide-panel {
+    grid-column: auto;
+  }
+
+  .panel {
+    padding: 13px;
+  }
+
+  .metric-card {
+    min-height: 82px;
+  }
+
+  .form-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .course-stat-row {
+    flex-direction: column;
+  }
+
+  .course-stat-metrics {
+    width: 100%;
+  }
+
+  .course-profile-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .course-hole-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .round-preview {
+    text-align: left;
+  }
+}
+
+/* ---- Snapshot/backup safety net (Profile tab) ----------------------- */
+
+.snapshot-backup-status {
+  margin: 6px 0 10px;
+  font-size: 0.9rem;
+  color: var(--ink-soft, #4a5b51);
+}
+
+.snapshot-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.snapshot-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 12px 14px;
+  background: #f7faf8;
+  border: 1px solid var(--line, #e2e9e3);
+  border-radius: 12px;
+}
+
+.snapshot-row-main {
+  min-width: 0;
+}
+
+.snapshot-row-headline {
+  font-weight: 750;
+  color: var(--ink);
+  font-size: 0.98rem;
+}
+
+.snapshot-row-meta {
+  color: var(--ink-soft, #4a5b51);
+  font-size: 0.86rem;
+  margin-top: 2px;
+}
+
+.snapshot-row-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.snapshot-row-actions button {
+  padding: 7px 11px;
+  font-size: 0.86rem;
+}
+
+.snapshot-empty {
+  padding: 14px;
+  text-align: center;
+  color: var(--ink-soft, #4a5b51);
+  background: #f3f7f4;
+  border-radius: 12px;
+  border: 1px dashed var(--line, #e2e9e3);
+}
+
+.snapshot-reason-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: #e7efe9;
+  color: var(--ink, #1d2c25);
+  margin-right: 6px;
+  vertical-align: 1px;
+}
+
+.snapshot-reason-tag.snapshot-reason-before-clear,
+.snapshot-reason-tag.snapshot-reason-before-import,
+.snapshot-reason-tag.snapshot-reason-before-sample {
+  background: #ffe9e4;
+  color: var(--red, #b03a2e);
+}
+
+.snapshot-reason-tag.snapshot-reason-manual {
+  background: #e0eedd;
+  color: #285c20;
+}
+
+.snapshot-reason-tag.snapshot-reason-pre-restore {
+  background: #f1e9d8;
+  color: #6b4a14;
+}
+
+/* ---- Danger zone (Profile tab) -------------------------------------- */
+
+.danger-zone-panel {
+  border-color: #efccc6;
+}
+
+.danger-zone-eyebrow {
+  color: var(--red, #b03a2e) !important;
+}
+
+.danger-zone-body {
+  margin-top: 10px;
+  padding-top: 12px;
+  border-top: 1px dashed #efccc6;
+}
+
+.danger-zone-warning {
+  color: var(--ink-soft, #4a5b51);
+  font-size: 0.9rem;
+  margin: 0 0 12px;
+}
+
+.danger-zone-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* ---- Typed-confirmation modal --------------------------------------- */
+
+.destructive-confirm-sheet {
+  width: min(440px, 100%);
+}
+
+.destructive-confirm-body {
+  padding: 4px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.destructive-confirm-message {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.destructive-confirm-facts {
+  list-style: none;
+  padding: 12px 14px;
+  margin: 0;
+  background: #fff4f1;
+  border: 1px solid #efccc6;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: var(--red, #b03a2e);
+  font-size: 0.92rem;
+}
+
+.destructive-confirm-facts:empty {
+  display: none;
+}
+
+.destructive-confirm-backup-hint {
+  margin: 0;
+  font-size: 0.86rem;
+  color: var(--ink-soft, #4a5b51);
+}
+
+.destructive-confirm-type-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+
+.destructive-confirm-type-label input {
+  font: inherit;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--line, #e2e9e3);
+  background: #fff;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.destructive-confirm-type-label input:focus {
+  outline: 2px solid var(--green, #1f7a59);
+  outline-offset: 1px;
+}
+
+.destructive-confirm-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 4px;
+}
+
+.destructive-confirm-actions button {
+  min-width: 96px;
+}
+
+.destructive-confirm-actions .danger-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ===== Games tab ========================================================= */
+
+.games-root {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 4px 0 40px;
+}
+
+.games-hero {
+  text-align: center;
+  padding: 18px 16px 22px;
+}
+
+.games-hero h2 {
+  margin: 0 0 6px;
+  font-size: 1.5rem;
+}
+
+.games-hero p {
+  margin: 0 0 14px;
+  color: var(--muted);
+}
+
+.games-section-title {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 18px 0 8px;
+}
+
+.games-empty {
+  text-align: center;
+  color: var(--muted);
+  font-style: italic;
+  padding: 12px 16px;
+}
+
+.games-back,
+.games-back-secondary {
+  background: none;
+  border: none;
+  color: var(--green-dark, #15573c);
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 8px 0;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.games-back-secondary {
+  display: block;
+  margin: 10px auto 0;
+  color: var(--muted);
+}
+
+/* Game cards (home list) */
+
+.game-card {
+  display: flex;
+  align-items: stretch;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.game-card-main {
+  flex: 1;
+  text-align: left;
+  background: #fbfdfa;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 14px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.game-card-main strong { font-size: 1rem; color: var(--ink); }
+.game-card-sub { font-size: 0.78rem; color: var(--muted); }
+.game-card-standings { font-size: 0.85rem; color: var(--green-dark, #15573c); font-weight: 700; }
+
+.game-card-delete {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 12px;
+  color: var(--muted);
+  padding: 0 12px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.game-card-delete.confirming {
+  background: #fff1f0;
+  border-color: #e8b4b0;
+  color: #b3261e;
+  font-size: 0.72rem;
+}
+
+.voice-import { margin: 0 0 16px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 14px; background: var(--panel-soft); }
+.voice-import summary { cursor: pointer; font-weight: 800; color: var(--green-dark); }
+.voice-import summary span { margin-left: 6px; color: var(--muted); font-size: .78rem; font-weight: 600; }
+.voice-import p { margin: 10px 0; color: var(--muted); font-size: .84rem; }
+.voice-import textarea { width: 100%; box-sizing: border-box; padding: 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); font: .75rem/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; }
+.voice-import-hint code { font-size: .78rem; }
+.voice-import-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.voice-import-preview { margin-top: 10px; font-size: .86rem; color: var(--green-dark); }
+.voice-storage-notice { margin-top: 10px; padding: 11px; border: 1px solid #d9aa49; border-radius: 10px; background: #fff7e4; color: #6b4c0f; font-size: .84rem; }
+.voice-storage-notice p { color: inherit; margin: 6px 0 9px; }
+.voice-storage-notice label { display: flex; gap: 8px; align-items: flex-start; font-weight: 700; cursor: pointer; }
+
+.post-round-briefing { margin: 0 0 16px; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--panel); }
+.briefing-hero { padding: 16px; color: #fff; background: linear-gradient(135deg, #123c30, #1f7a59); }
+.briefing-hero > span, .briefing-kicker { display: block; font-size: .7rem; font-weight: 850; letter-spacing: .09em; text-transform: uppercase; opacity: .78; }
+.briefing-hero strong { display: block; margin: 4px 0; font-family: var(--font-display); font-size: 2.15rem; line-height: 1; }
+.briefing-hero small { font: 800 .92rem var(--font-body); }
+.briefing-hero p { margin: 8px 0 0; color: #e5f1eb; font-size: .86rem; line-height: 1.45; }
+.briefing-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 14px; padding: 14px 16px; }
+.briefing-grid ul { margin: 8px 0 0; padding-left: 18px; color: var(--ink); font-size: .84rem; line-height: 1.45; }
+.briefing-grid li + li { margin-top: 7px; }
+.briefing-focus { margin: 8px 0 0; padding: 10px; border-radius: 9px; background: #f5efe0; color: #58420c; font-size: .84rem; font-weight: 700; line-height: 1.4; }
+.briefing-context { padding: 0 16px 14px; border-top: 1px solid var(--line); }
+.briefing-context .briefing-kicker { margin-top: 12px; color: var(--muted); }
+.briefing-context p { margin: 7px 0 0; color: var(--muted); font-size: .82rem; line-height: 1.4; }
+.briefing-context strong { color: var(--ink); }
+.briefing-coaching { padding: 0 16px 14px; border-top: 1px solid var(--line); }
+.briefing-coaching .briefing-kicker { margin-top: 12px; color: var(--muted); }
+.briefing-coaching p { margin: 8px 0 0; font-size: .84rem; line-height: 1.45; }
+.briefing-cue { padding: 9px 10px; border-left: 3px solid var(--green); background: var(--panel-soft); }
+@media (max-width: 520px) { .briefing-grid { grid-template-columns: 1fr; gap: 12px; } }
+
+/* Picker */
+
+.games-count-row {
+  display: flex;
+  gap: 8px;
+  margin: 8px 0 4px;
+}
+
+.games-count-chip {
+  border: 1.5px solid var(--line);
+  background: #fff;
+  border-radius: 999px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.games-count-chip.small {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+}
+
+.games-count-chip.active {
+  background: var(--green-dark, #15573c);
+  border-color: var(--green-dark, #15573c);
+  color: #fff;
+}
+
+.games-count-chip.lone.active {
+  background: #7c3a00;
+  border-color: #7c3a00;
+}
+
+.games-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.game-pick-card {
+  text-align: left;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 14px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.game-pick-card.recommended {
+  border-color: var(--green-dark, #15573c);
+  background: #f3f9f4;
+}
+
+.game-pick-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.game-pick-head strong { font-size: 1rem; color: var(--ink); }
+
+.game-pick-badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #fff;
+  background: var(--green-dark, #15573c);
+  border-radius: 999px;
+  padding: 3px 9px;
+  white-space: nowrap;
+}
+
+.game-pick-blurb { font-size: 0.86rem; color: var(--muted); line-height: 1.35; }
+
+.game-pick-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+
+.game-tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--muted);
+  background: #f0f3ef;
+  border-radius: 999px;
+  padding: 2px 8px;
+}
+
+/* Rules */
+
+.game-rules-list {
+  margin: 0 0 18px;
+  padding: 0 0 0 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.game-rules-list li {
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+/* Setup */
+
+.game-setup-names {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.game-setup-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.game-setup-field input {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.game-setup-toggle {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: var(--ink);
+  padding: 6px 0;
+  cursor: pointer;
+}
+
+.game-setup-toggle input { margin-top: 3px; }
+
+.game-stake-field { margin: 14px 0 18px; }
+
+.games-hint {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin: 6px 0;
+}
+
+.games-hint-inline {
+  font-weight: 500;
+  font-size: 0.74rem;
+  color: var(--muted);
+  text-transform: none;
+}
+
+/* Play view */
+
+.games-play-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.games-play-title { font-weight: 800; color: var(--ink); }
+
+.games-view-toggle {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--green-dark, #15573c);
+  cursor: pointer;
+}
+
+.game-standings {
+  background: var(--green-dark, #15573c);
+  color: #fff;
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin: 10px 0 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.game-standings-line { font-weight: 800; font-size: 0.95rem; }
+
+.game-standings.final { background: #233a2e; }
+
+.game-hole-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.game-hole-nav strong { font-size: 1.1rem; }
+
+.game-par-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.game-score-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.game-score-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--ink);
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.game-stepper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.game-step {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line);
+  background: #fff;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--green-dark, #15573c);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-score-value {
+  min-width: 34px;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--ink);
+}
+
+.game-score-value.empty { color: #c2cbc4; }
+
+.game-pull-chip {
+  border: 1px dashed var(--green-dark, #15573c);
+  background: #f3f9f4;
+  color: var(--green-dark, #15573c);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* Wolf + Bingo controls */
+
+.game-wolf-row, .game-bingo-row {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.game-wolf-label, .game-bingo-label {
+  display: block;
+  font-size: 0.88rem;
+  margin-bottom: 6px;
+  color: var(--ink);
+}
+
+.game-wolf-choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* Grid view */
+
+.game-grid-wrap { overflow-x: auto; }
+
+.game-grid {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.game-grid th, .game-grid td {
+  border: 1px solid var(--line);
+  padding: 6px 8px;
+  text-align: center;
+}
+
+.game-grid th {
+  background: #f0f3ef;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+}
+
+.game-grid tbody tr { cursor: pointer; }
+.game-grid tbody tr:active { background: #f3f9f4; }
+
+.game-grid-par { color: var(--muted); font-size: 0.7rem; margin-left: 2px; }
+
+/* Finish + settle */
+
+.games-finish-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+/* Late stake row on the settle screen — set or fix the stake even after
+   the round (or after Confirm final). */
+.game-stake-late-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 6px 0 10px;
+}
+.game-stake-late-input {
+  width: 110px;
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel);
+  font: inherit;
+}
+.game-stake-line { display: flex; align-items: center; gap: 10px; }
+.game-stake-edit {
+  border: none;
+  background: none;
+  padding: 2px 4px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.game-settle-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.game-settle-list li {
+  background: #fbfdfa;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.92rem;
+}
+
+/* ===== Premium pass ======================================================
+   Country-club reskin applied on top of the existing components. Token
+   changes live in :root; everything here is typography, radius
+   normalization, and small material touches. Kept at the end of the file
+   so the overrides win the cascade at equal specificity. */
+
+/* Display typography — serif voice for headings, Inter stays for UI/body.
+   Fraunces loads from Google Fonts and falls back to Georgia offline. */
+h1, h2, h3,
+.games-hero h2,
+.brand h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.panel-heading h2 {
+  font-size: 1.15rem;
+}
+
+/* Eyebrows become brass with real tracking — the little typographic detail
+   that makes a heading block read "engraved plaque" instead of "form label".
+   Inside the dark header they stay warm cream so they don't vanish. */
+.eyebrow {
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  font-weight: 800;
+}
+
+.app-header .eyebrow,
+.brand .eyebrow {
+  color: #d8c79b;
+}
+
+/* Radius + material normalization: 14px panels/cards, 10px controls.
+   Replaces the 7/8/10/12px mix that crept in component by component. */
+.panel {
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+
+.primary-button,
+.ghost-button,
+.danger-button,
+label.file-button,
+.tab-button,
+.home-chip,
+.scoring-bucket {
+  border-radius: 10px;
+}
+
+.primary-button {
+  background: var(--green-dark);
+}
+
+.primary-button:active {
+  transform: translateY(1px);
+}
+
+/* Active tab gets a brass tick along the bottom — quiet, clubby. */
+.tab-button.active {
+  background: var(--green-dark);
+  box-shadow: inset 0 -2px 0 var(--gold);
+}
+
+/* (Tab fit at ≤430px is now handled by the icon-over-label layout in the
+   760px block — equal flex segments can't overflow.) */
+
+/* Brass focus ring everywhere — visible, consistent, on-palette. */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Games standings board: add a brass inner hairline so the dark green
+   panel reads "leaderboard at the turn", matching the new masthead. */
+.game-standings {
+  box-shadow: inset 0 0 0 1px rgba(217, 192, 138, 0.35);
+}
+
+/* Trophy/records accents pick up the brass — the record value is the one
+   number on the card that should read "engraved". */
+.trophy-card-value {
+  color: var(--gold);
+  font-family: var(--font-display);
+}
+
+/* "More courses ▾" expander chip on the Course row — visually quieter
+   than the course chips so it reads as a control, not an option. */
+.select-chip-more {
+  border-style: dashed !important;
+  color: var(--muted) !important;
+  background: transparent !important;
+  font-weight: 700;
+}
+
+/* ===== Mobile polish ======================================================
+   Round 2 of the phone pass, driven by Jeff's "mobile UI is not great"
+   review. Measured problems at 375px: 136px masthead + 53px sticky tabs
+   ate a quarter of the screen before content; the Course row was a 411px
+   chip wall; option chip rows ran 103px tall; radio rows had ~13px tap
+   targets. */
+
+@media (max-width: 760px) {
+  /* Compact masthead: brand stays, decoration shrinks. Target ≤ 84px. */
+  .app-header {
+    padding: 10px 64px 12px 14px;
+    border-radius: 14px;
+    margin-bottom: 8px;
+  }
+
+  .brand {
+    gap: 9px;
+  }
+
+  .brand-mark,
+  .brand-mark svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .brand h1 {
+    font-size: 1.15rem;
+    margin: 0;
+  }
+
+  .app-header .eyebrow,
+  .brand .eyebrow {
+    font-size: 0.56rem;
+    letter-spacing: 0.14em;
+    margin: 0 0 1px;
+  }
+
+  .header-actions {
+    top: 10px;
+    right: 10px;
+  }
+
+  .header-actions-toggle {
+    min-height: 36px;
+    padding: 6px 12px;
+    font-size: 0.82rem;
+  }
+
+  /* Sticky tab bar: shave height, tuck closer to content. (Button layout
+     itself — icon-over-label — lives in the 760px block above.) */
+  .app-tabs {
+    margin-bottom: 10px;
+    padding: 4px;
+  }
+
+  /* Option chips (Wind / Play type / Entry mode / Tee): tighter so most
+     rows fit one line, two at worst — was 103px per row. */
+  .select-chips {
+    gap: 5px;
+  }
+
+  .select-chip {
+    padding: 8px 11px;
+    font-size: 0.84rem;
+    min-height: 36px;
+  }
+
+  /* Panels breathe a little less on a phone — more content per screen. */
+  .panel {
+    border-radius: 12px;
+  }
+
+  /* Preference radio rows (Scorecard flow / Entry mode default): keep a
+     comfortable tap area. Horizontal padding stays — these rows have a
+     border + background, so text must not touch the edge. */
+  .card-flow-option {
+    padding: 10px 12px;
+    min-height: 44px;
+  }
+
+  /* Panel headings on a phone: the action button ("Take snapshot now",
+     "Reset to all clubs") was crowding the serif heading on one line.
+     Compact ghost sizing keeps both comfortable. */
+  .panel-heading {
+    gap: 8px;
+  }
+
+  .panel-heading > button,
+  .panel-heading .ghost-button {
+    min-height: 36px;
+    padding: 6px 11px;
+    font-size: 0.78rem;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .profile-bag-hint {
+    font-size: 0.82rem;
+    line-height: 1.45;
+  }
+}
+
+/* Secondary descriptor inside a preference option — quieter than the
+   option name so the row scans as "name, then detail". */
+.option-hint {
+  color: var(--muted);
+  font-weight: 500;
+  font-size: 0.84rem;
+}
+
+/* iOS Safari flex hardening. WebKit resolves a flex item's min-width:auto
+   to max-content in nested flex layouts, so a long text span inside a flex
+   row REFUSES to wrap and runs off the right edge of the screen — exactly
+   what Jeff saw on the Profile preference rows on his iPhone while desktop
+   Chrome wrapped the same text fine. min-width: 0 restores normal
+   wrapping. Applied to every flex row that carries a text span. */
+.game-setup-toggle > span,
+.completion-banner > div,
+.bucket-row-main,
+.game-card-main,
+.brand > div {
+  min-width: 0;
+}
+
+/* Preference rows rebuilt as GRID, not flex. minmax(0, 1fr) cannot fall
+   into the WebKit min-width:auto trap at all — the text column is
+   structurally incapable of exceeding the row. The descriptor also moves
+   to its own line, so the longest single line is just the option name. */
+.card-flow-option {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  align-items: start;
+  column-gap: 10px;
+}
+
+.card-flow-option input {
+  margin-top: 4px;
+  justify-self: center;
+}
+
+.card-flow-option > span {
+  display: block;
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+.card-flow-option .option-hint {
+  display: block;
+  margin-top: 1px;
+}
+
+/* Belt-and-suspenders for any device state I can't reproduce: nothing may
+   extend the page horizontally on a phone. `clip` (not `hidden`) so
+   position:sticky on the tab bar keeps working — clip doesn't create a
+   scroll container. */
+@media (max-width: 760px) {
+  html, body {
+    overflow-x: clip;
+  }
+
+  .panel {
+    overflow-x: clip;
+    max-width: 100%;
+  }
+}
+
+/* Best round tile is a real button now — reset button chrome so it looks
+   identical to its sibling metric cards, plus a quiet affordance. */
+.metric-card-tappable {
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  width: 100%;
+}
+
+.metric-card-tappable:not(.has-round) {
+  cursor: default;
+}
+
+.metric-card-tappable.has-round:active {
+  transform: translateY(1px);
+}
+
+.metric-tap-hint {
+  color: var(--gold);
+  font-weight: 900;
+  margin-left: 2px;
+}
+
+.metric-card-tappable:not(.has-round) .metric-tap-hint {
+  visibility: hidden;
+}
+
+/* Course-name links — any course mention with data-open-course-name jumps
+   to that course's profile. Styled as quiet inline links: same size as the
+   surrounding text, dotted brass underline as the "this goes somewhere"
+   cue. min-height/padding 0 overrides the global 40px button floor since
+   these sit inline inside subtitles and list rows. */
+.link-course {
+  display: inline;
+  background: none;
+  border: none;
+  padding: 0;
+  min-height: 0;
+  font: inherit;
+  color: var(--green-dark, #15573c);
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline dotted var(--gold);
+  text-underline-offset: 3px;
+  text-align: left;
+}
+
+.link-course:active {
+  opacity: 0.7;
+}
+
+/* Inside the dark round-detail subtitle the link needs the light treatment. */
+.round-detail-subtitle .link-course {
+  color: inherit;
+}
+
+/* Course-search additions: setup notice in the lookup results + the
+   Profile key row. */
+.lookup-notice {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  border: 1px dashed var(--gold-soft, #d9c08a);
+  border-radius: 10px;
+  background: #fdfbf2;
+  font-size: 0.86rem;
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+.lookup-notice a {
+  color: var(--green-dark, #15573c);
+  font-weight: 700;
+}
+
+.course-api-row {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.course-api-row input {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 0.95rem;
+}
+
+.course-api-row .primary-button {
+  flex-shrink: 0;
+}
+
+/* ===== Composition pass: Home hero ======================================
+   One number, huge, on deep clubhouse green — the focal point the token
+   reskin never gave the app. Everything else on Overview recedes. */
+
+.home-hero-stat {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 22px 22px 18px;
+  margin-bottom: 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(217, 192, 138, 0.35);
+  background: linear-gradient(150deg, #0d3322 0%, #124530 62%, #175539 100%);
+  box-shadow: 0 14px 40px rgba(13, 51, 34, 0.22), inset 0 -2px 0 rgba(217, 192, 138, 0.4);
+  color: #fff;
+}
+
+.home-hero-stat[hidden] { display: none; }
+
+.hero-stat-main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hero-eyebrow {
+  margin: 0;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #d8c79b;
+}
+
+.hero-number {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 3.6rem;
+  line-height: 1.02;
+  letter-spacing: 0.01em;
+  color: #fdfbf2;
+}
+
+.hero-number-sub {
+  font-size: 1.4rem;
+  color: #cfe0d4;
+  font-weight: 600;
+}
+
+.hero-last-round {
+  align-self: flex-start;
+  margin-top: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(217, 192, 138, 0.35);
+  border-radius: 999px;
+  color: #f2ead3;
+  padding: 7px 13px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  min-height: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.hero-last-round:active { transform: translateY(1px); }
+
+.hero-stat-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 4px;
+  width: 42%;
+  max-width: 240px;
+  flex-shrink: 0;
+}
+
+.hero-stat-side.empty { display: none; }
+
+.hero-spark {
+  width: 100%;
+  height: 56px;
+  display: block;
+}
+
+.hero-spark-caption {
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #bcd8cb;
+  text-align: right;
+}
+
+/* Demoted metric tiles: quiet supporting row under the hero. Smaller
+   numbers, no gold underline bar, tighter cards — seven equal heroes
+   become six whispers. */
+.metrics-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.metrics-grid .metric-card {
+  min-height: 64px;
+  padding: 10px 12px;
+}
+
+.metrics-grid .metric-card::after { display: none; }
+
+.metrics-grid .metric-card span {
+  font-size: 0.66rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.metrics-grid .metric-card strong {
+  font-size: 1.3rem;
+}
+
+.metrics-grid .metric-card-note { display: none; }
+
+/* Trend chart: the latest bar is the one the user came to see. */
+.trend-item.is-latest .trend-bar {
+  background: var(--gold);
+  box-shadow: 0 0 0 1.5px rgba(168, 133, 59, 0.35);
+}
+
+.trend-item.is-latest .trend-value,
+.trend-item.is-latest .trend-date {
+  color: var(--ink);
+  font-weight: 800;
+}
+
+@media (max-width: 560px) {
+  .home-hero-stat {
+    flex-direction: column;
+    gap: 10px;
+    padding: 18px 16px 14px;
+  }
+
+  .hero-number { font-size: 3.1rem; }
+
+  .hero-stat-side {
+    width: 100%;
+    max-width: none;
+  }
+
+  .hero-spark-caption { text-align: left; }
+}
+
+/* ===== Composition pass 2: handicap explainer + tab hero moments ======== */
+
+/* The index box becomes the Trends-tab dark moment, matching the Home hero. */
+.handicap-index-box {
+  background: linear-gradient(150deg, #0d3322 0%, #124530 62%, #175539 100%) !important;
+  border: 1px solid rgba(217, 192, 138, 0.35) !important;
+  border-radius: 14px;
+  color: #fff !important;
+  box-shadow: inset 0 -2px 0 rgba(217, 192, 138, 0.4);
+}
+
+.handicap-index-box span { color: #d8c79b !important; }
+
+.handicap-index-box strong {
+  font-family: var(--font-display);
+  font-size: 2.8rem !important;
+  color: #fdfbf2 !important;
+}
+
+.handicap-index-box small { color: #bcd8cb !important; }
+
+/* Plain-English "how this number was built" walk-through. */
+.handicap-explain {
+  margin: 14px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.handicap-explain-h {
+  margin: 0;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.handicap-explain-step {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.handicap-explain-step em {
+  font-style: normal;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.8rem;
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 1px 6px;
+  white-space: nowrap;
+}
+
+/* Every eligible round, best first; counted rounds get the brass badge. */
+.handicap-round-list {
+  list-style: none;
+  margin: 0 0 14px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.handicap-round-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel);
+}
+
+.handicap-round-row.counted {
+  border-color: var(--gold-soft);
+  background: #fdfbf2;
+}
+
+.handicap-round-main {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
+  flex-wrap: wrap;
+}
+
+.handicap-round-main strong { font-size: 1rem; }
+.handicap-round-main small { color: var(--muted); font-size: 0.72rem; }
+
+.handicap-round-diff {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--green-dark);
+  white-space: nowrap;
+}
+
+.counted-badge {
+  font-style: normal;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #7a5c1d;
+  background: rgba(217, 192, 138, 0.35);
+  border-radius: 999px;
+  padding: 2px 8px;
+}
+
+/* Courses tab hero moment: the course profile header goes clubhouse green. */
+.course-profile-hero {
+  background: linear-gradient(150deg, #0d3322 0%, #124530 62%, #175539 100%);
+  border: 1px solid rgba(217, 192, 138, 0.35);
+  border-radius: 14px;
+  color: #fff;
+  padding: 18px;
+  box-shadow: inset 0 -2px 0 rgba(217, 192, 138, 0.4);
+}
+
+.course-profile-hero h3,
+.course-profile-hero strong {
+  font-family: var(--font-display);
+  color: #fdfbf2;
+}
+
+.course-profile-hero .subtext,
+.course-profile-hero small,
+.course-profile-hero span {
+  color: #bcd8cb;
+}
+
+/* Games tab hero moment. */
+.games-hero {
+  background: linear-gradient(150deg, #0d3322 0%, #124530 62%, #175539 100%);
+  border: 1px solid rgba(217, 192, 138, 0.35);
+  border-radius: 16px;
+  color: #fff;
+  margin-bottom: 14px;
+  box-shadow: inset 0 -2px 0 rgba(217, 192, 138, 0.4);
+}
+
+.games-hero h2 { color: #fdfbf2; }
+.games-hero p { color: #bcd8cb; }
+
+.games-hero .primary-button {
+  background: #fdfbf2;
+  color: var(--green-dark);
+  font-weight: 800;
+}
+
+/* ============================================================ */
+/* Tone layer (2026-07-06): numbers carry their meaning.        */
+/* Insight cards get a colored accent bar + tinted wash by what */
+/* they SAY (good / watch / pending), metric tiles get trend    */
+/* ticks judged by direction, and the best-round tile reads as  */
+/* the trophy it is. Clubhouse palette only -- green for good,  */
+/* brass-amber for watch, never a red wall on a scorecard.      */
+/* ============================================================ */
+
+.insight-card { position: relative; overflow: hidden; }
+.insight-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 3px;
+  background: var(--line);
+}
+.insight-card.tone-good::before { background: var(--green); }
+.insight-card.tone-good { background: linear-gradient(170deg, rgba(30, 107, 74, 0.06), #fffefa 55%); }
+.insight-card.tone-good .insight-tick { color: var(--green); }
+.insight-card.tone-warn::before { background: var(--gold); }
+.insight-card.tone-warn { background: linear-gradient(170deg, rgba(168, 133, 59, 0.08), #fffefa 55%); }
+.insight-card.tone-warn .insight-tick { color: #8a6a2f; }
+.insight-card.dark::before { background: var(--gold-soft); }
+
+/* Handicap building: an honest pending state, not a dark void. */
+.insight-card.pending {
+  background: var(--panel-soft);
+  border-style: dashed;
+  box-shadow: none;
+}
+.insight-card.pending strong { color: var(--muted); font-size: 1.15rem; }
+.insight-card.pending::before { background: var(--gold-soft); opacity: 0.6; }
+
+/* Metric tiles: trend ticks + the trophy tile. */
+.metric-trend {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+.metric-trend.trend-good { color: var(--green); }
+.metric-trend.trend-warn { color: #8a6a2f; }
+.metric-card.tone-gold strong { color: var(--gold); }
+.metric-card.tone-gold {
+  background: linear-gradient(170deg, rgba(217, 192, 138, 0.14), var(--panel) 60%);
+  border-color: rgba(168, 133, 59, 0.35);
+}
+
+/* Scorecard rows (2026-07-06): each round leads with a tone-coded score
+   badge -- gold for the personal best, green when it beat your average,
+   neutral cream otherwise. Delete recedes to a quiet text action so the
+   destructive path never sits shoulder-to-shoulder with View. */
+.round-row {
+  align-items: flex-start;
+  gap: 12px;
+}
+.round-badge {
+  flex: 0 0 auto;
+  width: 54px;
+  min-height: 54px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--panel-soft);
+  display: grid;
+  place-content: center;
+  gap: 1px;
+  text-align: center;
+  padding: 6px 4px;
+}
+.round-badge strong {
+  font-size: 1.25rem;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.round-badge span {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--muted);
+}
+.round-badge.tone-good {
+  border-color: rgba(30, 107, 74, 0.4);
+  background: linear-gradient(170deg, rgba(30, 107, 74, 0.1), var(--panel-soft) 70%);
+}
+.round-badge.tone-good strong { color: var(--green); }
+.round-badge.tone-gold {
+  border-color: rgba(168, 133, 59, 0.5);
+  background: linear-gradient(170deg, rgba(217, 192, 138, 0.25), var(--panel-soft) 70%);
+  box-shadow: 0 0 12px rgba(217, 192, 138, 0.35);
+}
+.round-badge.tone-gold strong { color: var(--gold); }
+.round-row-head { font-size: 0.95rem; }
+.round-row-context .round-context-best { color: var(--gold); font-weight: 800; }
+.round-row-context .round-context-good { color: var(--green); font-weight: 800; }
+.round-row .row-actions .row-delete {
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.8rem;
+  min-height: 34px;
+}
+.round-row .row-actions .row-delete:hover { color: var(--red); text-decoration: underline; }
+
+.round-row .row-actions .row-delete { border-color: transparent; }
+.round-row-main strong.round-row-head { display: flex; flex-wrap: wrap; gap: 2px 8px; align-items: center; }
+/* ---- On-course GPS shot capture --------------------------------------- */
+.gps-shot-tracker {
+  margin: 14px 0;
+  padding: 14px;
+  border: 1px solid rgba(143, 113, 55, 0.24);
+  border-radius: 16px;
+  background: radial-gradient(circle at 100% 0%, rgba(194, 159, 85, 0.14), transparent 38%), linear-gradient(145deg, #fffdf8 0%, #f7f2e7 100%);
+  box-shadow: 0 10px 26px rgba(44, 52, 43, 0.08);
+}
+.gps-shot-heading, .gps-shot-start-row, .gps-shot-active-actions, .gps-shot-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.gps-shot-heading { justify-content: space-between; margin-bottom: 12px; }
+.gps-shot-heading > div { display: grid; gap: 2px; }
+.gps-shot-heading > span { color: #6d725f; font-size: 0.78rem; font-weight: 700; }
+.gps-shot-start-row { align-items: end; }
+.gps-shot-start-row label {
+  display: grid;
+  flex: 1;
+  gap: 5px;
+  color: #666b59;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.gps-shot-start-row select {
+  min-height: 44px;
+  width: 100%;
+  padding: 0 12px;
+  border: 1px solid #d7c9ad;
+  border-radius: 11px;
+  background: #fff;
+  color: #20271f;
+  font: inherit;
+  font-weight: 700;
+}
+.gps-start-button, .gps-finish-button { min-height: 44px; white-space: nowrap; }
+.gps-shot-active {
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid rgba(49, 110, 78, 0.24);
+  border-radius: 12px;
+  background: rgba(224, 240, 228, 0.72);
+}
+.gps-shot-active > span:first-child { font-size: 0.92rem; }
+.gps-shot-active-actions { justify-content: flex-end; }
+.gps-quality { color: #55604f; font-size: 0.76rem; font-weight: 700; }
+.gps-quality-poor { color: #a34f3f; }
+.gps-quality-caution { color: #8a6a22; }
+.gps-quality-good { color: #296646; }
+.gps-shot-list { display: grid; gap: 8px; margin: 12px 0 0; padding: 0; list-style: none; }
+.gps-shot-row { padding: 9px 0; border-top: 1px solid rgba(115, 102, 76, 0.14); }
+.gps-shot-number {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  border-radius: 50%;
+  background: #26382d;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+.gps-shot-main { display: grid; flex: 1; gap: 2px; min-width: 0; }
+.gps-shot-main small, .gps-shot-empty, .gps-shot-status { color: #6d725f; font-size: 0.72rem; }
+.gps-shot-distance {
+  display: grid;
+  min-width: 52px;
+  text-align: right;
+  color: #26382d;
+  font-size: 1rem;
+  font-weight: 850;
+}
+.gps-shot-distance small { font-size: 0.62rem; font-weight: 700; }
+.gps-shot-icon-button {
+  min-height: 34px;
+  padding: 0 8px;
+  border: 1px solid #d7c9ad;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.82);
+  color: #4d584b;
+  font-size: 0.68rem;
+  font-weight: 800;
+}
+.gps-shot-delete { width: 34px; padding: 0; color: #944a3d; }
+.gps-shot-empty { margin: 10px 0 0; }
+.gps-shot-status { min-height: 1em; margin: 8px 0 0; }
+@media (max-width: 520px) {
+  .gps-shot-row { flex-wrap: wrap; }
+  .gps-shot-main { min-width: calc(100% - 46px); }
+  .gps-shot-distance { margin-left: 34px; text-align: left; }
+  .gps-shot-active-actions > button { flex: 1; }
+}
+
+/* ---- Deerwood aerial course map --------------------------------------- */
+.course-map-launch {
+  border-color: rgba(31, 122, 89, 0.36);
+  background: rgba(226, 242, 232, 0.78);
+  color: var(--green-dark, #15573c);
+}
+
+.course-map-overlay {
+  align-items: center;
+  padding: 18px;
+}
+
+.course-map-sheet {
+  position: relative;
+  width: min(980px, calc(100% - 24px));
+  height: min(90dvh, 820px);
+  display: grid;
+  grid-template-rows: auto auto minmax(220px, 1fr) auto auto auto;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.48);
+  border-radius: 24px;
+  background: #fbfcf8;
+  box-shadow: 0 28px 80px rgba(8, 26, 21, 0.42);
+  animation: hp-pop 200ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.course-map-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 18px 10px;
+}
+
+.course-map-header .eyebrow { margin: 0 0 2px; }
+.course-map-header h3 { margin: 0; color: var(--ink); font-size: 1.12rem; }
+
+.course-map-toolbar {
+  display: flex;
+  align-items: end;
+  gap: 10px;
+  padding: 0 18px 12px;
+}
+
+.course-map-hole-field {
+  min-width: 150px;
+  display: grid;
+  gap: 4px;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.course-map-hole-field select {
+  width: 100%;
+  min-height: 42px;
+  padding: 0 34px 0 11px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.course-map-toolbar > button { min-height: 42px; }
+
+.course-map-zoom {
+  display: flex;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.course-map-zoom button {
+  min-width: 42px;
+  min-height: 42px;
+  padding: 0 12px;
+  font-weight: 850;
+}
+
+#courseMapFit {
+  min-width: 0;
+  white-space: nowrap;
+}
+
+#courseMapFit[aria-pressed="true"] {
+  border-color: var(--green-dark, #15573c);
+  background: var(--green-dark, #15573c);
+  color: #fff;
+}
+
+.course-map-viewport {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  margin: 0 18px;
+  overflow: hidden;
+  border: 1px solid rgba(18, 53, 40, 0.45);
+  border-radius: 18px;
+  background: #193329;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  cursor: crosshair;
+  touch-action: none;
+  user-select: none;
+}
+
+.course-map-viewport:active { cursor: grabbing; }
+
+.course-map-stage {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+
+.course-map-stage img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  user-select: none;
+}
+
+.course-map-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.course-map-annotation path,
+.course-map-annotation circle,
+.course-map-annotation-draft,
+.course-map-annotation-vertex circle {
+  vector-effect: non-scaling-stroke;
+}
+
+.course-map-annotation path {
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.course-map-annotation text,
+.course-map-annotation-vertex text {
+  fill: #fff;
+  stroke: rgba(9, 29, 22, 0.94);
+  stroke-width: 4px;
+  paint-order: stroke fill;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.course-map-annotation--sand_surface path { fill: rgba(231, 198, 126, 0.3); stroke: #f4d58c; }
+.course-map-annotation--open_water path { fill: rgba(56, 151, 211, 0.3); stroke: #91d4ff; }
+.course-map-annotation--green_surface path { fill: rgba(92, 194, 117, 0.24); stroke: #9ee5aa; }
+.course-map-annotation--tee_surface path { fill: rgba(238, 244, 225, 0.2); stroke: #f3f7e9; }
+.course-map-annotation--tree_canopy path { fill: rgba(44, 106, 72, 0.25); stroke: #8bc49d; }
+.course-map-annotation--strategy_target circle { fill: rgba(255, 211, 111, 0.24); stroke: #ffd36f; stroke-width: 2; }
+.course-map-annotation--strategy_target path { fill: none; stroke: #fff4ce; stroke-width: 2; }
+.course-map-annotation--baseline path {
+  stroke-dasharray: 6 4;
+  stroke-width: 2.5;
+}
+.course-map-annotation--baseline text { opacity: 0.94; }
+.course-map-annotation.is-selected path,
+.course-map-annotation.is-selected circle { stroke-width: 4; filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.75)); }
+
+.course-map-annotation-draft {
+  fill: rgba(255, 211, 111, 0.12);
+  stroke: #ffd36f;
+  stroke-width: 2.5;
+  stroke-dasharray: 7 5;
+  stroke-linejoin: round;
+}
+
+.course-map-annotation-draft--point circle { fill: rgba(255, 211, 111, 0.24); stroke: #ffd36f; stroke-width: 2; }
+.course-map-annotation-draft--point path { fill: none; stroke: #fff4ce; stroke-width: 2; }
+.course-map-annotation-vertex circle { fill: #ffd36f; stroke: #173d2f; stroke-width: 2; }
+
+.course-map-boundary {
+  fill: rgba(255, 211, 119, 0.05);
+  stroke: rgba(255, 229, 166, 0.9);
+  stroke-width: 1.5;
+  stroke-dasharray: 7 5;
+}
+
+.course-map-shot-plan,
+.course-map-current-aim {
+  stroke: #ffd36f;
+  stroke-width: 2;
+  stroke-dasharray: 7 5;
+  stroke-linecap: round;
+}
+
+.course-map-current-aim { stroke-width: 2.5; }
+
+.course-map-shot-line {
+  stroke: #ffffff;
+  stroke-width: 3;
+  stroke-linecap: round;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.7));
+}
+
+.course-map-shot-start { fill: #173d2f; stroke: #fff; stroke-width: 2; }
+.course-map-shot-finish { fill: #ffd36f; stroke: #173d2f; stroke-width: 2; }
+
+.course-map-shot-label {
+  fill: #fff;
+  stroke: rgba(9, 29, 22, 0.92);
+  stroke-width: 4px;
+  paint-order: stroke fill;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.course-map-target circle {
+  fill: rgba(255, 211, 111, 0.18);
+  stroke: #ffd36f;
+  stroke-width: 2;
+}
+
+.course-map-target path { stroke: #fff4ce; stroke-width: 2; stroke-linecap: round; }
+
+.course-map-gps-accuracy {
+  fill: rgba(80, 174, 255, 0.18);
+  stroke: rgba(170, 220, 255, 0.9);
+  stroke-width: 1.5;
+}
+
+.course-map-gps-pulse { fill: rgba(50, 153, 232, 0.3); stroke: #fff; stroke-width: 2; }
+.course-map-gps-dot { fill: #138be0; stroke: #fff; stroke-width: 2; }
+
+.course-map-map-label {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  max-width: calc(100% - 20px);
+  padding: 5px 8px;
+  border-radius: 8px;
+  background: rgba(9, 29, 22, 0.78);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.66rem;
+  font-weight: 750;
+  pointer-events: none;
+  backdrop-filter: blur(6px);
+}
+
+.course-map-readout {
+  min-height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 18px 6px;
+}
+
+.course-map-readout > div { min-width: 0; display: grid; gap: 3px; }
+.course-map-readout strong { color: var(--ink); font-size: 0.88rem; }
+.course-map-readout span { color: var(--muted); font-size: 0.72rem; }
+.course-map-readout span[data-tone="success"] { color: var(--green-dark, #15573c); }
+.course-map-readout span[data-tone="warning"] { color: #8a641c; }
+.course-map-readout span[data-tone="error"] { color: #a14538; }
+
+.course-map-readout-actions {
+  display: flex !important;
+  grid-auto-flow: column;
+  gap: 7px !important;
+  flex: 0 0 auto;
+}
+
+#courseMapEdit[aria-pressed="true"] {
+  background: var(--green-dark, #15573c);
+  border-color: var(--green-dark, #15573c);
+  color: #fff;
+}
+
+.course-map-label-panel {
+  padding: 10px 18px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: #f5f7ef;
+}
+
+.course-map-label-heading,
+.course-map-label-progress {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.course-map-label-heading > div { display: grid; gap: 2px; }
+.course-map-label-heading strong { color: var(--ink); font-size: 0.82rem; }
+.course-map-label-heading span,
+.course-map-label-progress p { margin: 0; color: var(--muted); font-size: 0.68rem; }
+
+.course-map-label-fields {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.75fr) minmax(180px, 1.25fr);
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.course-map-label-fields label { display: grid; gap: 3px; color: var(--muted); font-size: 0.66rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; }
+.course-map-label-fields small { font: inherit; font-weight: 650; text-transform: none; letter-spacing: 0; }
+.course-map-label-fields select,
+.course-map-label-fields input {
+  width: 100%;
+  min-height: 38px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 750;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.course-map-label-progress { margin-top: 8px; }
+.course-map-label-actions { display: flex; gap: 6px; }
+.course-map-label-actions button,
+.course-map-label-heading button { min-height: 36px; padding: 0 10px; }
+.course-map-viewport:has(+ .course-map-label-panel:not([hidden])) { cursor: cell; }
+
+.course-map-attribution {
+  margin: 0;
+  padding: 0 18px 10px;
+  color: var(--muted);
+  font-size: 0.64rem;
+  line-height: 1.35;
+}
+
+@media (max-width: 640px) {
+  .course-map-overlay { align-items: stretch; padding: 0; }
+  .course-map-sheet {
+    width: 100%;
+    height: 100dvh;
+    max-height: none;
+    grid-template-rows: auto auto clamp(280px, 36dvh, 340px) auto auto auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    border: none;
+    border-radius: 0;
+    animation: hp-slide-up 200ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .course-map-header { padding: 12px 12px 8px; }
+  .course-map-toolbar { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; padding: 0 10px 10px; gap: 7px; }
+  .course-map-hole-field { min-width: 0; }
+  .course-map-toolbar > button { padding-inline: 11px; }
+  .course-map-zoom { gap: 4px; margin: 0; }
+  .course-map-zoom button { min-width: 38px; padding-inline: 9px; }
+  .course-map-zoom #courseMapFit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    padding-inline: 8px;
+    font-size: 0.7rem;
+  }
+  .course-map-viewport {
+    height: clamp(280px, 36dvh, 340px);
+    margin: 0 10px;
+    border-radius: 14px;
+  }
+  .course-map-readout { min-height: 58px; padding: 8px 10px 5px; }
+  .course-map-readout { align-items: flex-start; }
+  .course-map-readout-actions { flex-wrap: wrap; justify-content: flex-end; }
+  .course-map-label-panel { padding: 9px 10px; }
+  .course-map-label-fields { grid-template-columns: 1fr 1fr; }
+  .course-map-label-progress { align-items: flex-end; }
+  .course-map-label-progress p { max-width: 44%; }
+  .course-map-label-actions { gap: 4px; flex-wrap: wrap; justify-content: flex-end; }
+  .course-map-label-actions button { min-height: 34px; padding-inline: 8px; }
+  .course-map-attribution { padding: 0 10px 8px; }
+}
+
+@media (max-width: 390px) {
+  .course-map-label-fields { grid-template-columns: 1fr; }
+  .course-map-label-progress { align-items: stretch; flex-direction: column; gap: 7px; }
+  .course-map-label-progress p { max-width: none; }
+}
+
+/* ==== Games premium pass (2026-07-21) ====================================
+   The Games tab surfaces were the last unstyled corners of the app — the
+   settle-up (the whole feature's payoff) was a plain bulleted list, the
+   hole-entry screen floated bare on the page, home cards were flat, and
+   the grid looked like Excel. Clubhouse material, everywhere. */
+
+/* The final board: the moment the round built toward. */
+.game-final-hero {
+  margin: 10px 0 14px;
+  padding: 20px 20px 18px;
+  border-radius: 16px;
+  border: 1px solid rgba(217, 192, 138, 0.35);
+  background: linear-gradient(150deg, #0d3322 0%, #124530 62%, #175539 100%);
+  box-shadow: 0 14px 40px rgba(13, 51, 34, 0.22), inset 0 -2px 0 rgba(217, 192, 138, 0.4);
+  color: #fff;
+}
+.game-final-eyebrow {
+  margin: 0 0 2px;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #d8c79b;
+}
+.game-final-name {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  line-height: 1.1;
+}
+.game-final-hero .game-standings-line {
+  font-family: var(--font-display);
+  font-size: 1.18rem;
+  line-height: 1.35;
+  color: #fdf9ee;
+  border: none;
+  padding: 0;
+}
+
+/* Transfers: card rows, brass tabular money. */
+.game-settle-list {
+  list-style: none;
+  margin: 8px 0 4px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.game-settle-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 16px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--gold);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+.game-settle-list .settle-amount {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* The hole-entry screen gets the same card material as Add Round. */
+.game-hole-entry {
+  margin-top: 12px;
+  padding: 14px 14px 16px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+.game-hole-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.game-hole-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+.game-hole-title em {
+  font-style: normal;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+/* Home cards: round-row parity; delete recedes to a quiet action. */
+.game-card {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin-bottom: 10px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.game-card-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 13px 16px;
+  border: none;
+  background: none;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+}
+.game-card-main strong {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+}
+.game-card-sub {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.game-card-standings {
+  font-size: 0.88rem;
+  color: var(--green-dark);
+  font-weight: 600;
+}
+.game-card-delete {
+  border: none;
+  border-left: 1px solid var(--line);
+  background: none;
+  padding: 0 14px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.game-card-delete.confirming {
+  background: var(--red);
+  color: #fff;
+  font-weight: 700;
+}
+
+/* De-spreadsheet the grid: hairline rows, no cell borders. */
+.game-grid {
+  border-collapse: collapse;
+  width: 100%;
+}
+.game-grid th,
+.game-grid td {
+  border: none;
+  border-bottom: 1px solid var(--line);
+  padding: 9px 10px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+.game-grid thead th {
+  border-bottom: 2px solid var(--line);
+  background: none;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.game-grid tbody tr {
+  cursor: pointer;
+}
+.game-grid tbody tr:active {
+  background: var(--panel-soft);
+}
+
+/* Hole-change settle: cards land, they don't teleport. */
+@media (prefers-reduced-motion: no-preference) {
+  .scorecard-card.active,
+  .game-hole-entry {
+    animation: card-settle 160ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  @keyframes card-settle {
+    from { opacity: 0.35; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+/* ===== The Postgame Brief ================================================
+   The premium rendering of a spoken recap — verdict-led like the nightly
+   board brief, dressed in the clubhouse identity. One block serves the
+   inbox review sheet and the saved round's detail view. */
+
+.pgb { display: grid; gap: 14px; }
+.pgb-kicker { display: block; font-size: .68rem; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+
+.pgb-hero { position: relative; overflow: hidden; padding: 18px 18px 16px; border-radius: 16px; color: #f4f8f2; background: linear-gradient(140deg, #0e3626 0%, #17573d 58%, #1e6b4a 100%); box-shadow: var(--shadow); }
+.pgb-hero::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(120% 90% at 100% 0%, rgba(217, 192, 138, 0.18), transparent 55%); }
+.pgb-eyebrow { display: block; font-size: .68rem; font-weight: 850; letter-spacing: .11em; text-transform: uppercase; color: #cfe2d4; }
+.pgb-scoreline { display: flex; align-items: baseline; gap: 12px; margin-top: 6px; }
+.pgb-gross { font-family: var(--font-display); font-size: 3.4rem; font-weight: 700; line-height: .95; letter-spacing: -0.01em; }
+.pgb-topar { font-size: 1rem; font-weight: 850; padding: 3px 10px; border-radius: 999px; background: rgba(255, 255, 255, 0.14); color: #f6e9c8; font-variant-numeric: tabular-nums; }
+.pgb-topar.good { background: rgba(236, 252, 240, 0.92); color: #11422c; }
+.pgb-verdict { margin: 10px 0 0; font-family: var(--font-display); font-size: 1.22rem; font-weight: 600; line-height: 1.3; color: #fdfbf3; }
+.pgb-splits { margin: 7px 0 0; font-size: .8rem; font-weight: 700; color: #cfe2d4; font-variant-numeric: tabular-nums; }
+
+.pgb-arc { display: flex; gap: 3px; align-items: stretch; padding: 12px 14px 8px; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); overflow-x: auto; }
+.pgb-arc-col { flex: 1 1 0; min-width: 11px; display: grid; grid-template-rows: 26px 2px 26px 14px; justify-items: center; }
+.pgb-arc-lane { display: flex; width: 100%; justify-content: center; }
+.pgb-arc-lane.up { align-items: flex-end; }
+.pgb-arc-lane.down { align-items: flex-start; }
+.pgb-arc-base { width: 100%; background: var(--line); border-radius: 1px; }
+.pgb-arc-bar { display: block; width: 7px; border-radius: 3px; }
+.pgb-arc-bar.s1 { height: 10px; } .pgb-arc-bar.s2 { height: 17px; } .pgb-arc-bar.s3 { height: 24px; }
+.pgb-arc-bar.good { background: var(--green); }
+.pgb-arc-bar.bogey { background: var(--gold); }
+.pgb-arc-bar.double { background: #c96f38; }
+.pgb-arc-bar.worse { background: #c0492f; }
+.pgb-arc-col[title] { cursor: default; }
+.pgb-arc-num { font-size: .58rem; font-weight: 800; color: var(--muted); padding-top: 3px; font-variant-numeric: tabular-nums; }
+
+.pgb-story { padding: 14px 16px; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); }
+.pgb-story p { margin: 0; font-size: .95rem; line-height: 1.62; color: var(--ink); white-space: pre-wrap; }
+.pgb-story p::first-letter { font-family: var(--font-display); font-size: 2.1em; font-weight: 700; float: left; line-height: .82; padding: 3px 7px 0 0; color: var(--green-dark); }
+
+.pgb-chips { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; }
+.pgb-chip { display: grid; gap: 1px; justify-items: center; padding: 9px 4px 7px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); }
+.pgb-chip strong { font-family: var(--font-display); font-size: 1.22rem; line-height: 1; color: var(--ink); font-variant-numeric: tabular-nums; }
+.pgb-chip span { font-size: .6rem; font-weight: 850; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+.pgb-chip.tone-good strong { color: var(--green); }
+.pgb-chip.tone-warm strong { color: var(--gold); }
+.pgb-chip.tone-hot strong { color: #b23b2b; }
+
+.pgb-decided { padding: 14px 16px 12px; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); }
+.pgb-card { position: relative; margin: 0 0 8px; padding: 10px 12px 10px 15px; font-size: .88rem; line-height: 1.5; color: var(--ink); background: var(--panel-soft); border-radius: 10px; }
+.pgb-card::before { content: ""; position: absolute; left: 0; top: 8px; bottom: 8px; width: 3px; border-radius: 2px; background: var(--gold); }
+.pgb-card:last-child { margin-bottom: 2px; }
+
+.pgb-cue { padding: 16px; border-radius: 14px; color: #f4f8f2; background: linear-gradient(120deg, #11422c, #1e6b4a); box-shadow: var(--shadow); }
+.pgb-cue .pgb-kicker { color: #cfe2d4; margin-bottom: 6px; }
+.pgb-cue p { margin: 0; font-family: var(--font-display); font-size: 1.18rem; font-weight: 600; line-height: 1.4; }
+
+.pgb-walk { padding: 14px 16px 6px; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); }
+.pgb-walk-row { display: grid; grid-template-columns: 40px 1fr; gap: 10px; padding: 10px 0; border-top: 1px solid var(--panel-soft); }
+.pgb-walk-row:first-of-type { border-top: 0; }
+.pgb-walk-mark { display: flex; justify-content: center; padding-top: 2px; }
+.pgb-walk-score { font-weight: 800; font-size: .95rem; color: var(--ink); }
+.pgb-walk-body strong { display: block; font-size: .78rem; font-weight: 850; letter-spacing: .05em; text-transform: uppercase; color: var(--green-dark); }
+.pgb-walk-body p { margin: 3px 0 0; font-size: .88rem; line-height: 1.5; color: var(--ink); white-space: pre-wrap; }
+.pgb-walk-body .pgb-walk-coach { color: var(--green-dark); font-size: .84rem; font-style: italic; }
+.pgb-walk-body .pgb-walk-coach::before { content: "⛳ "; font-style: normal; }
+
+.pgb-foot { font-size: .72rem; font-weight: 700; color: var(--muted); text-align: right; padding-right: 2px; }
+
+@media (max-width: 480px) {
+  .pgb-gross { font-size: 2.9rem; }
+  .pgb-chips { grid-template-columns: repeat(4, 1fr); }
+  .pgb-arc-col { min-width: 9px; }
+}

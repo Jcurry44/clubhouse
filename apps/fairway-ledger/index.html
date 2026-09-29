@@ -1,0 +1,1018 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Hint browsers not to aggressively cache index.html, so a deploy
+         doesn't get masked by an old HTML referencing old ?v= bundles.
+         Advisory only — GitHub Pages still serves with its own headers —
+         but most mobile browsers respect these meta directives. -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Fairway Ledger</title>
+
+    <!-- PWA: makes "Add to Home Screen" install a real-looking app with our
+         icon, theme color in the browser chrome, and a standalone display
+         mode instead of a tab. -->
+    <!-- CLUBHOUSE: manifest link removed (one installed app: Clubhouse) -->
+    <link rel="icon" type="image/svg+xml" href="./icon.svg?v=2026-07-29b">
+    <link rel="apple-touch-icon" href="./icon.svg?v=2026-07-29b">
+    <meta name="theme-color" content="#1f7a59">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Fairway">
+
+    <!-- Inter via Google Fonts. The CSS already names Inter as the first
+         font in the stack; without this <link> it silently fell back to
+         the system sans. With it, the app looks consistently designed
+         across iOS / Android / desktop. Falls back gracefully offline
+         because the system fonts are still in the CSS chain. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Non-blocking load: on one bar of LTE this cross-origin stylesheet
+         used to stall first paint for seconds. media="print" keeps it off
+         the render path; onload flips it live. System fonts carry the first
+         frame — the swap is invisible on a warm cache. -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap"></noscript>
+
+    <link rel="stylesheet" href="./styles.css?v=2026-07-29b">
+    <link rel="stylesheet" href="./clubhouse-bridge.css"><!-- CLUBHOUSE -->
+    <script src="./data/courses.js?v=2026-07-29b" defer></script>
+    <script src="./data/course-maps/deerwood-runtime.js?v=2026-07-29b" defer></script>
+    <script src="./lib/golf-math.js?v=2026-07-29b" defer></script>
+    <script src="./lib/shapes.js?v=2026-07-29b" defer></script>
+    <script src="./lib/voice-recap.js?v=2026-07-29b" defer></script>
+    <script src="./lib/gps.js?v=2026-07-29b" defer></script>
+    <script src="./lib/course-map.js?v=2026-07-29b" defer></script>
+    <script src="./lib/course-map-labels.js?v=2026-07-29b" defer></script>
+    <script src="./data/course-maps/deerwood-aerial-labels-v1.js?v=2026-07-29b" defer></script>
+    <script src="./lib/course-map-ui.js?v=2026-07-29b" defer></script>
+    <script src="./lib/games.js?v=2026-07-29b" defer></script>
+    <script src="./app.js?v=2026-07-29b" defer></script>
+    <!-- CLUBHOUSE: service-worker registration removed — the Clubhouse service worker owns this scope. -->
+  </head>
+  <body>
+    <!-- CLUBHOUSE: return control (fixed, bottom-left) -->
+    <a class="clubhouse-return" href="../../index.html#/golf" aria-label="Back to Clubhouse"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>Clubhouse</a>
+    <script src="./clubhouse-bridge.js" defer></script><!-- CLUBHOUSE: #clubhouse-import deep-link helper -->
+    <div class="app-shell">
+      <header class="app-header">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+              <rect x="174" y="116" width="10" height="286" fill="#fbfaf3" rx="3"/>
+              <path d="M184 124 L360 168 L184 212 Z" fill="#d99a3a"/>
+              <line x1="120" y1="408" x2="392" y2="408" stroke="#fbfaf3" stroke-width="4" stroke-linecap="round" opacity="0.55"/>
+              <circle cx="284" cy="392" r="18" fill="#fbfaf3"/>
+            </svg>
+          </div>
+          <div>
+            <p class="eyebrow">Personal golf analytics</p>
+            <h1>Fairway Ledger</h1>
+          </div>
+        </div>
+        <div class="header-actions" id="headerActions">
+          <button class="header-actions-toggle" id="headerActionsToggle" type="button" aria-expanded="false" aria-controls="headerActionsList">Data <span class="caret" aria-hidden="true">▾</span></button>
+          <div class="header-actions-list" id="headerActionsList">
+            <button class="ghost-button" id="loadSampleButton" type="button">Sample data</button>
+            <button class="ghost-button" id="exportButton" type="button">Export<span class="export-badge" id="exportBadge" hidden></span></button>
+            <label class="file-button">
+              Import
+              <input id="importInput" type="file" accept="application/json">
+            </label>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <nav class="app-tabs" aria-label="Primary">
+          <button class="tab-button active" type="button" data-tab-target="home" aria-selected="true">
+            <svg class="tab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10.5V20h13v-9.5"/></svg>
+            <span class="tab-label">Home</span>
+          </button>
+          <button class="tab-button" type="button" data-tab-target="rounds" aria-selected="false">
+            <svg class="tab-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 8.5v7M8.5 12h7"/></svg>
+            <span class="tab-label">Add Round</span>
+          </button>
+          <button class="tab-button" type="button" data-tab-target="courses" aria-selected="false">
+            <svg class="tab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 21V4"/><path d="M7 5l9 2.8L7 10.6"/><path d="M4 21h9"/><circle cx="17.5" cy="19.5" r="1.5"/></svg>
+            <span class="tab-label">Courses</span>
+          </button>
+          <button class="tab-button" type="button" data-tab-target="games" aria-selected="false">
+            <svg class="tab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h8v4a4 4 0 0 1-8 0V4z"/><path d="M8 5H5.5a2.6 2.6 0 0 0 2.8 4M16 5h2.5a2.6 2.6 0 0 1-2.8 4"/><path d="M12 12v4"/><path d="M8.5 20h7M10 16.5h4"/></svg>
+            <span class="tab-label">Games</span>
+          </button>
+          <button class="tab-button" type="button" data-tab-target="profile" aria-selected="false">
+            <svg class="tab-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.8"/><path d="M4.5 20c1.6-4 5-5.2 7.5-5.2S17.9 16 19.5 20"/></svg>
+            <span class="tab-label">Profile</span>
+          </button>
+        </nav>
+
+        <section class="tab-panel active" data-tab-panel="home" data-active-section="overview">
+          <nav class="home-chips" aria-label="Home sections">
+            <button class="home-chip active" type="button" data-home-section-target="overview">Overview</button>
+            <button class="home-chip" type="button" data-home-section-target="trends">Trends</button>
+            <button class="home-chip" type="button" data-home-section-target="holes">Holes</button>
+            <button class="home-chip" type="button" data-home-section-target="clubs">Clubs</button>
+            <button class="home-chip" type="button" data-home-section-target="records">Records</button>
+            <button id="homeFiltersButton" class="home-filter-button" type="button" data-open-filters aria-label="Filters" title="Filters">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+            </button>
+          </nav>
+
+          <nav class="home-subchips" data-home-section="trends" aria-label="Trends">
+            <button class="home-subchip" type="button" data-home-subsection-target="recent-rounds">Trend</button>
+            <button class="home-subchip" type="button" data-home-subsection-target="handicap-calculator">Handicap</button>
+            <button class="home-subchip" type="button" data-home-subsection-target="strokes-gained">SG</button>
+          </nav>
+
+          <nav class="home-subchips" data-home-section="holes" aria-label="Holes">
+            <button class="home-subchip" type="button" data-home-subsection-target="heatmap">Map</button>
+            <button class="home-subchip" type="button" data-home-subsection-target="scoring-distribution">Distribution</button>
+            <button class="home-subchip" type="button" data-home-subsection-target="par-3-4-5">Par 3/4/5</button>
+            <button class="home-subchip" type="button" data-home-subsection-target="scoring-by-course">By Course</button>
+            <button class="home-subchip" type="button" data-home-subsection-target="scoring-by-nine">By Nine</button>
+          </nav>
+
+          <nav class="home-subchips" data-home-section="clubs" aria-label="Clubs">
+            <button class="home-subchip" type="button" data-home-subsection-target="tee-club-performance">Tee shots</button>
+            <button class="home-subchip" type="button" data-home-subsection-target="putting-by-distance">Putting</button>
+            <button class="home-subchip" type="button" data-home-subsection-target="scrambling">Scrambling</button>
+          </nav>
+
+          <section id="welcomeCallout" class="welcome-callout" data-home-section="overview" hidden>
+            <h2>Welcome to Fairway Ledger</h2>
+            <p>Track your rounds, see your patterns, no ads or cloud. Your data lives on this device only.</p>
+            <div class="welcome-actions">
+              <button class="welcome-primary" type="button" data-tab-target="rounds">Add your first round &rarr;</button>
+              <button class="welcome-secondary" type="button" id="welcomeSampleButton">Try with sample data</button>
+            </div>
+          </section>
+
+          <section id="voiceDraftInbox" class="voice-draft-inbox" data-home-section="overview" aria-label="Voice recap drafts"></section>
+
+          <!-- Hero stat: the one number that matters, big, on deep green,
+               with the scoring sparkline built in. Rendered by
+               renderHeroStat — hidden until there's at least one round. -->
+          <section class="home-hero-stat" id="homeHeroStat" data-home-section="overview" aria-label="Headline stat" hidden></section>
+
+          <!-- Every tile drills somewhere: tiles with data-drill-section
+               jump to that Home section (and sub-chip); the Best round tile
+               opens the round's scorecard sheet directly. -->
+          <section class="metrics-grid" data-home-section="overview" aria-label="Score summary">
+            <button type="button" class="metric-card metric-card-tappable has-round" data-drill-section="trends" data-drill-sub="recent-rounds" aria-label="Rounds — tap to see the scoring trend">
+              <span>Rounds <span class="metric-tap-hint" aria-hidden="true">›</span></span>
+              <strong id="metricRounds">0</strong>
+            </button>
+            <button type="button" class="metric-card metric-card-tappable has-round" data-drill-section="trends" data-drill-sub="recent-rounds" aria-label="Average score — tap to see the scoring trend">
+              <span>Avg score <span class="metric-tap-hint" aria-hidden="true">›</span></span>
+              <strong id="metricAverageScore">--</strong>
+              <small id="metricAverageScoreNote" class="metric-card-note" hidden></small>
+            </button>
+            <button type="button" class="metric-card metric-card-tappable has-round" data-drill-section="trends" data-drill-sub="recent-rounds" aria-label="Average to par — tap to see the scoring trend">
+              <span>Avg to par <span class="metric-tap-hint" aria-hidden="true">›</span></span>
+              <strong id="metricAveragePar">--</strong>
+              <small id="metricParTrend" class="metric-trend" hidden></small>
+            </button>
+            <button type="button" class="metric-card metric-card-tappable tone-gold" id="metricBestRoundCard" aria-label="Best round — tap to view the scorecard">
+              <span>Best round <span class="metric-tap-hint" aria-hidden="true">›</span></span>
+              <strong id="metricBestRound">--</strong>
+            </button>
+            <button type="button" class="metric-card metric-card-tappable has-round" data-drill-section="holes" data-drill-sub="heatmap" aria-label="Greens in regulation — tap to see the hole map">
+              <span>GIR <span class="metric-tap-hint" aria-hidden="true">›</span></span>
+              <strong id="metricGir">--</strong>
+              <small id="metricGirTrend" class="metric-trend" hidden></small>
+            </button>
+            <button type="button" class="metric-card metric-card-tappable has-round" data-drill-section="trends" data-drill-sub="strokes-gained" aria-label="Strokes gained — tap to see the strokes gained trend">
+              <span>Avg SG <span class="metric-tap-hint" aria-hidden="true">›</span></span>
+              <strong id="metricSg">--</strong>
+              <small id="metricSgTrend" class="metric-trend" hidden></small>
+            </button>
+          </section>
+
+          <section id="homeInsights" class="home-insights" data-home-section="overview" aria-label="Key insights"></section>
+
+          <section class="analytics-grid" aria-label="Analytics">
+            <article class="panel wide-panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Trend</p>
+                  <h2>Recent Rounds</h2>
+                </div>
+              </div>
+              <div id="trendChart" class="chart-frame"></div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">WHS estimate</p>
+                  <h2>Handicap Calculator</h2>
+                </div>
+              </div>
+              <div id="handicapPanel" class="handicap-panel"></div>
+            </article>
+
+            <article class="panel wide-panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Performance</p>
+                  <h2>Strokes Gained</h2>
+                </div>
+                <span class="panel-note">vs. PGA Tour benchmark</span>
+              </div>
+              <div id="strokesGainedPanel" class="strokes-gained-panel"></div>
+            </article>
+
+            <article class="panel wide-panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Greens</p>
+                  <h2>Putting by Distance</h2>
+                </div>
+                <span class="panel-note">make % by first-putt length</span>
+              </div>
+              <div id="puttingPanel" class="putting-panel"></div>
+            </article>
+
+            <article class="panel wide-panel" data-panel-id="heatmap">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Course view</p>
+                  <h2>Heatmap</h2>
+                </div>
+                <span class="panel-note" id="heatmapNote">average vs par per hole</span>
+              </div>
+              <div id="heatmapCourseChips" class="heatmap-course-chips" role="tablist" aria-label="Course"></div>
+              <div id="heatmapNineChips" class="heatmap-nine-chips" role="tablist" aria-label="Nine" hidden></div>
+              <div id="heatmapSummary" class="heatmap-summary" aria-live="polite"></div>
+              <div id="heatmapGrid" class="heatmap-grid" aria-live="polite"></div>
+              <div id="heatmapLegend" class="heatmap-legend"></div>
+            </article>
+
+            <article class="panel wide-panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Scoring</p>
+                  <h2>Scoring Distribution</h2>
+                </div>
+                <span class="panel-note">tap a tier to see the holes</span>
+              </div>
+              <div id="scoringDistribution" class="scoring-distribution"></div>
+            </article>
+
+            <article class="panel wide-panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Off the tee</p>
+                  <h2>Tee Club Performance</h2>
+                </div>
+                <span class="panel-note">first club tapped per hole = tee shot</span>
+              </div>
+              <div id="teeClubPanel" class="tee-club-panel"></div>
+            </article>
+
+            <article class="panel wide-panel" data-panel-id="scrambling">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Short game</p>
+                  <h2>Scrambling</h2>
+                </div>
+                <span class="panel-note">save par after missing the green</span>
+              </div>
+              <div id="scramblingPanel" class="scrambling-panel"></div>
+            </article>
+
+            <article class="panel wide-panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Courses</p>
+                  <h2>Scoring By Course</h2>
+                </div>
+              </div>
+              <div id="courseStats" class="table-wrap"></div>
+            </article>
+
+            <article class="panel wide-panel" id="deerwoodByNineCard" hidden>
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Deerwood</p>
+                  <h2>Scoring By Nine</h2>
+                </div>
+                <span class="panel-note">average 9-hole gross — pooled across every routing</span>
+              </div>
+              <div id="deerwoodByNinePanel" class="deerwood-by-nine-panel"></div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Par type</p>
+                  <h2>Par 3 / 4 / 5</h2>
+                </div>
+              </div>
+              <div id="parStats" class="bar-list"></div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">History</p>
+                  <h2>Recent Scorecards</h2>
+                </div>
+              </div>
+              <div id="recentRounds" class="round-list"></div>
+            </article>
+
+            <article class="panel wide-panel" data-panel-id="trophy-room">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Personal bests</p>
+                  <h2>Trophy Room</h2>
+                </div>
+                <span class="panel-note" id="trophyRoomNote"></span>
+              </div>
+              <div id="trophyRoomGrid" class="trophy-room-grid"></div>
+            </article>
+
+          </section>
+        </section>
+
+        <section class="tab-panel" data-tab-panel="rounds">
+          <section class="workflow-grid">
+            <section class="panel entry-panel" aria-labelledby="roundEntryTitle">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Scorecard</p>
+                <h2 id="roundEntryTitle">Add Round</h2>
+              </div>
+              <div class="round-entry-actions">
+                <button class="ghost-button course-map-launch" id="courseMapButton" type="button" hidden>Course map</button>
+                <button class="ghost-button" id="viewToggleButton" type="button">Card view</button>
+                <button class="ghost-button" id="resetRoundButton" type="button">Reset</button>
+              </div>
+            </div>
+
+            <details class="voice-import" id="voiceImport">
+              <summary>Apply voice recap <span>Open link or paste JSON → preview → save</span></summary>
+              <p>A voice link opens this review ready to confirm. One complete scorecard is added as a new round; nothing existing is replaced.</p>
+              <textarea id="voiceRecapInput" rows="9" spellcheck="false" placeholder='{"date":"2026-07-28","course":{"id":"deerwood","tee":"White","frontNine":"buck","backNine":"doe"},"holes":[{"score":5},{"score":4}]}'></textarea>
+              <p class="voice-import-hint">Use <code>course.id</code> from the Courses list, or <code>deerwood</code> with <code>tee</code> and <code>frontNine</code>/<code>backNine</code>. Include one ordered score entry per hole. Optional: note, wind, tag, and per-hole putts, penalties, notes, clubsHit, or shots.</p>
+              <div class="voice-import-actions"><button id="voiceRecapPreview" class="ghost-button" type="button">Preview recap</button><button id="voiceRecapApply" class="primary-button" type="button" disabled>Apply as new round</button></div>
+              <div id="voiceRecapPreviewOutput" class="voice-import-preview" aria-live="polite"></div>
+              <div id="voiceRecapStorageNotice" class="voice-storage-notice" hidden>
+                <strong>This is a fresh Fairway Ledger data space.</strong>
+                <p>Your usual history was not replaced—this browser/profile or installed app has no saved rounds. Open the link in the same Fairway Ledger browser/app that holds your history. To save this as the first round in this separate copy, confirm below.</p>
+                <label><input id="voiceRecapFreshStoreConfirm" type="checkbox"> I want to save this as the first round in this copy.</label>
+              </div>
+            </details>
+
+            <form id="roundForm">
+              <button type="button" id="roundSetupBanner" class="round-collapse-banner" hidden aria-expanded="true"></button>
+              <div id="quickStartSlot" hidden></div>
+              <div id="roundSetup">
+              <div class="form-grid">
+                <label>
+                  Date
+                  <input id="roundDate" type="date" required>
+                </label>
+                <label class="has-chips">
+                  Course
+                  <select id="roundCourse" data-use-chips="true" required></select>
+                </label>
+                <label id="roundHoleCountField" class="has-chips">
+                  Playing
+                  <select id="roundHoleCount" data-use-chips="true">
+                    <option value="18">18 holes</option>
+                    <option value="9">9 holes</option>
+                  </select>
+                </label>
+                <label id="roundLayoutField" class="has-chips">
+                  Nine
+                  <select id="roundLayout" data-use-chips="true"></select>
+                </label>
+                <label id="roundFrontNineField" class="has-chips">
+                  Front 9
+                  <select id="roundFrontNine" data-use-chips="true">
+                    <option value="buck">Buck</option>
+                    <option value="doe">Doe</option>
+                    <option value="fawn">Fawn</option>
+                  </select>
+                </label>
+                <label id="roundBackNineField" class="has-chips">
+                  Back 9
+                  <select id="roundBackNine" data-use-chips="true">
+                    <option value="buck">Buck</option>
+                    <option value="doe" selected>Doe</option>
+                    <option value="fawn">Fawn</option>
+                  </select>
+                </label>
+                <label id="roundTeeField" class="has-chips">
+                  Tee
+                  <select id="roundTee" data-use-chips="true">
+                    <option value="White">White</option>
+                    <option value="Blue">Blue</option>
+                  </select>
+                </label>
+                <label id="roundWindField" class="has-chips">
+                  Wind
+                  <select id="roundWind" data-use-chips="true">
+                    <option value="">Wind…</option>
+                    <option value="calm">Calm</option>
+                    <option value="5">5 mph</option>
+                    <option value="10">10 mph</option>
+                    <option value="15">15 mph</option>
+                    <option value="20">20 mph</option>
+                    <option value="25">25 mph</option>
+                    <option value="30+">30+ mph</option>
+                  </select>
+                </label>
+                <label id="roundTagField" class="has-chips">
+                  Play type
+                  <select id="roundTag" data-use-chips="true">
+                    <option value="">Untagged</option>
+                    <option value="league">League</option>
+                    <option value="casual">Casual</option>
+                    <option value="tournament">Tournament</option>
+                    <option value="practice">Practice</option>
+                  </select>
+                </label>
+                <label id="roundEntryModeField" class="has-chips">
+                  Entry mode
+                  <select id="roundEntryMode" data-use-chips="true">
+                    <option value="detailed">Detailed (everything)</option>
+                    <option value="speed">Speed (score only)</option>
+                  </select>
+                </label>
+              </div>
+
+              <div id="roundCourseMeta" class="course-meta-strip"></div>
+              </div>
+              <div id="startRoundContainer" class="start-round-container" hidden>
+                <p id="startRoundHint" class="start-round-hint"></p>
+                <button type="button" id="startRoundButton" class="start-round-button" disabled>Start Round &rarr;</button>
+              </div>
+              <section id="roundBrief" class="round-brief" hidden></section>
+              <div id="roundLiveSummary" class="round-live-summary"></div>
+              <div class="scorecard" id="scorecardGrid" aria-label="Hole scorecard"></div>
+
+              <section id="reviewSection" class="review-section" hidden>
+                <div class="review-header">
+                  <div>
+                    <p class="eyebrow">Wrap up</p>
+                    <h3>Review &amp; save round</h3>
+                  </div>
+                  <button type="button" class="review-back" data-action="hide-review">← Back to entry</button>
+                </div>
+
+                <div id="completionCheck" class="completion-check"></div>
+
+                <!-- Live preview of what the saved round will look like:
+                     the narrative summary and the visual scorecard. Both
+                     are collapsed by default so they don't crowd the
+                     reflection inputs — tap to expand. -->
+                <div id="reviewPreview" class="review-preview"></div>
+
+                <!-- Optional reflection survey. Everything in here is opt-in —
+                     skip it and the rest of the app still works. Filled-in
+                     fields get woven into the round summary narrative as a
+                     "self-rated" paragraph. -->
+                <details id="surveyDetails" class="round-survey">
+                  <summary class="round-survey-summary">
+                    <span class="round-survey-summary-title">Round reflection</span>
+                    <span class="round-survey-summary-hint">optional · 30 sec</span>
+                  </summary>
+                  <div class="round-survey-body">
+
+                    <div class="survey-field">
+                      <label class="survey-label">How did it feel?</label>
+                      <div class="survey-chip-row" data-survey-chip-row="feel">
+                        <button type="button" class="survey-chip" data-survey-value="great">Great</button>
+                        <button type="button" class="survey-chip" data-survey-value="good">Good</button>
+                        <button type="button" class="survey-chip" data-survey-value="okay">Okay</button>
+                        <button type="button" class="survey-chip" data-survey-value="tough">Tough</button>
+                      </div>
+                    </div>
+
+                    <div class="survey-field">
+                      <label class="survey-label">Confidence today</label>
+                      <div class="survey-chip-row" data-survey-chip-row="confidence">
+                        <button type="button" class="survey-chip" data-survey-value="shaky">Shaky</button>
+                        <button type="button" class="survey-chip" data-survey-value="building">Building</button>
+                        <button type="button" class="survey-chip" data-survey-value="solid">Solid</button>
+                        <button type="button" class="survey-chip" data-survey-value="locked">Locked in</button>
+                      </div>
+                    </div>
+
+                    <div class="survey-field">
+                      <label class="survey-label">Rate yourself today <span class="survey-label-hint">(1 = bad, 5 = great)</span></label>
+                      <div class="survey-rating-grid">
+                        <div class="survey-rating-row">
+                          <span class="survey-rating-label">Driver</span>
+                          <div class="survey-chip-row survey-rating-chips" data-survey-chip-row="rating-driver">
+                            <button type="button" class="survey-rating-chip" data-survey-value="1">1</button>
+                            <button type="button" class="survey-rating-chip" data-survey-value="2">2</button>
+                            <button type="button" class="survey-rating-chip" data-survey-value="3">3</button>
+                            <button type="button" class="survey-rating-chip" data-survey-value="4">4</button>
+                            <button type="button" class="survey-rating-chip" data-survey-value="5">5</button>
+                          </div>
+                        </div>
+                        <div class="survey-rating-row">
+                          <span class="survey-rating-label">Irons</span>
+                          <div class="survey-chip-row survey-rating-chips" data-survey-chip-row="rating-irons">
+                            <button type="button" class="survey-rating-chip" data-survey-value="1">1</button>
+                            <button type="button" class="survey-rating-chip" data-survey-value="2">2</button>
+                            <button type="button" class="survey-rating-chip" data-survey-value="3">3</button>
+                            <button type="button" class="survey-rating-chip" data-survey-value="4">4</button>
+                            <button type="button" class="survey-rating-chip" data-survey-value="5">5</button>
+                          </div>
+                        </div>
+                        <div class="survey-rating-row">
+                          <span class="survey-rating-label">Wedges</span>
+                          <div class="survey-chip-row survey-rating-chips" data-survey-chip-row="rating-wedges">
+                            <button type="button" class="survey-rating-chip" data-survey-value="1">1</button>
+                            <button type="button" class="survey-rating-chip" data-survey-value="2">2</button>
+                            <button type="button" class="survey-rating-chip" data-survey-value="3">3</button>
+                            <button type="button" class="survey-rating-chip" data-survey-value="4">4</button>
+                            <button type="button" class="survey-rating-chip" data-survey-value="5">5</button>
+                          </div>
+                        </div>
+                        <div class="survey-rating-row">
+                          <span class="survey-rating-label">Putter</span>
+                          <div class="survey-chip-row survey-rating-chips" data-survey-chip-row="rating-putter">
+                            <button type="button" class="survey-rating-chip" data-survey-value="1">1</button>
+                            <button type="button" class="survey-rating-chip" data-survey-value="2">2</button>
+                            <button type="button" class="survey-rating-chip" data-survey-value="3">3</button>
+                            <button type="button" class="survey-rating-chip" data-survey-value="4">4</button>
+                            <button type="button" class="survey-rating-chip" data-survey-value="5">5</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="survey-field">
+                      <label for="surveySwingThoughts" class="survey-label">Swing thoughts</label>
+                      <textarea id="surveySwingThoughts" class="survey-textarea" maxlength="300" rows="2" placeholder="What were you working on? — slow takeaway, weight forward, head still…"></textarea>
+                    </div>
+
+                    <div class="survey-field">
+                      <label for="surveyWentWell" class="survey-label">What went well?</label>
+                      <textarea id="surveyWentWell" class="survey-textarea" maxlength="300" rows="2" placeholder="The thing you want to keep doing."></textarea>
+                    </div>
+
+                    <div class="survey-field">
+                      <label for="surveyWorkOn" class="survey-label">What to work on?</label>
+                      <textarea id="surveyWorkOn" class="survey-textarea" maxlength="300" rows="2" placeholder="The one thing to clean up before next round."></textarea>
+                    </div>
+
+                  </div>
+                </details>
+
+                <div class="round-summary-field">
+                  <label for="roundNote" class="round-summary-label">Round summary</label>
+                  <textarea id="roundNote" maxlength="500" rows="3" placeholder="How did the round feel overall? Couldn't control driver, hit a few bad chips, putted decent on the back, weather went sideways at the turn…"></textarea>
+                  <p class="round-summary-hint">Free-form. Stored with the round and shown in your history.</p>
+                </div>
+
+                <div class="form-actions">
+                  <button class="primary-button" id="roundSubmitButton" type="submit">Save round</button>
+                  <span id="roundPreview" class="round-preview">--</span>
+                </div>
+              </section>
+            </form>
+          </section>
+          </section>
+        </section>
+
+        <section class="tab-panel" data-tab-panel="courses">
+          <section class="course-grid">
+          <article class="panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Setup</p>
+                <h2>Add Course</h2>
+              </div>
+            </div>
+            <form id="courseLookupForm" class="lookup-form">
+              <label>
+                Course search
+                <input id="courseLookupQuery" type="search" placeholder="Course name, city, state" required>
+              </label>
+              <button class="primary-button" type="submit">Find course</button>
+            </form>
+            <div id="courseLookupResults" class="lookup-results"></div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Library</p>
+                <h2>Courses</h2>
+              </div>
+            </div>
+            <div id="courseList" class="course-list"></div>
+          </article>
+          <article class="panel course-detail-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Course profile</p>
+                <h2>Details</h2>
+              </div>
+            </div>
+            <div id="courseDetail" class="course-detail"></div>
+          </article>
+          </section>
+        </section>
+
+        <section class="tab-panel" data-tab-panel="games">
+          <!-- Entire games UI renders into this root — a small state machine
+               in app.js swaps between home / picker / rules / setup / play /
+               summary views. Games persist in their own localStorage key,
+               fully isolated from rounds. -->
+          <div id="gamesRoot" class="games-root"></div>
+        </section>
+
+        <section class="tab-panel" data-tab-panel="profile">
+          <article class="panel wide-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Preferences</p>
+                <h2>Scorecard flow</h2>
+              </div>
+            </div>
+            <p class="profile-bag-hint">
+              How the Card view orders each hole's inputs. Switching never
+              deletes anything you've entered.
+            </p>
+            <div class="card-flow-options">
+              <label class="card-flow-option">
+                <input type="radio" name="cardFlowMode" value="narrative" id="cardFlowNarrative">
+                <span><strong>Narrative</strong> <span class="option-hint">recommended — tee shot first, score last</span></span>
+              </label>
+              <label class="card-flow-option">
+                <input type="radio" name="cardFlowMode" value="default" id="cardFlowDefault">
+                <span><strong>Outcome-first</strong> <span class="option-hint">score &amp; putts up top</span></span>
+              </label>
+            </div>
+          </article>
+
+          <article class="panel wide-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Preferences</p>
+                <h2>Entry mode default</h2>
+              </div>
+            </div>
+            <p class="profile-bag-hint">
+              Speed mode shows just the score on each hole — no clubs,
+              fairways, or putts. You can still override per round in the
+              setup banner.
+            </p>
+            <div class="card-flow-options">
+              <label class="card-flow-option">
+                <input type="radio" name="entryModeDefault" value="detailed" id="entryModeDetailedDefault">
+                <span><strong>Detailed</strong> <span class="option-hint">track everything</span></span>
+              </label>
+              <label class="card-flow-option">
+                <input type="radio" name="entryModeDefault" value="speed" id="entryModeSpeedDefault">
+                <span><strong>Speed</strong> <span class="option-hint">score only</span></span>
+              </label>
+            </div>
+          </article>
+
+          <article class="panel wide-panel" id="courseApiPanel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Integrations</p>
+                <h2>Course search</h2>
+              </div>
+            </div>
+            <p class="profile-bag-hint">
+              Search 30,000 real courses with full scorecards from the
+              Courses tab. Needs a free API key from
+              <a href="https://golfcourseapi.com" target="_blank" rel="noopener">golfcourseapi.com</a>
+              (email only, ~30 seconds). The key stays on this device.
+            </p>
+            <div class="course-api-row">
+              <input id="courseApiKeyInput" type="text" inputmode="text" autocomplete="off"
+                placeholder="Paste your API key" aria-label="Course search API key">
+              <button type="button" class="primary-button" id="courseApiKeySave">Save</button>
+            </div>
+            <p class="profile-bag-hint" id="courseApiKeyStatus"></p>
+          </article>
+
+          <article class="panel wide-panel" id="voiceDraftSettingsPanel">
+            <div class="panel-heading"><div><p class="eyebrow">Private sync</p><h2>Shared voice recaps</h2></div></div>
+            <p class="profile-bag-hint">Receive a finished voice recap here as a reviewable draft. Your round history stays on this device until you explicitly apply a draft.</p>
+            <div class="voice-settings-grid">
+              <input id="voiceDraftProjectUrl" type="url" inputmode="url" autocomplete="off" placeholder="Supabase project URL" aria-label="Supabase project URL">
+              <input id="voiceDraftAnonKey" type="text" autocomplete="off" placeholder="Publishable anon key" aria-label="Supabase publishable anon key">
+              <input id="voiceDraftEmail" type="email" inputmode="email" autocomplete="email" placeholder="Your email for secure sign-in" aria-label="Email for secure voice recap sign-in">
+            </div>
+            <div class="course-api-row"><button type="button" class="primary-button" id="voiceDraftSaveSettings">Save &amp; send sign-in email</button><button type="button" class="ghost-button" id="voiceDraftRefresh">Refresh inbox</button></div>
+            <div class="course-api-row voice-code-row"><input id="voiceDraftCode" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="10" placeholder="6-digit code from the email" aria-label="Sign-in code from the email"><button type="button" class="ghost-button" id="voiceDraftVerifyCode">Sign in with code</button></div>
+            <p class="profile-bag-hint" id="voiceDraftStatus">Not connected. Setup requires your own private sync project.</p>
+            <p class="profile-bag-hint" id="voiceDraftIdentity" hidden></p>
+          </article>
+
+          <article class="panel wide-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">You</p>
+                <h2>Your Bag</h2>
+              </div>
+              <button type="button" id="bagResetButton" class="ghost-button">Reset to all clubs</button>
+            </div>
+            <p class="profile-bag-hint">Tap clubs to add or remove them from your bag. Only clubs in your bag appear as options when you log a round. Old rounds that used a club you've since removed still keep it.</p>
+            <div id="profileBagGrid" class="profile-bag-grid"></div>
+            <p id="profileBagSummary" class="profile-bag-summary"></p>
+          </article>
+
+          <article class="panel wide-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Safety net</p>
+                <h2>Backups</h2>
+              </div>
+              <button type="button" id="snapshotTakeButton" class="ghost-button">Take snapshot now</button>
+            </div>
+            <p class="profile-bag-hint">
+              The app automatically saves a snapshot before any change that
+              could lose data (Clear, Sample Data, Import) and roughly every
+              10 minutes while you're actively editing. Keeping the last
+              <strong id="snapshotCap">20</strong> snapshots. Tap Restore on
+              any row to roll the entire app back to that point — the current
+              state is snapshotted first, so a restore can itself be undone.
+              Every <strong>5 new rounds</strong>, the app also auto-downloads
+              a backup file (<code>fairway-ledger-YYYY-MM-DD-auto.json</code>)
+              to your Downloads folder for true off-device safety. You can
+              also Export on demand from the header.
+            </p>
+            <div id="snapshotBackupStatus" class="snapshot-backup-status"></div>
+            <ul id="snapshotList" class="snapshot-list"></ul>
+          </article>
+
+          <article class="panel wide-panel danger-zone-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow danger-zone-eyebrow">Danger zone</p>
+                <h2>Advanced data controls</h2>
+              </div>
+              <button type="button" id="dangerZoneToggle" class="ghost-button" aria-expanded="false" aria-controls="dangerZoneBody">Show</button>
+            </div>
+            <div id="dangerZoneBody" class="danger-zone-body" hidden>
+              <p class="danger-zone-warning">
+                These actions can permanently destroy your rounds. The app
+                always takes a snapshot first (see Backups above), but
+                snapshots live in this browser too — anything that wipes
+                browser storage takes them with it. Export to a file first
+                if you want a copy outside the browser.
+              </p>
+              <div class="danger-zone-actions">
+                <button class="danger-button" id="clearButton" type="button">Clear all data</button>
+              </div>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <!--
+      Floating mid-screen nav tabs for the Add Round card view. They're
+      shown only when (a) the Add Round tab is active, (b) card view is on,
+      (c) at least one card is rendered, and (d) the review section is
+      closed. Toggled by JS via body.floating-card-nav-visible.
+    -->
+    <button id="floatingNavPrev" class="floating-card-nav floating-card-nav-prev" type="button" aria-label="Previous hole">‹</button>
+    <button id="floatingNavNext" class="floating-card-nav floating-card-nav-next" type="button" aria-label="Next hole">›</button>
+
+    <div id="bucketSheetOverlay" class="hole-picker-overlay" hidden>
+      <button id="bucketSheetBackdrop" class="hole-picker-backdrop" type="button" aria-label="Close"></button>
+      <div class="hole-picker-sheet" role="dialog" aria-modal="true" aria-labelledby="bucketSheetTitle">
+        <div class="hole-picker-handle" aria-hidden="true"></div>
+        <div class="hole-picker-header">
+          <h3 id="bucketSheetTitle">Scoring tier</h3>
+          <button id="bucketSheetClose" class="hole-picker-close" type="button" aria-label="Close">&times;</button>
+        </div>
+        <ul id="bucketSheetList" class="hole-picker-list bucket-sheet-list"></ul>
+      </div>
+    </div>
+
+    <div id="filtersSheetOverlay" class="hole-picker-overlay" hidden>
+      <button id="filtersSheetBackdrop" class="hole-picker-backdrop" type="button" aria-label="Close filters"></button>
+      <div class="hole-picker-sheet" role="dialog" aria-modal="true" aria-labelledby="filtersSheetTitle">
+        <div class="hole-picker-handle" aria-hidden="true"></div>
+        <div class="hole-picker-header">
+          <h3 id="filtersSheetTitle">Filters</h3>
+          <button id="filtersSheetClose" class="hole-picker-close" type="button" aria-label="Close">&times;</button>
+        </div>
+        <div class="filters-sheet-body">
+          <label>
+            Course
+            <select id="filterCourse"></select>
+          </label>
+          <label>
+            Tee
+            <select id="filterTee"></select>
+          </label>
+          <label>
+            Window
+            <select id="filterWindow">
+              <option value="all">All rounds</option>
+              <option value="last5">Last 5</option>
+              <option value="last10">Last 10</option>
+              <option value="last20">Last 20</option>
+              <option value="year">This year</option>
+            </select>
+          </label>
+          <label>
+            Play type
+            <select id="filterTag">
+              <option value="all">All play types</option>
+              <option value="league">League</option>
+              <option value="casual">Casual</option>
+              <option value="tournament">Tournament</option>
+              <option value="practice">Practice</option>
+              <option value="untagged">Untagged only</option>
+            </select>
+          </label>
+          <button type="button" id="filtersResetButton" class="ghost-button">Reset all filters</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="heatmapDrilldownOverlay" class="hole-picker-overlay" hidden>
+      <button id="heatmapDrilldownBackdrop" class="hole-picker-backdrop" type="button" aria-label="Close hole detail"></button>
+      <div class="hole-picker-sheet heatmap-drilldown-sheet" role="dialog" aria-modal="true" aria-labelledby="heatmapDrilldownTitle">
+        <div class="hole-picker-handle" aria-hidden="true"></div>
+        <div class="hole-picker-header">
+          <h3 id="heatmapDrilldownTitle">Hole detail</h3>
+          <button id="heatmapDrilldownClose" class="hole-picker-close" type="button" aria-label="Close">&times;</button>
+        </div>
+        <div id="heatmapDrilldownBody" class="heatmap-drilldown-body"></div>
+      </div>
+    </div>
+
+    <!-- Par 3/4/5 drill-down sheet. Tapping a par card on Home opens this
+         with breakdowns (scoring dist, GIR/FIR/putts, by course, top tee
+         clubs, recent holes). Free-form body, not a list, since the
+         content is multi-sectional. -->
+    <div id="parTypeSheetOverlay" class="hole-picker-overlay" hidden>
+      <button id="parTypeSheetBackdrop" class="hole-picker-backdrop" type="button" aria-label="Close par detail"></button>
+      <div class="hole-picker-sheet par-type-sheet" role="dialog" aria-modal="true" aria-labelledby="parTypeSheetTitle">
+        <div class="hole-picker-handle" aria-hidden="true"></div>
+        <div class="hole-picker-header">
+          <h3 id="parTypeSheetTitle">Par detail</h3>
+          <button id="parTypeSheetClose" class="hole-picker-close" type="button" aria-label="Close">&times;</button>
+        </div>
+        <div id="parTypeSheetBody" class="par-type-sheet-body"></div>
+      </div>
+    </div>
+
+    <div id="holePickerOverlay" class="hole-picker-overlay" hidden>
+      <button id="holePickerBackdrop" class="hole-picker-backdrop" type="button" aria-label="Close hole picker"></button>
+      <div class="hole-picker-sheet" role="dialog" aria-modal="true" aria-labelledby="holePickerTitle">
+        <div class="hole-picker-handle" aria-hidden="true"></div>
+        <div class="hole-picker-header">
+          <h3 id="holePickerTitle">Jump to hole</h3>
+          <button id="holePickerClose" class="hole-picker-close" type="button" aria-label="Close">&times;</button>
+        </div>
+        <ul id="holePickerList" class="hole-picker-list"></ul>
+      </div>
+    </div>
+
+    <div id="courseMapOverlay" class="hole-picker-overlay course-map-overlay" hidden>
+      <button id="courseMapBackdrop" class="hole-picker-backdrop" type="button" aria-label="Close course map"></button>
+      <section class="course-map-sheet" role="dialog" aria-modal="true" aria-labelledby="courseMapTitle">
+        <header class="course-map-header">
+          <div>
+            <p class="eyebrow">Deerwood · 2024 aerial</p>
+            <h3 id="courseMapTitle">Course map</h3>
+          </div>
+          <button id="courseMapClose" class="hole-picker-close" type="button" aria-label="Close course map">&times;</button>
+        </header>
+        <div class="course-map-toolbar">
+          <label class="course-map-hole-field">
+            <span>Hole</span>
+            <select id="courseMapHole"></select>
+          </label>
+          <button id="courseMapLocate" class="primary-button" type="button">Locate me</button>
+          <div class="course-map-zoom" aria-label="Map zoom controls">
+            <button id="courseMapZoomOut" class="ghost-button" type="button" aria-label="Zoom out">&minus;</button>
+            <button id="courseMapFit" class="ghost-button" type="button" aria-label="Show whole course" aria-pressed="false">Course</button>
+            <button id="courseMapZoomIn" class="ghost-button" type="button" aria-label="Zoom in">+</button>
+          </div>
+        </div>
+        <div id="courseMapViewport" class="course-map-viewport" aria-label="Interactive Deerwood aerial map. Drag to pan, use the zoom controls, and tap to set an aim point.">
+          <div id="courseMapStage" class="course-map-stage">
+            <img id="courseMapImage" draggable="false" alt="">
+          </div>
+          <svg id="courseMapSvg" class="course-map-svg" aria-hidden="true"></svg>
+          <div class="course-map-map-label">NYSDOP 2024 aerial · no legacy hazards<br>Blue/amber: visual suggestions · dashed boundary is not course/OB</div>
+        </div>
+        <section id="courseMapEditor" class="course-map-label-panel" aria-label="Map label editor" hidden>
+          <div class="course-map-label-heading">
+            <div>
+              <strong>Map labels</strong>
+              <span>Visual traces only — never an OB or penalty-area ruling. Select a suggestion to hide it.</span>
+            </div>
+            <button id="courseMapCancelEdit" class="ghost-button" type="button">Done</button>
+          </div>
+          <div class="course-map-label-fields">
+            <label>
+              <span>Feature</span>
+              <select id="courseMapFeatureType"></select>
+            </label>
+            <label>
+              <span>Name <small>optional</small></span>
+              <input id="courseMapFeatureLabel" type="text" maxlength="80" autocomplete="off" placeholder="e.g. left greenside sand">
+            </label>
+          </div>
+          <div class="course-map-label-progress">
+            <p id="courseMapEditorHint">Choose a feature, then tap the aerial.</p>
+            <div class="course-map-label-actions">
+              <button id="courseMapUndoVertex" class="ghost-button" type="button">Undo</button>
+              <button id="courseMapResetDraft" class="ghost-button" type="button">Reset</button>
+              <button id="courseMapDeleteFeature" class="ghost-button" type="button" disabled>Delete</button>
+              <button id="courseMapSaveFeature" class="primary-button" type="button" disabled>Save label</button>
+            </div>
+          </div>
+        </section>
+        <div class="course-map-readout">
+          <div>
+            <strong id="courseMapTargetSummary">Tap the aerial to set an aim point.</strong>
+            <span id="courseMapStatus" role="status" aria-live="polite"></span>
+          </div>
+          <div class="course-map-readout-actions">
+            <button id="courseMapEdit" class="ghost-button" type="button" aria-pressed="false">Label map</button>
+            <button id="courseMapClearTarget" class="ghost-button" type="button" hidden>Clear aim</button>
+          </div>
+        </div>
+        <p id="courseMapAttribution" class="course-map-attribution"></p>
+      </section>
+    </div>
+
+    <!-- Round detail sheet — opens when the user taps a Trophy card. Shows
+         the full scorecard for the round that set the record, read-only,
+         with a secondary "Edit this round" action for actual changes. -->
+    <div id="roundDetailOverlay" class="hole-picker-overlay" hidden>
+      <button id="roundDetailBackdrop" class="hole-picker-backdrop" type="button" aria-label="Close round detail"></button>
+      <div class="hole-picker-sheet round-detail-sheet" role="dialog" aria-modal="true" aria-labelledby="roundDetailTitle">
+        <div class="hole-picker-handle" aria-hidden="true"></div>
+        <div class="hole-picker-header">
+          <h3 id="roundDetailTitle">Round</h3>
+          <button id="roundDetailClose" class="hole-picker-close" type="button" aria-label="Close">&times;</button>
+        </div>
+        <div id="roundDetailSubtitle" class="round-detail-subtitle"></div>
+        <div id="roundDetailBody" class="round-detail-body"></div>
+        <div class="round-detail-actions">
+          <button id="roundDetailEditButton" class="ghost-button" type="button">Edit this round</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="voiceDraftOverlay" class="hole-picker-overlay" hidden>
+      <button id="voiceDraftBackdrop" class="hole-picker-backdrop" type="button" aria-label="Close voice recap"></button>
+      <div class="hole-picker-sheet voice-draft-sheet" role="dialog" aria-modal="true" aria-labelledby="voiceDraftTitle">
+        <div class="hole-picker-handle" aria-hidden="true"></div>
+        <div class="hole-picker-header"><h3 id="voiceDraftTitle">Voice recap draft</h3><button id="voiceDraftClose" class="hole-picker-close" type="button" aria-label="Close">&times;</button></div>
+        <div id="voiceDraftBody" class="voice-draft-body"></div>
+        <div class="voice-draft-actions"><button id="voiceDraftApply" type="button" class="primary-button">Apply as new round</button><button id="voiceDraftArchive" type="button" class="ghost-button">Archive draft</button></div>
+      </div>
+    </div>
+
+    <!-- Typed-confirmation modal for destructive actions (Clear / Sample Data
+         when rounds exist / Import when rounds exist). One in-app component
+         replaces window.confirm so we can show round counts, a backup hint,
+         and require the user to type the round count before the destructive
+         button enables. Wiring via openDestructiveConfirm() in app.js. -->
+    <div id="destructiveConfirmOverlay" class="hole-picker-overlay" hidden>
+      <button id="destructiveConfirmBackdrop" class="hole-picker-backdrop" type="button" aria-label="Cancel"></button>
+      <div class="hole-picker-sheet destructive-confirm-sheet" role="dialog" aria-modal="true" aria-labelledby="destructiveConfirmTitle">
+        <div class="hole-picker-handle" aria-hidden="true"></div>
+        <div class="hole-picker-header">
+          <h3 id="destructiveConfirmTitle">Confirm</h3>
+          <button id="destructiveConfirmClose" class="hole-picker-close" type="button" aria-label="Cancel">&times;</button>
+        </div>
+        <div class="destructive-confirm-body">
+          <p id="destructiveConfirmMessage" class="destructive-confirm-message"></p>
+          <ul id="destructiveConfirmFacts" class="destructive-confirm-facts"></ul>
+          <p id="destructiveConfirmBackupHint" class="destructive-confirm-backup-hint" hidden></p>
+          <label id="destructiveConfirmTypeLabel" class="destructive-confirm-type-label" hidden>
+            <span>Type <strong id="destructiveConfirmExpected"></strong> to confirm</span>
+            <input id="destructiveConfirmInput" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" inputmode="text">
+          </label>
+          <div class="destructive-confirm-actions">
+            <button id="destructiveConfirmCancel" class="ghost-button" type="button">Cancel</button>
+            <button id="destructiveConfirmGo" class="danger-button" type="button" disabled>Confirm</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

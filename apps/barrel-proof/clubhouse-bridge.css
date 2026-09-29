@@ -1,0 +1,50 @@
+/* CLUBHOUSE: return control injected into the vendored copy (new file, not in the original app). */
+@font-face { font-family: "Clubhouse Condensed"; font-weight: 700; font-display: swap; src: url("../../fonts/barlow-condensed-700.woff2") format("woff2"); }
+.clubhouse-return {
+  position: fixed; z-index: 2147483000; left: calc(10px + env(safe-area-inset-left, 0px)); bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  display: inline-flex; align-items: center; gap: 5px; height: 34px; padding: 0 13px 0 9px; border-radius: 999px;
+  background: #0a0c0f; color: #d4ff3f; border: 1px solid rgba(212, 255, 63, .45); box-shadow: 0 6px 18px rgba(0, 0, 0, .35);
+  font: 700 13px/1 "Clubhouse Condensed", "Barlow Condensed", "Arial Narrow", sans-serif; letter-spacing: .06em; text-transform: uppercase;
+  text-decoration: none; -webkit-tap-highlight-color: transparent;
+}
+.clubhouse-return::after { content: ""; position: absolute; inset: -6px -4px; } /* 46 px tall hit area */
+.clubhouse-return svg { width: 14px; height: 14px; flex: 0 0 auto; }
+.clubhouse-return:active { transform: scale(.96); }
+.clubhouse-return:focus-visible { outline: 2px solid #d4ff3f; outline-offset: 2px; }
+@media print { .clubhouse-return { display: none; } }
+/* CLUBHOUSE (repair 2026-09-28): once the page scrolls the pill folds to its chevron (34 px) so it covers less of the app;
+   back at the top it unfolds. The label stays in the accessible name (aria-label "Back to Clubhouse"). */
+.clubhouse-return { transition: padding .18s ease, gap .18s ease, font-size .18s ease; }
+.clubhouse-return.clubhouse-min { width: 34px; padding: 0; gap: 0; justify-content: center; font-size: 0; letter-spacing: 0; }
+.clubhouse-return.clubhouse-min::after { inset: -7px; } /* from the padding box: 32 + 14 = 46 x 46 */
+.clubhouse-return::after { inset: -7px -5px; } /* expanded: 46 px tall (the 1 px border sits outside the padding box) */
+@media (prefers-reduced-motion: reduce) { .clubhouse-return { transition: none; } }
+/* CLUBHOUSE (home lane): #clubhouse-import deep link from Clubhouse Home — point at the app's own import control */
+html[data-clubhouse-import] #headerActionsList .file-button,
+html[data-clubhouse-import] [data-action="import"] {
+  outline: 3px solid #d4ff3f; outline-offset: 3px; box-shadow: 0 0 0 8px rgba(212, 255, 63, .18);
+  animation: clubhouse-pulse 1.6s ease-in-out infinite;
+}
+@keyframes clubhouse-pulse { 50% { box-shadow: 0 0 0 3px rgba(212, 255, 63, .06); } }
+@media (prefers-reduced-motion: reduce) {
+  html[data-clubhouse-import] #headerActionsList .file-button, html[data-clubhouse-import] [data-action="import"] { animation: none; }
+}
+.clubhouse-tip {
+  position: fixed; z-index: 2147483001; left: 12px; right: 12px; bottom: calc(12px + 46px + env(safe-area-inset-bottom, 0px));
+  max-width: 420px; margin: 0 auto; display: flex; align-items: center; gap: 12px; padding: 12px 12px 12px 14px;
+  border-radius: 16px; background: #0a0c0f; color: #f5f7f9; border: 1px solid rgba(212, 255, 63, .45); box-shadow: 0 10px 30px rgba(0, 0, 0, .45);
+  font: 500 14px/1.35 -apple-system, "Segoe UI", system-ui, sans-serif; text-align: left;
+}
+.clubhouse-tip p { margin: 0; flex: 1 1 auto; }
+.clubhouse-tip b { color: #d4ff3f; font-weight: 700; }
+.clubhouse-tip button {
+  flex: 0 0 auto; min-height: 44px; padding: 0 14px; border-radius: 12px; border: 0; background: #d4ff3f; color: #0a0c0f; cursor: pointer;
+  font: 700 15px/1 "Clubhouse Condensed", "Barlow Condensed", "Arial Narrow", sans-serif; letter-spacing: .06em; text-transform: uppercase;
+}
+@media print { .clubhouse-tip { display: none; } }
+/* Barrel Proof */
+/* Layout guard: at <= 720 px the Cabinet release rail (5 x 220 px grid) is a grid item with min-width:auto, which
+   widens the whole page to ~1190 px (the original app does the same). min-width:0 lets the rail scroll on its own. */
+.release-lane { min-width: 0; }
+/* CLUBHOUSE (repair 2026-09-28): a bottom gutter so the last section clears the return pill. */
+body { padding-bottom: calc(58px + env(safe-area-inset-bottom, 0px)); }

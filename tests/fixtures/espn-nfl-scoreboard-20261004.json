@@ -1,0 +1,75 @@
+{
+ "events": [
+  {
+   "id": "401872971",
+   "shortName": "NE @ BUF",
+   "competitions": [
+    {
+     "id": "401872971",
+     "competitors": [
+      {
+       "homeAway": "home",
+       "team": {
+        "abbreviation": "BUF",
+        "displayName": "Buffalo Bills"
+       },
+       "records": [
+        {
+         "name": "overall",
+         "abbreviation": "Any",
+         "type": "total",
+         "summary": "3-0"
+        },
+        {
+         "name": "Home",
+         "type": "home",
+         "summary": "2-0"
+        },
+        {
+         "name": "Road",
+         "type": "road",
+         "summary": "1-0"
+        }
+       ]
+      },
+      {
+       "homeAway": "away",
+       "team": {
+        "abbreviation": "NE",
+        "displayName": "New England Patriots"
+       },
+       "records": [
+        {
+         "name": "overall",
+         "abbreviation": "Any",
+         "type": "total",
+         "summary": "1-2"
+        },
+        {
+         "name": "Home",
+         "type": "home",
+         "summary": "1-0"
+        },
+        {
+         "name": "Road",
+         "type": "road",
+         "summary": "0-2"
+        }
+       ]
+      }
+     ],
+     "odds": [
+      {
+       "provider": {
+        "name": "DraftKings"
+       },
+       "details": "BUF -7",
+       "overUnder": 48.5,
+       "spread": -7
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

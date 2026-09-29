@@ -1,0 +1,906 @@
+{
+ "totalGames": 10,
+ "dates": [
+  {
+   "date": "2026-09-10",
+   "games": [
+    {
+     "gamePk": 816823,
+     "gameType": "R",
+     "season": "2026",
+     "gameDate": "2026-09-10T23:04:00Z",
+     "officialDate": "2026-09-10",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "teams": {
+      "away": {
+       "team": {
+        "id": 422,
+        "name": "Buffalo Bisons",
+        "teamName": "Bisons",
+        "abbreviation": "BUF",
+        "locationName": "Buffalo"
+       },
+       "leagueRecord": {
+        "wins": 66,
+        "losses": 73,
+        "ties": 0,
+        "pct": ".475"
+       },
+       "score": 11,
+       "isWinner": true,
+       "splitSquad": false,
+       "seriesNumber": 25
+      },
+      "home": {
+       "team": {
+        "id": 494,
+        "name": "Charlotte Knights",
+        "teamName": "Knights",
+        "abbreviation": "CLT",
+        "locationName": "Charlotte"
+       },
+       "leagueRecord": {
+        "wins": 76,
+        "losses": 65,
+        "ties": 0,
+        "pct": ".539"
+       },
+       "score": 4,
+       "isWinner": false,
+       "splitSquad": false,
+       "seriesNumber": 25
+      }
+     },
+     "venue": {
+      "id": 4670,
+      "name": "Truist Field"
+     },
+     "broadcasts": [
+      {
+       "name": "Bally Sports Live",
+       "type": "TV",
+       "callSign": "BallySport"
+      },
+      {
+       "name": "Bally Sports Live",
+       "type": "TV",
+       "callSign": "BallySport"
+      }
+     ],
+     "isTie": false,
+     "gameNumber": 1,
+     "publicFacing": true,
+     "doubleHeader": "N",
+     "tiebreaker": "N",
+     "dayNight": "night",
+     "scheduledInnings": 9,
+     "reverseHomeAwayStatus": false,
+     "inningBreakLength": 120,
+     "gamesInSeries": 6,
+     "seriesGameNumber": 3,
+     "seriesDescription": "Regular Season",
+     "recordSource": "S",
+     "ifNecessary": "N",
+     "ifNecessaryDescription": "Normal Game"
+    }
+   ]
+  },
+  {
+   "date": "2026-09-11",
+   "games": [
+    {
+     "gamePk": 816828,
+     "gameType": "R",
+     "season": "2026",
+     "gameDate": "2026-09-11T23:04:00Z",
+     "officialDate": "2026-09-11",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "teams": {
+      "away": {
+       "team": {
+        "id": 422,
+        "name": "Buffalo Bisons",
+        "teamName": "Bisons",
+        "abbreviation": "BUF",
+        "locationName": "Buffalo"
+       },
+       "leagueRecord": {
+        "wins": 66,
+        "losses": 74,
+        "ties": 0,
+        "pct": ".471"
+       },
+       "score": 1,
+       "isWinner": false,
+       "splitSquad": false,
+       "seriesNumber": 25
+      },
+      "home": {
+       "team": {
+        "id": 494,
+        "name": "Charlotte Knights",
+        "teamName": "Knights",
+        "abbreviation": "CLT",
+        "locationName": "Charlotte"
+       },
+       "leagueRecord": {
+        "wins": 77,
+        "losses": 65,
+        "ties": 0,
+        "pct": ".542"
+       },
+       "score": 2,
+       "isWinner": true,
+       "splitSquad": false,
+       "seriesNumber": 25
+      }
+     },
+     "venue": {
+      "id": 4670,
+      "name": "Truist Field"
+     },
+     "broadcasts": [
+      {
+       "name": "Bally Sports Live",
+       "type": "TV",
+       "callSign": "BallySport"
+      },
+      {
+       "name": "Bally Sports Live",
+       "type": "TV",
+       "callSign": "BallySport"
+      }
+     ],
+     "isTie": false,
+     "gameNumber": 1,
+     "publicFacing": true,
+     "doubleHeader": "N",
+     "tiebreaker": "N",
+     "dayNight": "night",
+     "scheduledInnings": 9,
+     "reverseHomeAwayStatus": false,
+     "inningBreakLength": 120,
+     "gamesInSeries": 6,
+     "seriesGameNumber": 4,
+     "seriesDescription": "Regular Season",
+     "recordSource": "S",
+     "ifNecessary": "N",
+     "ifNecessaryDescription": "Normal Game"
+    }
+   ]
+  },
+  {
+   "date": "2026-09-12",
+   "games": [
+    {
+     "gamePk": 816825,
+     "gameType": "R",
+     "season": "2026",
+     "gameDate": "2026-09-12T16:35:00Z",
+     "officialDate": "2026-09-12",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "teams": {
+      "away": {
+       "team": {
+        "id": 422,
+        "name": "Buffalo Bisons",
+        "teamName": "Bisons",
+        "abbreviation": "BUF",
+        "locationName": "Buffalo"
+       },
+       "leagueRecord": {
+        "wins": 66,
+        "losses": 75,
+        "ties": 0,
+        "pct": ".468"
+       },
+       "score": 1,
+       "isWinner": false,
+       "splitSquad": false,
+       "seriesNumber": 25
+      },
+      "home": {
+       "team": {
+        "id": 494,
+        "name": "Charlotte Knights",
+        "teamName": "Knights",
+        "abbreviation": "CLT",
+        "locationName": "Charlotte"
+       },
+       "leagueRecord": {
+        "wins": 78,
+        "losses": 65,
+        "ties": 0,
+        "pct": ".545"
+       },
+       "score": 10,
+       "isWinner": true,
+       "splitSquad": false,
+       "seriesNumber": 25
+      }
+     },
+     "venue": {
+      "id": 4670,
+      "name": "Truist Field"
+     },
+     "broadcasts": [
+      {
+       "name": "Bally Sports Live",
+       "type": "TV",
+       "callSign": "BallySport"
+      },
+      {
+       "name": "Bally Sports Live",
+       "type": "TV",
+       "callSign": "BallySport"
+      }
+     ],
+     "isTie": false,
+     "gameNumber": 1,
+     "publicFacing": true,
+     "doubleHeader": "S",
+     "tiebreaker": "N",
+     "dayNight": "day",
+     "scheduledInnings": 7,
+     "reverseHomeAwayStatus": false,
+     "inningBreakLength": 120,
+     "gamesInSeries": 6,
+     "seriesGameNumber": 5,
+     "seriesDescription": "Regular Season",
+     "recordSource": "S",
+     "ifNecessary": "N",
+     "ifNecessaryDescription": "Normal Game"
+    },
+    {
+     "gamePk": 816824,
+     "gameType": "R",
+     "season": "2026",
+     "gameDate": "2026-09-12T21:35:00Z",
+     "officialDate": "2026-09-12",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "C",
+      "detailedState": "Cancelled",
+      "statusCode": "CR",
+      "startTimeTBD": false,
+      "reason": "Rain",
+      "abstractGameCode": "F"
+     },
+     "teams": {
+      "away": {
+       "team": {
+        "id": 422,
+        "name": "Buffalo Bisons",
+        "teamName": "Bisons",
+        "abbreviation": "BUF",
+        "locationName": "Buffalo"
+       },
+       "leagueRecord": {
+        "wins": 66,
+        "losses": 75,
+        "ties": 0,
+        "pct": ".468"
+       },
+       "splitSquad": false,
+       "seriesNumber": 25
+      },
+      "home": {
+       "team": {
+        "id": 494,
+        "name": "Charlotte Knights",
+        "teamName": "Knights",
+        "abbreviation": "CLT",
+        "locationName": "Charlotte"
+       },
+       "leagueRecord": {
+        "wins": 78,
+        "losses": 65,
+        "ties": 0,
+        "pct": ".545"
+       },
+       "splitSquad": false,
+       "seriesNumber": 25
+      }
+     },
+     "venue": {
+      "id": 4670,
+      "name": "Truist Field"
+     },
+     "broadcasts": [
+      {
+       "name": "Bally Sports Live",
+       "type": "TV",
+       "callSign": "BallySport"
+      },
+      {
+       "name": "Bally Sports Live",
+       "type": "TV",
+       "callSign": "BallySport"
+      }
+     ],
+     "gameNumber": 2,
+     "publicFacing": true,
+     "doubleHeader": "S",
+     "tiebreaker": "N",
+     "dayNight": "night",
+     "scheduledInnings": 7,
+     "reverseHomeAwayStatus": false,
+     "inningBreakLength": 120,
+     "gamesInSeries": 6,
+     "seriesGameNumber": 6,
+     "seriesDescription": "Regular Season",
+     "recordSource": "S",
+     "ifNecessary": "N",
+     "ifNecessaryDescription": "Normal Game"
+    }
+   ]
+  },
+  {
+   "date": "2026-09-15",
+   "games": [
+    {
+     "gamePk": 816907,
+     "gameType": "R",
+     "season": "2026",
+     "gameDate": "2026-09-15T22:05:00Z",
+     "officialDate": "2026-09-15",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "teams": {
+      "away": {
+       "team": {
+        "id": 534,
+        "name": "Rochester Red Wings",
+        "teamName": "Red Wings",
+        "abbreviation": "ROC",
+        "locationName": "Rochester"
+       },
+       "leagueRecord": {
+        "wins": 86,
+        "losses": 57,
+        "ties": 0,
+        "pct": ".601"
+       },
+       "score": 8,
+       "isWinner": false,
+       "splitSquad": false,
+       "seriesNumber": 26
+      },
+      "home": {
+       "team": {
+        "id": 422,
+        "name": "Buffalo Bisons",
+        "teamName": "Bisons",
+        "abbreviation": "BUF",
+        "locationName": "Buffalo"
+       },
+       "leagueRecord": {
+        "wins": 67,
+        "losses": 75,
+        "ties": 0,
+        "pct": ".472"
+       },
+       "score": 9,
+       "isWinner": true,
+       "splitSquad": false,
+       "seriesNumber": 26
+      }
+     },
+     "venue": {
+      "id": 2756,
+      "name": "Sahlen Field"
+     },
+     "broadcasts": [
+      {
+       "name": "Bally Sports Live",
+       "type": "TV",
+       "callSign": "BallySport"
+      },
+      {
+       "name": "Bally Sports Live",
+       "type": "TV",
+       "callSign": "BallySport"
+      }
+     ],
+     "isTie": false,
+     "gameNumber": 1,
+     "publicFacing": true,
+     "doubleHeader": "N",
+     "tiebreaker": "N",
+     "dayNight": "night",
+     "scheduledInnings": 9,
+     "reverseHomeAwayStatus": false,
+     "inningBreakLength": 120,
+     "gamesInSeries": 6,
+     "seriesGameNumber": 1,
+     "seriesDescription": "Regular Season",
+     "recordSource": "S",
+     "ifNecessary": "N",
+     "ifNecessaryDescription": "Normal Game"
+    }
+   ]
+  },
+  {
+   "date": "2026-09-16",
+   "games": [
+    {
+     "gamePk": 816905,
+     "gameType": "R",
+     "season": "2026",
+     "gameDate": "2026-09-16T22:05:00Z",
+     "officialDate": "2026-09-16",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "teams": {
+      "away": {
+       "team": {
+        "id": 534,
+        "name": "Rochester Red Wings",
+        "teamName": "Red Wings",
+        "abbreviation": "ROC",
+        "locationName": "Rochester"
+       },
+       "leagueRecord": {
+        "wins": 87,
+        "losses": 57,
+        "ties": 0,
+        "pct": ".604"
+       },
+       "score": 12,
+       "isWinner": true,
+       "splitSquad": false,
+       "seriesNumber": 26
+      },
+      "home": {
+       "team": {
+        "id": 422,
+        "name": "Buffalo Bisons",
+        "teamName": "Bisons",
+        "abbreviation": "BUF",
+        "locationName": "Buffalo"
+       },
+       "leagueRecord": {
+        "wins": 67,
+        "losses": 76,
+        "ties": 0,
+        "pct": ".469"
+       },
+       "score": 4,
+       "isWinner": false,
+       "splitSquad": false,
+       "seriesNumber": 26
+      }
+     },
+     "venue": {
+      "id": 2756,
+      "name": "Sahlen Field"
+     },
+     "broadcasts": [
+      {
+       "name": "Bally Sports Live",
+       "type": "TV",
+       "callSign": "BallySport"
+      },
+      {
+       "name": "Bally Sports Live",
+       "type": "TV",
+       "callSign": "BallySport"
+      }
+     ],
+     "isTie": false,
+     "gameNumber": 1,
+     "publicFacing": true,
+     "doubleHeader": "N",
+     "tiebreaker": "N",
+     "dayNight": "night",
+     "scheduledInnings": 9,
+     "reverseHomeAwayStatus": false,
+     "inningBreakLength": 120,
+     "gamesInSeries": 6,
+     "seriesGameNumber": 2,
+     "seriesDescription": "Regular Season",
+     "recordSource": "S",
+     "ifNecessary": "N",
+     "ifNecessaryDescription": "Normal Game"
+    }
+   ]
+  },
+  {
+   "date": "2026-09-17",
+   "games": [
+    {
+     "gamePk": 816906,
+     "gameType": "R",
+     "season": "2026",
+     "gameDate": "2026-09-17T16:05:00Z",
+     "officialDate": "2026-09-17",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "teams": {
+      "away": {
+       "team": {
+        "id": 534,
+        "name": "Rochester Red Wings",
+        "teamName": "Red Wings",
+        "abbreviation": "ROC",
+        "locationName": "Rochester"
+       },
+       "leagueRecord": {
+        "wins": 88,
+        "losses": 57,
+        "ties": 0,
+        "pct": ".607"
+       },
+       "score": 3,
+       "isWinner": true,
+       "splitSquad": false,
+       "seriesNumber": 26
+      },
+      "home": {
+       "team": {
+        "id": 422,
+        "name": "Buffalo Bisons",
+        "teamName": "Bisons",
+        "abbreviation": "BUF",
+        "locationName": "Buffalo"
+       },
+       "leagueRecord": {
+        "wins": 67,
+        "losses": 77,
+        "ties": 0,
+        "pct": ".465"
+       },
+       "score": 1,
+       "isWinner": false,
+       "splitSquad": false,
+       "seriesNumber": 26
+      }
+     },
+     "venue": {
+      "id": 2756,
+      "name": "Sahlen Field"
+     },
+     "broadcasts": [
+      {
+       "name": "Bally Sports Live",
+       "type": "TV",
+       "callSign": "BallySport"
+      },
+      {
+       "name": "Bally Sports Live",
+       "type": "TV",
+       "callSign": "BallySport"
+      }
+     ],
+     "isTie": false,
+     "gameNumber": 1,
+     "publicFacing": true,
+     "doubleHeader": "N",
+     "tiebreaker": "N",
+     "dayNight": "day",
+     "scheduledInnings": 9,
+     "reverseHomeAwayStatus": false,
+     "inningBreakLength": 120,
+     "gamesInSeries": 6,
+     "seriesGameNumber": 3,
+     "seriesDescription": "Regular Season",
+     "recordSource": "S",
+     "ifNecessary": "N",
+     "ifNecessaryDescription": "Normal Game"
+    }
+   ]
+  },
+  {
+   "date": "2026-09-18",
+   "games": [
+    {
+     "gamePk": 816901,
+     "gameType": "R",
+     "season": "2026",
+     "gameDate": "2026-09-18T22:05:00Z",
+     "officialDate": "2026-09-18",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "teams": {
+      "away": {
+       "team": {
+        "id": 534,
+        "name": "Rochester Red Wings",
+        "teamName": "Red Wings",
+        "abbreviation": "ROC",
+        "locationName": "Rochester"
+       },
+       "leagueRecord": {
+        "wins": 88,
+        "losses": 58,
+        "ties": 0,
+        "pct": ".603"
+       },
+       "score": 1,
+       "isWinner": false,
+       "splitSquad": false,
+       "seriesNumber": 26
+      },
+      "home": {
+       "team": {
+        "id": 422,
+        "name": "Buffalo Bisons",
+        "teamName": "Bisons",
+        "abbreviation": "BUF",
+        "locationName": "Buffalo"
+       },
+       "leagueRecord": {
+        "wins": 68,
+        "losses": 77,
+        "ties": 0,
+        "pct": ".469"
+       },
+       "score": 7,
+       "isWinner": true,
+       "splitSquad": false,
+       "seriesNumber": 26
+      }
+     },
+     "venue": {
+      "id": 2756,
+      "name": "Sahlen Field"
+     },
+     "broadcasts": [
+      {
+       "name": "Bally Sports Live",
+       "type": "TV",
+       "callSign": "BallySport"
+      },
+      {
+       "name": "Bally Sports Live",
+       "type": "TV",
+       "callSign": "BallySport"
+      }
+     ],
+     "isTie": false,
+     "gameNumber": 1,
+     "publicFacing": true,
+     "doubleHeader": "N",
+     "tiebreaker": "N",
+     "dayNight": "night",
+     "scheduledInnings": 9,
+     "reverseHomeAwayStatus": false,
+     "inningBreakLength": 120,
+     "gamesInSeries": 6,
+     "seriesGameNumber": 4,
+     "seriesDescription": "Regular Season",
+     "recordSource": "S",
+     "ifNecessary": "N",
+     "ifNecessaryDescription": "Normal Game"
+    }
+   ]
+  },
+  {
+   "date": "2026-09-19",
+   "games": [
+    {
+     "gamePk": 816904,
+     "gameType": "R",
+     "season": "2026",
+     "gameDate": "2026-09-19T17:05:00Z",
+     "officialDate": "2026-09-19",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "teams": {
+      "away": {
+       "team": {
+        "id": 534,
+        "name": "Rochester Red Wings",
+        "teamName": "Red Wings",
+        "abbreviation": "ROC",
+        "locationName": "Rochester"
+       },
+       "leagueRecord": {
+        "wins": 89,
+        "losses": 58,
+        "ties": 0,
+        "pct": ".605"
+       },
+       "score": 7,
+       "isWinner": true,
+       "splitSquad": false,
+       "seriesNumber": 26
+      },
+      "home": {
+       "team": {
+        "id": 422,
+        "name": "Buffalo Bisons",
+        "teamName": "Bisons",
+        "abbreviation": "BUF",
+        "locationName": "Buffalo"
+       },
+       "leagueRecord": {
+        "wins": 68,
+        "losses": 78,
+        "ties": 0,
+        "pct": ".466"
+       },
+       "score": 3,
+       "isWinner": false,
+       "splitSquad": false,
+       "seriesNumber": 26
+      }
+     },
+     "venue": {
+      "id": 2756,
+      "name": "Sahlen Field"
+     },
+     "broadcasts": [
+      {
+       "name": "Bally Sports Live",
+       "type": "TV",
+       "callSign": "BallySport"
+      },
+      {
+       "name": "Bally Sports Live",
+       "type": "TV",
+       "callSign": "BallySport"
+      }
+     ],
+     "isTie": false,
+     "gameNumber": 1,
+     "publicFacing": true,
+     "doubleHeader": "N",
+     "tiebreaker": "N",
+     "dayNight": "day",
+     "scheduledInnings": 9,
+     "reverseHomeAwayStatus": false,
+     "inningBreakLength": 120,
+     "gamesInSeries": 6,
+     "seriesGameNumber": 5,
+     "seriesDescription": "Regular Season",
+     "recordSource": "S",
+     "ifNecessary": "N",
+     "ifNecessaryDescription": "Normal Game"
+    }
+   ]
+  },
+  {
+   "date": "2026-09-20",
+   "games": [
+    {
+     "gamePk": 816903,
+     "gameType": "R",
+     "season": "2026",
+     "gameDate": "2026-09-20T16:05:00Z",
+     "officialDate": "2026-09-20",
+     "status": {
+      "abstractGameState": "Final",
+      "codedGameState": "F",
+      "detailedState": "Final",
+      "statusCode": "F",
+      "startTimeTBD": false,
+      "abstractGameCode": "F"
+     },
+     "teams": {
+      "away": {
+       "team": {
+        "id": 534,
+        "name": "Rochester Red Wings",
+        "teamName": "Red Wings",
+        "abbreviation": "ROC",
+        "locationName": "Rochester"
+       },
+       "leagueRecord": {
+        "wins": 90,
+        "losses": 58,
+        "ties": 0,
+        "pct": ".608"
+       },
+       "score": 15,
+       "isWinner": true,
+       "splitSquad": false,
+       "seriesNumber": 26
+      },
+      "home": {
+       "team": {
+        "id": 422,
+        "name": "Buffalo Bisons",
+        "teamName": "Bisons",
+        "abbreviation": "BUF",
+        "locationName": "Buffalo"
+       },
+       "leagueRecord": {
+        "wins": 68,
+        "losses": 79,
+        "ties": 0,
+        "pct": ".463"
+       },
+       "score": 8,
+       "isWinner": false,
+       "splitSquad": false,
+       "seriesNumber": 26
+      }
+     },
+     "venue": {
+      "id": 2756,
+      "name": "Sahlen Field"
+     },
+     "broadcasts": [
+      {
+       "name": "Bally Sports Live",
+       "type": "TV",
+       "callSign": "BallySport"
+      },
+      {
+       "name": "Bally Sports Live",
+       "type": "TV",
+       "callSign": "BallySport"
+      }
+     ],
+     "isTie": false,
+     "gameNumber": 1,
+     "publicFacing": true,
+     "doubleHeader": "N",
+     "tiebreaker": "N",
+     "dayNight": "day",
+     "scheduledInnings": 9,
+     "reverseHomeAwayStatus": false,
+     "inningBreakLength": 120,
+     "gamesInSeries": 6,
+     "seriesGameNumber": 6,
+     "seriesDescription": "Regular Season",
+     "recordSource": "S",
+     "ifNecessary": "N",
+     "ifNecessaryDescription": "Normal Game"
+    }
+   ]
+  }
+ ]
+}

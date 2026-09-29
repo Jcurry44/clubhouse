@@ -1,0 +1,28 @@
+{
+ "team": {
+  "id": "2",
+  "standingSummary": "1st in Atlantic Division",
+  "record": {
+   "items": [
+    {
+     "type": "total",
+     "summary": "0-0-0",
+     "stats": [
+      {
+       "name": "gamesPlayed",
+       "value": 0
+      },
+      {
+       "name": "losses",
+       "value": 0
+      },
+      {
+       "name": "wins",
+       "value": 0
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

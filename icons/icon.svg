@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>Clubhouse</title>
+  <rect width="512" height="512" fill="#0a0c0f"/>
+  <!-- volt ¾ progress ring, open at the top-right -->
+  <path d="M436 256A180 180 0 1 1 256 76" fill="none" stroke="#d4ff3f" stroke-width="56" stroke-linecap="round"/>
+  <!-- condensed bold "C", drawn as a stroke so it needs no font -->
+  <path transform="translate(256 256) scale(1.1) translate(-256 -256)" d="M306 233V220A50 50 0 0 0 206 220V292A50 50 0 0 0 306 292V279" fill="none" stroke="#f5f7f9" stroke-width="42" stroke-linejoin="round"/>
+</svg>

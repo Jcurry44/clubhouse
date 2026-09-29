@@ -1,0 +1,914 @@
+{
+ "previousSeason": 20252026,
+ "currentSeason": 20262027,
+ "clubTimezone": "America/New_York",
+ "games": [
+  {
+   "id": 2026010016,
+   "season": 20262027,
+   "gameType": 1,
+   "gameDate": "2026-09-21",
+   "venue": {
+    "default": "PPG Paints Arena"
+   },
+   "neutralSite": false,
+   "startTimeUTC": "2026-09-21T23:00:00Z",
+   "easternUTCOffset": "-04:00",
+   "venueUTCOffset": "-04:00",
+   "venueTimezone": "US/Eastern",
+   "gameState": "FINAL",
+   "gameScheduleState": "OK",
+   "tvBroadcasts": [
+    {
+     "id": 28,
+     "market": "A",
+     "countryCode": "US",
+     "network": "MSG-B",
+     "sequenceNumber": 392
+    },
+    {
+     "id": 543,
+     "market": "H",
+     "countryCode": "US",
+     "network": "SN-PIT+",
+     "sequenceNumber": 374
+    }
+   ],
+   "awayTeam": {
+    "id": 7,
+    "commonName": {
+     "default": "Sabres"
+    },
+    "placeName": {
+     "default": "Buffalo"
+    },
+    "placeNameWithPreposition": {
+     "default": "Buffalo",
+     "fr": "de Buffalo"
+    },
+    "abbrev": "BUF",
+    "awaySplitSquad": false,
+    "score": 1
+   },
+   "homeTeam": {
+    "id": 5,
+    "commonName": {
+     "default": "Penguins"
+    },
+    "placeName": {
+     "default": "Pittsburgh"
+    },
+    "placeNameWithPreposition": {
+     "default": "Pittsburgh",
+     "fr": "de Pittsburgh"
+    },
+    "abbrev": "PIT",
+    "homeSplitSquad": false,
+    "score": 4
+   },
+   "periodDescriptor": {
+    "number": 3,
+    "periodType": "REG",
+    "maxRegulationPeriods": 3
+   },
+   "gameOutcome": {
+    "lastPeriodType": "REG"
+   },
+   "threeMinRecapFr": "/fr/video/buf-vs-pit-21-09-2026-resume-6405395257112"
+  },
+  {
+   "id": 2026010024,
+   "season": 20262027,
+   "gameType": 1,
+   "gameDate": "2026-09-22",
+   "venue": {
+    "default": "KeyBank Center"
+   },
+   "neutralSite": false,
+   "startTimeUTC": "2026-09-22T23:00:00Z",
+   "easternUTCOffset": "-04:00",
+   "venueUTCOffset": "-04:00",
+   "venueTimezone": "America/New_York",
+   "gameState": "FINAL",
+   "gameScheduleState": "OK",
+   "tvBroadcasts": [],
+   "awayTeam": {
+    "id": 29,
+    "commonName": {
+     "default": "Blue Jackets"
+    },
+    "placeName": {
+     "default": "Columbus"
+    },
+    "placeNameWithPreposition": {
+     "default": "Columbus",
+     "fr": "de Columbus"
+    },
+    "abbrev": "CBJ",
+    "awaySplitSquad": false,
+    "score": 1
+   },
+   "homeTeam": {
+    "id": 7,
+    "commonName": {
+     "default": "Sabres"
+    },
+    "placeName": {
+     "default": "Buffalo"
+    },
+    "placeNameWithPreposition": {
+     "default": "Buffalo",
+     "fr": "de Buffalo"
+    },
+    "abbrev": "BUF",
+    "homeSplitSquad": false,
+    "score": 5
+   },
+   "periodDescriptor": {
+    "number": 3,
+    "periodType": "REG",
+    "maxRegulationPeriods": 3
+   },
+   "gameOutcome": {
+    "lastPeriodType": "REG"
+   },
+   "threeMinRecapFr": "/fr/video/cbj-vs-buf-22-09-2026-resume-6405460549112"
+  },
+  {
+   "id": 2026010041,
+   "season": 20262027,
+   "gameType": 1,
+   "gameDate": "2026-09-24",
+   "venue": {
+    "default": "Little Caesars Arena"
+   },
+   "neutralSite": false,
+   "startTimeUTC": "2026-09-24T23:00:00Z",
+   "easternUTCOffset": "-04:00",
+   "venueUTCOffset": "-04:00",
+   "venueTimezone": "America/Detroit",
+   "gameState": "FINAL",
+   "gameScheduleState": "OK",
+   "tvBroadcasts": [
+    {
+     "id": 28,
+     "market": "A",
+     "countryCode": "US",
+     "network": "MSG-B",
+     "sequenceNumber": 392
+    },
+    {
+     "id": 645,
+     "market": "H",
+     "countryCode": "US",
+     "network": "DSN",
+     "sequenceNumber": 1
+    }
+   ],
+   "awayTeam": {
+    "id": 7,
+    "commonName": {
+     "default": "Sabres"
+    },
+    "placeName": {
+     "default": "Buffalo"
+    },
+    "placeNameWithPreposition": {
+     "default": "Buffalo",
+     "fr": "de Buffalo"
+    },
+    "abbrev": "BUF",
+    "awaySplitSquad": false,
+    "score": 2
+   },
+   "homeTeam": {
+    "id": 17,
+    "commonName": {
+     "default": "Red Wings"
+    },
+    "placeName": {
+     "default": "Detroit"
+    },
+    "placeNameWithPreposition": {
+     "default": "Detroit",
+     "fr": "de Detroit"
+    },
+    "abbrev": "DET",
+    "homeSplitSquad": false,
+    "score": 3
+   },
+   "periodDescriptor": {
+    "number": 4,
+    "periodType": "OT",
+    "maxRegulationPeriods": 3
+   },
+   "gameOutcome": {
+    "lastPeriodType": "OT"
+   },
+   "threeMinRecapFr": "/fr/video/buf-vs-det-24-09-2026-resume-6405600992112"
+  },
+  {
+   "id": 2026010055,
+   "season": 20262027,
+   "gameType": 1,
+   "gameDate": "2026-09-26",
+   "venue": {
+    "default": "KeyBank Center"
+   },
+   "neutralSite": false,
+   "startTimeUTC": "2026-09-26T19:00:00Z",
+   "easternUTCOffset": "-04:00",
+   "venueUTCOffset": "-04:00",
+   "venueTimezone": "America/New_York",
+   "gameState": "FINAL",
+   "gameScheduleState": "OK",
+   "tvBroadcasts": [
+    {
+     "id": 324,
+     "market": "N",
+     "countryCode": "US",
+     "network": "NHLN",
+     "sequenceNumber": 35
+    },
+    {
+     "id": 28,
+     "market": "H",
+     "countryCode": "US",
+     "network": "MSG-B",
+     "sequenceNumber": 392
+    },
+    {
+     "id": 543,
+     "market": "A",
+     "countryCode": "US",
+     "network": "SN-PIT+",
+     "sequenceNumber": 374
+    }
+   ],
+   "awayTeam": {
+    "id": 5,
+    "commonName": {
+     "default": "Penguins"
+    },
+    "placeName": {
+     "default": "Pittsburgh"
+    },
+    "placeNameWithPreposition": {
+     "default": "Pittsburgh",
+     "fr": "de Pittsburgh"
+    },
+    "abbrev": "PIT",
+    "awaySplitSquad": false,
+    "score": 3
+   },
+   "homeTeam": {
+    "id": 7,
+    "commonName": {
+     "default": "Sabres"
+    },
+    "placeName": {
+     "default": "Buffalo"
+    },
+    "placeNameWithPreposition": {
+     "default": "Buffalo",
+     "fr": "de Buffalo"
+    },
+    "abbrev": "BUF",
+    "homeSplitSquad": false,
+    "score": 1
+   },
+   "periodDescriptor": {
+    "number": 3,
+    "periodType": "REG",
+    "maxRegulationPeriods": 3
+   },
+   "gameOutcome": {
+    "lastPeriodType": "REG"
+   },
+   "threeMinRecapFr": "/fr/video/pit-vs-buf-26-09-2026-resume-6405680832112"
+  },
+  {
+   "id": 2026020011,
+   "season": 20262027,
+   "gameType": 2,
+   "gameDate": "2026-10-01",
+   "venue": {
+    "default": "Nationwide Arena"
+   },
+   "neutralSite": false,
+   "startTimeUTC": "2026-10-01T23:00:00Z",
+   "easternUTCOffset": "-04:00",
+   "venueUTCOffset": "-04:00",
+   "venueTimezone": "US/Eastern",
+   "gameState": "FUT",
+   "gameScheduleState": "OK",
+   "tvBroadcasts": [
+    {
+     "id": 28,
+     "market": "A",
+     "countryCode": "US",
+     "network": "MSG-B",
+     "sequenceNumber": 392
+    },
+    {
+     "id": 647,
+     "market": "H",
+     "countryCode": "US",
+     "network": "CBJNHL",
+     "sequenceNumber": 1
+    },
+    {
+     "id": 755,
+     "market": "H",
+     "countryCode": "US",
+     "network": "CBJHN",
+     "sequenceNumber": 1
+    }
+   ],
+   "awayTeam": {
+    "id": 7,
+    "commonName": {
+     "default": "Sabres"
+    },
+    "placeName": {
+     "default": "Buffalo"
+    },
+    "placeNameWithPreposition": {
+     "default": "Buffalo",
+     "fr": "de Buffalo"
+    },
+    "abbrev": "BUF",
+    "awaySplitSquad": false,
+    "radioLink": "https://d2igy0yla8zi0u.cloudfront.net/BUF/20262027/BUF-radio.m3u8"
+   },
+   "homeTeam": {
+    "id": 29,
+    "commonName": {
+     "default": "Blue Jackets"
+    },
+    "placeName": {
+     "default": "Columbus"
+    },
+    "placeNameWithPreposition": {
+     "default": "Columbus",
+     "fr": "de Columbus"
+    },
+    "abbrev": "CBJ",
+    "homeSplitSquad": false,
+    "radioLink": "https://d2igy0yla8zi0u.cloudfront.net/CBJ/20262027/CBJ-radio.m3u8",
+    "hotelLink": "https://www.sonesta.com/sonesta-hotels-resorts/oh/columbus/sonesta-columbus-downtown?isGroupCode=false&promoCode=CBJPROMO",
+    "hotelDesc": "Stay at Sonesta Columbus Downtown"
+   },
+   "periodDescriptor": {
+    "number": 1,
+    "periodType": "REG",
+    "maxRegulationPeriods": 3
+   }
+  },
+  {
+   "id": 2026020022,
+   "season": 20262027,
+   "gameType": 2,
+   "gameDate": "2026-10-03",
+   "venue": {
+    "default": "KeyBank Center"
+   },
+   "neutralSite": false,
+   "startTimeUTC": "2026-10-03T23:00:00Z",
+   "easternUTCOffset": "-04:00",
+   "venueUTCOffset": "-04:00",
+   "venueTimezone": "America/New_York",
+   "gameState": "FUT",
+   "gameScheduleState": "OK",
+   "tvBroadcasts": [
+    {
+     "id": 28,
+     "market": "H",
+     "countryCode": "US",
+     "network": "MSG-B",
+     "sequenceNumber": 392
+    },
+    {
+     "id": 551,
+     "market": "A",
+     "countryCode": "US",
+     "network": "CHSN",
+     "sequenceNumber": 254
+    }
+   ],
+   "awayTeam": {
+    "id": 16,
+    "commonName": {
+     "default": "Blackhawks"
+    },
+    "placeName": {
+     "default": "Chicago"
+    },
+    "placeNameWithPreposition": {
+     "default": "Chicago",
+     "fr": "de Chicago"
+    },
+    "abbrev": "CHI",
+    "awaySplitSquad": false,
+    "promoLink": "",
+    "promoDesc": "",
+    "radioLink": "https://d2igy0yla8zi0u.cloudfront.net/CHI/20262027/CHI-radio.m3u8",
+    "airlineLink": "",
+    "airlineDesc": "",
+    "hotelLink": "",
+    "hotelDesc": ""
+   },
+   "homeTeam": {
+    "id": 7,
+    "commonName": {
+     "default": "Sabres"
+    },
+    "placeName": {
+     "default": "Buffalo"
+    },
+    "placeNameWithPreposition": {
+     "default": "Buffalo",
+     "fr": "de Buffalo"
+    },
+    "abbrev": "BUF",
+    "homeSplitSquad": false,
+    "promoLink": "https://www.nhl.com/sabres/tickets/theme-nights",
+    "promoDesc": "Home Opener",
+    "radioLink": "https://d2igy0yla8zi0u.cloudfront.net/BUF/20262027/BUF-radio.m3u8",
+    "airlineLink": "",
+    "airlineDesc": "",
+    "hotelLink": "",
+    "hotelDesc": ""
+   },
+   "periodDescriptor": {
+    "number": 1,
+    "periodType": "REG",
+    "maxRegulationPeriods": 3
+   }
+  },
+  {
+   "id": 2026020049,
+   "season": 20262027,
+   "gameType": 2,
+   "gameDate": "2026-10-06",
+   "venue": {
+    "default": "KeyBank Center"
+   },
+   "neutralSite": false,
+   "startTimeUTC": "2026-10-06T23:00:00Z",
+   "easternUTCOffset": "-04:00",
+   "venueUTCOffset": "-04:00",
+   "venueTimezone": "America/New_York",
+   "gameState": "FUT",
+   "gameScheduleState": "OK",
+   "tvBroadcasts": [
+    {
+     "id": 28,
+     "market": "H",
+     "countryCode": "US",
+     "network": "MSG-B",
+     "sequenceNumber": 392
+    },
+    {
+     "id": 648,
+     "market": "A",
+     "countryCode": "US",
+     "network": "MINNHL",
+     "sequenceNumber": 1
+    },
+    {
+     "id": 758,
+     "market": "A",
+     "countryCode": "US",
+     "network": "Wild+",
+     "sequenceNumber": 1
+    }
+   ],
+   "awayTeam": {
+    "id": 30,
+    "commonName": {
+     "default": "Wild"
+    },
+    "placeName": {
+     "default": "Minnesota"
+    },
+    "placeNameWithPreposition": {
+     "default": "Minnesota",
+     "fr": "du Minnesota"
+    },
+    "abbrev": "MIN",
+    "awaySplitSquad": false,
+    "radioLink": "https://d2igy0yla8zi0u.cloudfront.net/MIN/20262027/MIN-radio.m3u8"
+   },
+   "homeTeam": {
+    "id": 7,
+    "commonName": {
+     "default": "Sabres"
+    },
+    "placeName": {
+     "default": "Buffalo"
+    },
+    "placeNameWithPreposition": {
+     "default": "Buffalo",
+     "fr": "de Buffalo"
+    },
+    "abbrev": "BUF",
+    "homeSplitSquad": false,
+    "radioLink": "https://d2igy0yla8zi0u.cloudfront.net/BUF/20262027/BUF-radio.m3u8"
+   },
+   "periodDescriptor": {
+    "number": 1,
+    "periodType": "REG",
+    "maxRegulationPeriods": 3
+   }
+  },
+  {
+   "id": 2026020057,
+   "season": 20262027,
+   "gameType": 2,
+   "gameDate": "2026-10-08",
+   "venue": {
+    "default": "KeyBank Center"
+   },
+   "neutralSite": false,
+   "startTimeUTC": "2026-10-08T23:00:00Z",
+   "easternUTCOffset": "-04:00",
+   "venueUTCOffset": "-04:00",
+   "venueTimezone": "America/New_York",
+   "gameState": "FUT",
+   "gameScheduleState": "OK",
+   "tvBroadcasts": [
+    {
+     "id": 28,
+     "market": "H",
+     "countryCode": "US",
+     "network": "MSG-B",
+     "sequenceNumber": 392
+    },
+    {
+     "id": 652,
+     "market": "A",
+     "countryCode": "US",
+     "network": "Prime Video",
+     "sequenceNumber": 117
+    }
+   ],
+   "awayTeam": {
+    "id": 25,
+    "commonName": {
+     "default": "Stars"
+    },
+    "placeName": {
+     "default": "Dallas"
+    },
+    "placeNameWithPreposition": {
+     "default": "Dallas",
+     "fr": "de Dallas"
+    },
+    "abbrev": "DAL",
+    "awaySplitSquad": false,
+    "promoLink": "",
+    "promoDesc": "",
+    "radioLink": "https://d2igy0yla8zi0u.cloudfront.net/DAL/20262027/DAL-radio.m3u8",
+    "airlineLink": "https://www.aa.com/homePage.do?c=SPNS%7CDSP%7CSTR%7C2026%7CSCH%7C_STARS_2026_SCHEDULE_PAGE",
+    "airlineDesc": "Book flights with American Airlines",
+    "hotelLink": "",
+    "hotelDesc": ""
+   },
+   "homeTeam": {
+    "id": 7,
+    "commonName": {
+     "default": "Sabres"
+    },
+    "placeName": {
+     "default": "Buffalo"
+    },
+    "placeNameWithPreposition": {
+     "default": "Buffalo",
+     "fr": "de Buffalo"
+    },
+    "abbrev": "BUF",
+    "homeSplitSquad": false,
+    "promoLink": "https://www.nhl.com/sabres/tickets/theme-nights",
+    "promoDesc": "Oktoberfest",
+    "radioLink": "https://d2igy0yla8zi0u.cloudfront.net/BUF/20262027/BUF-radio.m3u8",
+    "airlineLink": "",
+    "airlineDesc": "",
+    "hotelLink": "",
+    "hotelDesc": ""
+   },
+   "periodDescriptor": {
+    "number": 1,
+    "periodType": "REG",
+    "maxRegulationPeriods": 3
+   }
+  },
+  {
+   "id": 2026020074,
+   "season": 20262027,
+   "gameType": 2,
+   "gameDate": "2026-10-10",
+   "venue": {
+    "default": "KeyBank Center"
+   },
+   "neutralSite": false,
+   "startTimeUTC": "2026-10-10T23:00:00Z",
+   "easternUTCOffset": "-04:00",
+   "venueUTCOffset": "-04:00",
+   "venueTimezone": "America/New_York",
+   "gameState": "FUT",
+   "gameScheduleState": "OK",
+   "tvBroadcasts": [
+    {
+     "id": 28,
+     "market": "H",
+     "countryCode": "US",
+     "network": "MSG-B",
+     "sequenceNumber": 392
+    },
+    {
+     "id": 558,
+     "market": "A",
+     "countryCode": "US",
+     "network": "Utah16",
+     "sequenceNumber": 381
+    }
+   ],
+   "awayTeam": {
+    "id": 68,
+    "commonName": {
+     "default": "Mammoth"
+    },
+    "placeName": {
+     "default": "Utah"
+    },
+    "placeNameWithPreposition": {
+     "default": "Utah",
+     "fr": "de l'Utah"
+    },
+    "abbrev": "UTA",
+    "awaySplitSquad": false,
+    "radioLink": "https://d2igy0yla8zi0u.cloudfront.net/UTA/20262027/UTA-radio.m3u8"
+   },
+   "homeTeam": {
+    "id": 7,
+    "commonName": {
+     "default": "Sabres"
+    },
+    "placeName": {
+     "default": "Buffalo"
+    },
+    "placeNameWithPreposition": {
+     "default": "Buffalo",
+     "fr": "de Buffalo"
+    },
+    "abbrev": "BUF",
+    "homeSplitSquad": false,
+    "radioLink": "https://d2igy0yla8zi0u.cloudfront.net/BUF/20262027/BUF-radio.m3u8"
+   },
+   "periodDescriptor": {
+    "number": 1,
+    "periodType": "REG",
+    "maxRegulationPeriods": 3
+   }
+  },
+  {
+   "id": 2026020087,
+   "season": 20262027,
+   "gameType": 2,
+   "gameDate": "2026-10-12",
+   "venue": {
+    "default": "KeyBank Center"
+   },
+   "neutralSite": false,
+   "startTimeUTC": "2026-10-12T17:00:00Z",
+   "easternUTCOffset": "-04:00",
+   "venueUTCOffset": "-04:00",
+   "venueTimezone": "America/New_York",
+   "gameState": "FUT",
+   "gameScheduleState": "OK",
+   "tvBroadcasts": [
+    {
+     "id": 282,
+     "market": "N",
+     "countryCode": "CA",
+     "network": "SN",
+     "sequenceNumber": 107
+    },
+    {
+     "id": 281,
+     "market": "N",
+     "countryCode": "CA",
+     "network": "TVAS",
+     "sequenceNumber": 120
+    },
+    {
+     "id": 28,
+     "market": "H",
+     "countryCode": "US",
+     "network": "MSG-B",
+     "sequenceNumber": 392
+    },
+    {
+     "id": 521,
+     "market": "A",
+     "countryCode": "US",
+     "network": "SCRIPPS",
+     "sequenceNumber": 657
+    }
+   ],
+   "awayTeam": {
+    "id": 13,
+    "commonName": {
+     "default": "Panthers"
+    },
+    "placeName": {
+     "default": "Florida",
+     "fr": "Floride"
+    },
+    "placeNameWithPreposition": {
+     "default": "Florida",
+     "fr": "de la Floride"
+    },
+    "abbrev": "FLA",
+    "awaySplitSquad": false,
+    "radioLink": "https://d2igy0yla8zi0u.cloudfront.net/FLA/20262027/FLA-radio.m3u8"
+   },
+   "homeTeam": {
+    "id": 7,
+    "commonName": {
+     "default": "Sabres"
+    },
+    "placeName": {
+     "default": "Buffalo"
+    },
+    "placeNameWithPreposition": {
+     "default": "Buffalo",
+     "fr": "de Buffalo"
+    },
+    "abbrev": "BUF",
+    "homeSplitSquad": false,
+    "radioLink": "https://d2igy0yla8zi0u.cloudfront.net/BUF/20262027/BUF-radio.m3u8"
+   },
+   "periodDescriptor": {
+    "number": 1,
+    "periodType": "REG",
+    "maxRegulationPeriods": 3
+   }
+  },
+  {
+   "id": 2026020092,
+   "season": 20262027,
+   "gameType": 2,
+   "gameDate": "2026-10-13",
+   "venue": {
+    "default": "Centre Bell"
+   },
+   "neutralSite": false,
+   "startTimeUTC": "2026-10-13T22:30:00Z",
+   "easternUTCOffset": "-04:00",
+   "venueUTCOffset": "-04:00",
+   "venueTimezone": "America/Montreal",
+   "gameState": "FUT",
+   "gameScheduleState": "OK",
+   "tvBroadcasts": [
+    {
+     "id": 28,
+     "market": "A",
+     "countryCode": "US",
+     "network": "MSG-B",
+     "sequenceNumber": 392
+    },
+    {
+     "id": 131,
+     "market": "H",
+     "countryCode": "CA",
+     "network": "TSN2",
+     "sequenceNumber": 112
+    },
+    {
+     "id": 33,
+     "market": "H",
+     "countryCode": "CA",
+     "network": "RDS",
+     "sequenceNumber": 145
+    }
+   ],
+   "awayTeam": {
+    "id": 7,
+    "commonName": {
+     "default": "Sabres"
+    },
+    "placeName": {
+     "default": "Buffalo"
+    },
+    "placeNameWithPreposition": {
+     "default": "Buffalo",
+     "fr": "de Buffalo"
+    },
+    "abbrev": "BUF",
+    "awaySplitSquad": false,
+    "radioLink": "https://d2igy0yla8zi0u.cloudfront.net/BUF/20262027/BUF-radio.m3u8"
+   },
+   "homeTeam": {
+    "id": 8,
+    "commonName": {
+     "default": "Canadiens"
+    },
+    "placeName": {
+     "default": "Montréal"
+    },
+    "placeNameWithPreposition": {
+     "default": "Montréal",
+     "fr": "de Montréal"
+    },
+    "abbrev": "MTL",
+    "homeSplitSquad": false,
+    "radioLink": "https://d2igy0yla8zi0u.cloudfront.net/MTL/20262027/MTL-radio.m3u8"
+   },
+   "periodDescriptor": {
+    "number": 1,
+    "periodType": "REG",
+    "maxRegulationPeriods": 3
+   }
+  },
+  {
+   "id": 2026020108,
+   "season": 20262027,
+   "gameType": 2,
+   "gameDate": "2026-10-15",
+   "venue": {
+    "default": "Scotiabank Arena"
+   },
+   "neutralSite": false,
+   "startTimeUTC": "2026-10-15T23:00:00Z",
+   "easternUTCOffset": "-04:00",
+   "venueUTCOffset": "-04:00",
+   "venueTimezone": "America/Toronto",
+   "gameState": "FUT",
+   "gameScheduleState": "OK",
+   "tvBroadcasts": [
+    {
+     "id": 281,
+     "market": "N",
+     "countryCode": "CA",
+     "network": "TVAS",
+     "sequenceNumber": 120
+    },
+    {
+     "id": 28,
+     "market": "A",
+     "countryCode": "US",
+     "network": "MSG-B",
+     "sequenceNumber": 392
+    },
+    {
+     "id": 293,
+     "market": "H",
+     "countryCode": "CA",
+     "network": "TSN4",
+     "sequenceNumber": 137
+    }
+   ],
+   "awayTeam": {
+    "id": 7,
+    "commonName": {
+     "default": "Sabres"
+    },
+    "placeName": {
+     "default": "Buffalo"
+    },
+    "placeNameWithPreposition": {
+     "default": "Buffalo",
+     "fr": "de Buffalo"
+    },
+    "abbrev": "BUF",
+    "awaySplitSquad": false,
+    "radioLink": "https://d2igy0yla8zi0u.cloudfront.net/BUF/20262027/BUF-radio.m3u8"
+   },
+   "homeTeam": {
+    "id": 10,
+    "commonName": {
+     "default": "Maple Leafs"
+    },
+    "placeName": {
+     "default": "Toronto"
+    },
+    "placeNameWithPreposition": {
+     "default": "Toronto",
+     "fr": "de Toronto"
+    },
+    "abbrev": "TOR",
+    "homeSplitSquad": false,
+    "radioLink": "https://d2igy0yla8zi0u.cloudfront.net/TOR/20262027/TOR-radio.m3u8",
+    "hotelLink": "https://www.marriott.com/search/findHotels.mi?destinationAddress.destination=SCOTIABANK+ARENA,+TORONTO,+CANADA&cid=DIS_GLB000791Q_GLE000HJ7H_GLF0017USO",
+    "hotelDesc": "Book Now"
+   },
+   "periodDescriptor": {
+    "number": 1,
+    "periodType": "REG",
+    "maxRegulationPeriods": 3
+   }
+  }
+ ]
+}

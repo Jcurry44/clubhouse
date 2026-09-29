@@ -1,0 +1,310 @@
+/* Clubhouse — per-screen layout. Each lane appends inside its own delimited section. */
+
+/* ======================================================================
+   Pillar hero (.hcp pattern — Golf handicap hero, Train/Bourbon ring hero)
+   ====================================================================== */
+.hcp { padding: 18px 16px 14px; overflow: hidden; }
+.hcp .lbl { font: 600 11px/1 var(--body); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
+.hcp .big { display: flex; align-items: flex-end; gap: 12px; margin-top: 6px; }
+.hcp .big .n { font: 700 72px/0.9 var(--display); letter-spacing: -0.03em; }
+.hcp .big .d { display: flex; flex-direction: column; gap: 4px; padding-bottom: 6px; }
+.hcp .big .d .delta { display: inline-flex; align-items: center; gap: 4px; font: 700 20px/1 var(--display); color: var(--volt); }
+.hcp .big .d .delta.warm { color: var(--amber); }
+.hcp .big .d .delta svg { width: 14px; height: 14px; }
+.hcp .big .d span { font: 500 12px/1.2 var(--body); color: var(--ink-3); }
+.hcp .chart { margin: 12px -16px -14px; }
+.hcp .chart svg { width: 100%; height: 92px; }
+.hcp .best { position: absolute; right: 14px; top: 14px; text-align: right; }
+.hcp .best .k { font: 600 10.5px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+.hcp .best .v { font: 700 20px/1 var(--display); margin-top: 4px; }
+.hcp .best .v small { font-size: 12px; color: var(--ink-3); font-weight: 600; }
+
+/* Ring hero (Train / Bourbon): 120 px ring left, stat block right */
+.ring-hero { display: grid; grid-template-columns: 120px 1fr; gap: 16px; align-items: center; }
+.ring-hero .facts { display: grid; gap: 12px; min-width: 0; }
+.ring-hero .facts .k { font: 600 10.5px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+.ring-hero .facts .v { font: 700 20px/1.05 var(--display); margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ring-hero .facts .v small { font: 600 12px/1 var(--body); color: var(--ink-3); margin-left: 3px; }
+
+/* Link card pinned as the last card of Golf / Bourbon ("Open the ledger") */
+.open-app { display: flex; flex-direction: column; gap: 6px; }
+.open-app .cta { margin: 0; }
+.open-app .sub { text-align: center; font: 500 12.5px/1.3 var(--body); color: var(--ink-3); }
+
+/* ======================================================================
+   Placeholder screen (routes whose lane has not landed yet)
+   ====================================================================== */
+.soon { padding: 22px 18px; }
+.soon .empty h3 { font-size: 24px; }
+
+/* ======================================================================
+   Backup (#/backup) — Lane A
+   ====================================================================== */
+.backup-hero { padding: 16px; }
+.backup-hero .state { display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: center; }
+.backup-hero .state .mark { width: 44px; height: 44px; border-radius: 13px; display: grid; place-items: center; background: var(--volt-dim); border: 1px solid var(--volt-line); color: var(--volt); }
+.backup-hero .state .mark.warm { background: var(--amber-dim); border-color: var(--amber-line); color: var(--amber); }
+.backup-hero .state .mark svg { width: 22px; height: 22px; }
+.backup-hero .state .k { font: 600 11px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+.backup-hero .state .v { margin-top: 5px; font: 700 24px/1.05 var(--display); letter-spacing: .005em; }
+.backup-hero .state .v .warn { color: var(--amber); }
+.backup-hero .counts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 14px; }
+.backup-hero .counts div { padding: 9px 7px 8px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--line); min-width: 0; }
+.backup-hero .counts b { display: block; font: 700 22px/1 var(--display); }
+.backup-hero .counts span { display: block; margin-top: 4px; font: 600 9.5px/1 var(--body); letter-spacing: .04em; text-transform: uppercase; color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.backup-hero .copy { margin: 14px 0 0; font: 500 13.5px/1.45 var(--body); color: var(--ink-2); }
+.backup-hero .cta { margin-top: 14px; }
+.backup-hero .row2 { display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 8px; }
+.file-input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+
+.handoff { border-color: var(--line-strong); }
+.handoff .empty .glyph { background: var(--surface-3); color: var(--ink); }
+.handoff .close { position: absolute; right: 8px; top: 8px; width: 44px; height: 44px; display: grid; place-items: center; color: var(--ink-3); }
+.handoff .close svg { width: 16px; height: 16px; }
+
+.snaps .li .t b { font-weight: 600; }
+.snaps .li .pill { min-height: 34px; }
+
+/* ======================================================================
+   Settings (#/settings) — Lane A
+   ====================================================================== */
+.goal-row { display: grid; grid-template-columns: 34px 1fr auto; align-items: center; gap: 12px; min-height: 64px; padding: 10px 14px; border-top: 1px solid var(--line); }
+.goal-row:first-child { border-top: 0; }
+.goal-row .lg { width: 34px; height: 34px; border-radius: 11px; display: grid; place-items: center; background: var(--surface-2); border: 1px solid var(--line); color: var(--ink-2); }
+.goal-row .lg svg { width: 17px; height: 17px; }
+.goal-row .t { font: 700 17px/1 var(--display); text-transform: uppercase; letter-spacing: .05em; min-width: 0; }
+.goal-row .t small { display: block; margin-top: 4px; font: 500 12px/1.2 var(--body); color: var(--ink-3); text-transform: none; letter-spacing: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.name-row { display: grid; grid-template-columns: 1fr; gap: 8px; padding: 14px; }
+.name-row label { font: 600 11px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+.about { padding: 14px; font: 500 13px/1.5 var(--body); color: var(--ink-3); }
+.about b { color: var(--ink-2); font-weight: 600; }
+.about code { font: 600 12px/1 ui-monospace, "SF Mono", Consolas, monospace; color: var(--ink-2); }
+
+/* ======================================================================
+   Train (Lane C) — logger, exercise, history
+   ====================================================================== */
+
+/* Train — a read-only window onto Form (Direction B). Class prefix tr-. Every state carries a word or an icon, never hue alone. */
+.tr-hero { padding: 16px 16px 12px; }
+.tr-fresh { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); }
+.tr-fresh .when { display: flex; align-items: center; gap: 7px; min-width: 0; font: 500 12.5px/1.2 var(--body); color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tr-fresh .when svg { width: 14px; height: 14px; flex: 0 0 auto; }
+.tr-fresh .when b { color: var(--ink-2); font-weight: 600; }
+.tr-fresh.stale .when, .tr-fresh.stale .when b { color: var(--amber); }
+.tr-fresh .pill { flex: 0 0 auto; }
+.ring-hero .facts a.v { position: relative; color: inherit; }
+.ring-hero .facts a.v::after { content: ""; position: absolute; inset: -13px -8px; }
+.section-h a.meta.tr-all::after { inset: -16px -8px; }
+.hcp .big .n .u { margin-left: 6px; font: 600 22px/1 var(--display); letter-spacing: 0; color: var(--ink-3); }
+.tr-long { font-size: 30px; line-height: 1.05; align-items: flex-start; }
+.tr-long svg { margin-top: 3px; }
+
+.tr-quiet p { margin: 0 0 12px; font: 500 13.5px/1.45 var(--body); color: var(--ink-2); }
+.tr-fine { margin: 4px 6px 0; text-align: center; font: 500 12px/1.4 var(--body); color: var(--ink-3); }
+
+.tr-steps { list-style: none; margin: 14px 0 6px; padding: 0; display: grid; }
+.tr-steps li { display: grid; grid-template-columns: 30px 1fr; gap: 12px; align-items: center; min-height: 48px; padding: 6px 0; border-top: 1px solid var(--line); }
+.tr-steps li:first-child { border-top: 0; }
+.tr-steps .n { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; border: 2px dashed var(--line-strong); color: var(--ink-2); font: 700 13px/1 var(--display); }
+.tr-steps .t { font: 500 14px/1.35 var(--body); color: var(--ink-2); }
+.tr-steps .t b { color: var(--ink); font-weight: 600; }
+.tr-onboard .cta { margin-top: 10px; }
+.tr-onboard .tr-steps + .cta { margin-top: 12px; }
+
+.tr-movers { padding: 4px 0; }
+.tr-movers .mv { display: grid; grid-template-columns: 1fr auto; column-gap: 12px; row-gap: 4px; align-items: center; min-height: 64px; padding: 11px 14px; border-top: 1px solid var(--line); }
+.tr-movers .mv:first-child { border-top: 0; }
+.tr-movers .mv:active { background: var(--surface-2); }
+.tr-movers .n { grid-row: 1 / span 2; min-width: 0; font: 600 14.5px/1.2 var(--body); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tr-movers .n span { display: block; margin-top: 3px; font: 500 12px/1.2 var(--body); color: var(--ink-3); overflow: hidden; text-overflow: ellipsis; }
+.tr-movers .v { text-align: right; font: 700 26px/1 var(--display); letter-spacing: -0.02em; }
+.tr-movers .v small { margin-left: 2px; font: 600 11px/1 var(--body); color: var(--ink-3); letter-spacing: 0; }
+.tr-movers .d { display: flex; align-items: center; justify-content: flex-end; gap: 4px; font: 600 12px/1 var(--body); color: var(--ink-2); white-space: nowrap; }
+.tr-movers .d svg { width: 10px; height: 10px; }
+.tr-movers .d.up { color: var(--volt); }
+.tr-movers .d.down { color: var(--amber); }
+.tr-movers .d small { font: 500 11px/1 var(--body); color: var(--ink-3); }
+
+.tr-source { padding: 14px; }
+.tr-source .row { display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: center; }
+.tr-source .lg { width: 34px; height: 34px; border-radius: 11px; display: grid; place-items: center; background: var(--volt-dim); border: 1px solid var(--volt-line); color: var(--volt); }
+.tr-source .lg svg { width: 17px; height: 17px; }
+.tr-source .t { font: 600 14.5px/1.2 var(--body); min-width: 0; }
+.tr-source .t small { display: block; margin-top: 3px; font: 500 12px/1.3 var(--body); color: var(--ink-3); }
+.tr-source .btns { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.tr-how { margin-top: 10px; border-top: 1px solid var(--line); }
+.tr-how summary { list-style: none; display: flex; align-items: center; justify-content: space-between; min-height: 44px; cursor: pointer; font: 600 13.5px/1 var(--body); color: var(--ink-2); }
+.tr-how summary::-webkit-details-marker { display: none; }
+.tr-how summary svg { width: 14px; height: 14px; transition: transform .2s var(--ease-out); }
+.tr-how[open] summary svg { transform: rotate(90deg); }
+.tr-how .tr-steps { margin-top: 0; }
+
+.tr-filter { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin: 0 -16px; padding: 2px 16px 4px; }
+.tr-filter::-webkit-scrollbar { display: none; }
+.tr-filter .pill { flex: 0 0 auto; }
+.tr-filter .pill .n { font: 600 11px/1 var(--body); opacity: .65; margin-left: 2px; }
+.rounds > .tr-open { border-top: 1px solid var(--line); background: var(--surface-2); }
+.rounds > .tr-open:first-child { border-top: 0; }
+.tr-detail { padding: 0 14px 10px 70px; display: grid; }
+.tr-detail .ex { display: grid; grid-template-columns: 1fr auto; column-gap: 10px; row-gap: 2px; align-items: center; min-height: 48px; padding: 7px 0; border-top: 1px solid var(--line); }
+.tr-detail .ex:first-child { border-top: 0; }
+.tr-detail .en { font: 600 13.5px/1.2 var(--body); }
+.tr-detail .es { grid-column: 1; font: 500 12px/1.3 var(--body); color: var(--ink-3); }
+.tr-detail .ex svg { grid-row: 1 / span 2; grid-column: 2; width: 13px; height: 13px; color: var(--ink-3); }
+.tr-detail .none { margin: 0; padding: 8px 0; font: 500 12.5px/1.4 var(--body); color: var(--ink-3); }
+
+/* Settings → Train: the disabled "Connect live" row */
+.list .li.is-disabled { opacity: .55; cursor: default; }
+.list .li .later { padding: 5px 8px; border-radius: 999px; border: 1px solid var(--line-strong); font: 600 10.5px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); }
+
+/* ======================================================================
+   Sports (Lane D) — team cards, schedule
+   ====================================================================== */
+
+/* ======================================================================
+   Golf + Bourbon (Lane B · golf-bourbon) — #/golf, #/bourbon, dev sample toggle
+   ====================================================================== */
+/* Handicap hero: month labels as HTML (the SVG is stretched, so text inside it would distort) */
+.hcp .chart { position: relative; }
+.hcp .chart .ax { position: absolute; bottom: 6px; font: 600 10px/1 var(--body); letter-spacing: .08em; color: var(--ink-3); text-transform: uppercase; }
+.hcp .chart .ax.l { left: 16px; }
+.hcp .chart .ax.r { right: 16px; }
+.hcp .big .d .delta.flat { color: var(--ink-2); }
+.hcp .big .n { min-width: 0; }
+
+/* rows that are buttons (tap-linked lists) */
+.rounds button.r { font: inherit; color: inherit; background: none; border-left: 0; border-right: 0; border-bottom: 0; cursor: pointer; }
+.rounds button.r:first-child { border-top: 0; }
+.rounds .r .date b { font-variant-numeric: tabular-nums; }
+
+/* First-run "bring your data over" card */
+.teach { padding: 16px; }
+.teach-head { display: grid; grid-template-columns: 40px 1fr; gap: 12px; align-items: start; }
+.teach-head .glyph { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: var(--volt-dim); border: 1px solid var(--volt-line); color: var(--volt); }
+.teach-head .glyph svg { width: 20px; height: 20px; }
+.teach-head h3 { margin: 2px 0 0; font: 700 24px/1.05 var(--display); text-transform: uppercase; letter-spacing: .01em; }
+.teach-head p { margin: 6px 0 0; font: 500 13.5px/1.45 var(--body); color: var(--ink-2); }
+.teach .steps { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 8px; }
+.teach .steps li { display: grid; grid-template-columns: 30px 1fr; gap: 12px; align-items: start; padding: 11px 12px; border-radius: var(--r-inner); background: var(--surface-2); border: 1px solid var(--line); }
+.teach .steps .n { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; border: 2px solid var(--volt); color: var(--volt); font: 700 15px/1 var(--display); }
+.teach .steps .t b { display: block; font: 600 14.5px/1.25 var(--body); color: var(--ink); margin-top: 5px; }
+.teach .steps .t small { display: block; margin-top: 4px; font: 500 12.5px/1.4 var(--body); color: var(--ink-3); }
+.teach-btns { display: grid; gap: 8px; margin-top: 14px; }
+.teach-note { margin: 10px 2px 0; font: 500 12px/1.4 var(--body); color: var(--ink-3); }
+
+/* Open-the-app CTA: the backup warning line keeps its icon + word (never colour alone) */
+.open-app .sub.warnline { display: flex; align-items: center; justify-content: center; gap: 6px; color: var(--amber); }
+.open-app .sub.warnline svg { width: 13px; height: 13px; flex: 0 0 auto; }
+
+/* Bourbon hero */
+.bourbon-hero .facts .v { display: flex; align-items: baseline; gap: 4px; min-width: 0; }
+.bourbon-hero .facts .v .volt { color: var(--volt); }
+.bourbon-hero .facts .v .muted { font: 600 14px/1.2 var(--body); color: var(--ink-3); }
+.bourbon-hero .facts .v small { white-space: nowrap; }
+
+/* On the shelf / finished bottles */
+.shelf { padding: 4px 0; }
+.shelf .s { display: grid; grid-template-columns: 22px 1fr auto; gap: 12px; align-items: center; padding: 11px 14px; border-top: 1px solid var(--line); min-height: 58px; }
+.shelf .s:first-child { border-top: 0; }
+.shelf .bottles { height: 30px; justify-content: center; }
+.shelf .bottles i { width: 14px; }
+.shelf .bottles i.emptied { background: transparent; border-style: dashed; }
+.shelf .name { font: 600 14.5px/1.2 var(--body); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.shelf .meta { margin-top: 3px; font: 500 12px/1.2 var(--body); color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.shelf .wait { text-align: right; }
+.shelf .wait b { display: inline-flex; align-items: center; gap: 3px; font: 700 22px/1 var(--display); letter-spacing: -0.01em; }
+.shelf .wait b svg { width: 13px; height: 13px; color: var(--volt); }
+.shelf .wait span { display: flex; align-items: center; justify-content: flex-end; gap: 3px; margin-top: 3px; font: 600 11px/1 var(--body); color: var(--ink-3); letter-spacing: .02em; }
+.shelf .wait span svg { width: 11px; height: 11px; }
+.shelf .s.waiting .wait b, .shelf .s.waiting .wait span { color: var(--amber); }
+.rebuy { display: inline-flex; align-items: center; gap: 5px; padding: 6px 10px; border-radius: 999px; border: 1.5px solid var(--line-strong); font: 600 12px/1 var(--body); color: var(--ink-2); white-space: nowrap; }
+.rebuy svg { width: 11px; height: 11px; }
+.rebuy.yes { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.rebuy.pending { border-color: var(--amber-line); color: var(--amber); border-style: dashed; }
+
+/* Recent pours reuse .rounds; the CH badge marks Clubhouse quick pours */
+.rounds.pours .r .score b { font-size: 22px; }
+.src { display: inline-block; margin-right: 6px; padding: 2px 5px 1px; border-radius: 5px; background: var(--surface-3); border: 1px solid var(--line-strong); color: var(--ink-2); font: 700 10px/1.2 var(--display); letter-spacing: .08em; vertical-align: 1px; }
+.rounds .r .meta { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* Tasting Night */
+.night { padding: 14px 16px; }
+.night .k { display: flex; align-items: center; gap: 6px; font: 600 11px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+.night .k svg { width: 14px; height: 14px; color: var(--volt); }
+.night .w { margin-top: 8px; font: 700 26px/1.05 var(--display); text-transform: uppercase; letter-spacing: .01em; }
+.night .m { margin-top: 6px; font: 500 13px/1.3 var(--body); color: var(--ink-3); }
+.night .m b { font: 700 18px/1 var(--display); color: var(--volt); }
+.night .hl { margin: 8px 0 0; font: 500 13.5px/1.4 var(--body); color: var(--ink-2); }
+
+/* Settings → Developer → Load sample data */
+.dev-sample .end { gap: 10px; }
+.dev-tag { padding: 3px 6px; border-radius: 6px; border: 1px dashed var(--line-strong); font: 700 10px/1 var(--display); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+.dev-sample.busy { opacity: .5; pointer-events: none; }
+.dev-sample .t small { white-space: normal; }
+
+/* ======================================================================
+   Home (Lane D · home) — Get set up card, week strip day detail, Coach extras, recap links
+   ====================================================================== */
+/* Get set up: four steps, each an accordion (tap the row → how-to + the exact import action) */
+.setup.home-setup { padding: 14px 14px 4px; }
+.home-setup .segs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin: 10px 0 6px; }
+.home-setup .segs i { display: block; height: 4px; border-radius: 2px; background: var(--track); }
+.home-setup .segs i.on { background: var(--volt); }
+.setup.home-setup .step { display: block; min-height: 0; padding: 0; border-top: 1px solid var(--line); }
+.setup.home-setup .segs + .step { border-top: 0; }
+.home-setup .step-h { width: 100%; display: grid; grid-template-columns: 30px 1fr 16px; gap: 12px; align-items: center; min-height: 58px; padding: 9px 0; text-align: left; }
+.home-setup .step-h svg.go { width: 16px; height: 16px; color: var(--ink-3); transition: transform .2s var(--ease-out); }
+.home-setup .step.open .step-h svg.go { transform: rotate(90deg); color: var(--ink-2); }
+.setup.home-setup .step .t small { white-space: normal; overflow: visible; }
+.setup.home-setup .step.done .t { text-decoration: none; color: var(--ink-2); }
+.setup.home-setup .step.open .d { border-style: solid; border-color: var(--ink); color: var(--ink); }
+.setup.home-setup .step.done.open .d { border-color: var(--volt); color: var(--on-volt); }
+.home-setup .step-b { padding: 0 0 14px 42px; }
+.home-setup .how { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.home-setup .how li { display: grid; grid-template-columns: 20px 1fr; gap: 9px; align-items: start; font: 500 13.5px/1.4 var(--body); color: var(--ink-2); }
+.home-setup .how li b { color: var(--ink); font-weight: 600; }
+.home-setup .how .k { width: 20px; height: 20px; margin-top: 0; border-radius: 50%; display: grid; place-items: center; border: 1.5px solid var(--line-strong); font: 700 12px/1 var(--display); color: var(--ink-2); }
+.home-setup .btns { display: flex; flex-direction: column; align-items: stretch; gap: 8px; margin-top: 12px; }
+.home-setup .btns .pill { align-self: flex-start; min-height: 40px; padding: 8px 14px; }
+.home-setup .btns .pill::after { inset: -3px -2px; }
+.home-setup .btns .cta span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.home-setup .fine { margin: 10px 0 0; font: 500 12px/1.4 var(--body); color: var(--ink-3); }
+
+/* Week strip: past days are buttons — tap one to see what was logged (tap-linking, both ways via the item links) */
+.week-strip .day { min-width: 44px; }
+.week-strip button.day { position: relative; min-height: 48px; justify-content: center; border-radius: 12px; }
+.week-strip button.day::before { content: ""; position: absolute; left: 50%; bottom: -5px; width: 16px; height: 2px; margin-left: -8px; border-radius: 1px; background: transparent; }
+.week-strip button.day.sel { color: var(--ink); }
+.week-strip button.day.sel::before { background: var(--ink); }
+.week-strip button.day:active .d { transform: scale(.92); }
+.day-detail { margin-top: 8px; padding: 10px 12px 12px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); }
+.day-detail .dh { font: 600 10.5px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+.day-detail .items { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.day-detail .item { position: relative; display: inline-flex; align-items: center; gap: 6px; min-height: 36px; max-width: 100%; padding: 0 12px 0 10px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--line-strong); font: 600 13px/1 var(--body); color: var(--ink); }
+.day-detail .item::after { content: ""; position: absolute; inset: -4px -2px; }
+.day-detail .item svg { width: 14px; height: 14px; color: var(--ink-2); flex: 0 0 auto; }
+.day-detail .item span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.day-detail .none { margin-top: 8px; font: 500 13px/1.3 var(--body); color: var(--ink-3); }
+
+/* Coach extras: the "New" tag (word, not colour), the quiet card, 44 px action targets */
+.insight .kicker .new { display: inline-block; margin-left: 6px; padding: 2px 5px; border-radius: 5px; background: var(--ink); color: var(--bg); font: 700 9.5px/1.1 var(--body); letter-spacing: .08em; vertical-align: 1px; }
+.coach-quiet { display: flex; align-items: center; gap: 12px; padding: 14px; font: 500 13.5px/1.4 var(--body); color: var(--ink-2); }
+.coach-quiet svg { width: 18px; height: 18px; color: var(--ink-3); flex: 0 0 auto; }
+body[data-route="/"] .insight .actions .pill::after { inset: -6px -2px; }
+body[data-route="/"] .section-h a.meta::after { inset: -16px -8px; }
+
+/* Header streak pill is a link to its pillar; recap stats and streak chips link to theirs */
+a.streak-pill { position: relative; }
+a.streak-pill::after { content: ""; position: absolute; inset: -8px -4px; }
+.recap a.stat { display: block; color: inherit; transition: transform .12s var(--ease-out); }
+.recap a.stat:active { transform: scale(.97); }
+.recap .stat .cmp span { overflow: hidden; text-overflow: ellipsis; }
+
+/* ---------- repair 2026-09-28 (additive; design/build/repair.md): 44 px tap targets ---------- */
+.snaps .li .pill { min-height: 44px; }
+.tr-filter .pill { min-height: 44px; }
+/* Train's "Weekly goal" link: the .v line clips its own ::after (overflow:hidden), so the padding is the hit area */
+.ring-hero .facts a.v { padding: 12px 0; margin: -8px 0 -12px; }
+/* wrapped pill rows: 14 px between rows so each pill's 45 px hit area stays its own; setup pills at the 44 px floor */
+.tr-source .btns, .empty .btns { row-gap: 14px; }
+.home-setup .btns .pill { min-height: 44px; }

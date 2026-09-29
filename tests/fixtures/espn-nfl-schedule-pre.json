@@ -1,0 +1,568 @@
+{
+ "season": {
+  "year": 2026,
+  "type": 2,
+  "name": "Regular Season",
+  "displayName": "2026",
+  "half": 1
+ },
+ "events": [
+  {
+   "id": "401873282",
+   "date": "2026-08-15T17:00Z",
+   "name": "Carolina Panthers at Buffalo Bills",
+   "shortName": "CAR @ BUF",
+   "season": {
+    "year": 2026,
+    "displayName": "2026"
+   },
+   "seasonType": {
+    "id": "1",
+    "type": 1,
+    "name": "Preseason",
+    "abbreviation": "pre"
+   },
+   "week": {
+    "number": 2,
+    "text": "Preseason Week 1"
+   },
+   "timeValid": true,
+   "competitions": [
+    {
+     "id": "401873282",
+     "date": "2026-08-15T17:00Z",
+     "attendance": 58528,
+     "type": {
+      "id": "1",
+      "text": "Standard",
+      "abbreviation": "STD",
+      "slug": "standard",
+      "type": "standard"
+     },
+     "timeValid": true,
+     "neutralSite": false,
+     "boxscoreAvailable": true,
+     "ticketsAvailable": false,
+     "venue": {
+      "fullName": "Highmark Stadium",
+      "address": {
+       "city": "Orchard Park",
+       "state": "NY",
+       "zipCode": "14127",
+       "country": "USA"
+      }
+     },
+     "competitors": [
+      {
+       "id": "2",
+       "type": "team",
+       "order": 0,
+       "homeAway": "home",
+       "winner": true,
+       "team": {
+        "id": "2",
+        "location": "Buffalo",
+        "nickname": "Bills",
+        "abbreviation": "BUF",
+        "displayName": "Buffalo Bills",
+        "shortDisplayName": "Bills"
+       },
+       "score": {
+        "value": 29,
+        "displayValue": "29"
+       },
+       "record": [
+        {
+         "id": "369",
+         "abbreviation": "Game",
+         "displayName": "Record Year To Date",
+         "shortDisplayName": "YTD",
+         "description": "Overall Record",
+         "type": "total",
+         "displayValue": "1-0"
+        },
+        {
+         "id": "13",
+         "displayName": "Home",
+         "shortDisplayName": "HOME",
+         "description": "Home Record",
+         "type": "home",
+         "displayValue": "1-0"
+        },
+        {
+         "id": "14",
+         "displayName": "Road",
+         "shortDisplayName": "AWAY",
+         "description": "Away Record",
+         "type": "road",
+         "displayValue": "0-0"
+        }
+       ]
+      },
+      {
+       "id": "29",
+       "type": "team",
+       "order": 1,
+       "homeAway": "away",
+       "winner": false,
+       "team": {
+        "id": "29",
+        "location": "Carolina",
+        "nickname": "Panthers",
+        "abbreviation": "CAR",
+        "displayName": "Carolina Panthers",
+        "shortDisplayName": "Panthers"
+       },
+       "score": {
+        "value": 14,
+        "displayValue": "14"
+       },
+       "record": [
+        {
+         "id": "369",
+         "abbreviation": "Game",
+         "displayName": "Record Year To Date",
+         "shortDisplayName": "YTD",
+         "description": "Overall Record",
+         "type": "total",
+         "displayValue": "1-1"
+        },
+        {
+         "id": "13",
+         "displayName": "Home",
+         "shortDisplayName": "HOME",
+         "description": "Home Record",
+         "type": "home",
+         "displayValue": "0-0"
+        },
+        {
+         "id": "14",
+         "displayName": "Road",
+         "shortDisplayName": "AWAY",
+         "description": "Away Record",
+         "type": "road",
+         "displayValue": "1-1"
+        }
+       ]
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "WIVB"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "WSOC-TV Channel 9"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ],
+     "status": {
+      "clock": 0,
+      "displayClock": "0:00",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      },
+      "isTBDFlex": false
+     }
+    }
+   ]
+  },
+  {
+   "id": "401873294",
+   "date": "2026-08-22T17:00Z",
+   "name": "Buffalo Bills at Cleveland Browns",
+   "shortName": "BUF @ CLE",
+   "season": {
+    "year": 2026,
+    "displayName": "2026"
+   },
+   "seasonType": {
+    "id": "1",
+    "type": 1,
+    "name": "Preseason",
+    "abbreviation": "pre"
+   },
+   "week": {
+    "number": 3,
+    "text": "Preseason Week 2"
+   },
+   "timeValid": true,
+   "competitions": [
+    {
+     "id": "401873294",
+     "date": "2026-08-22T17:00Z",
+     "attendance": 69035,
+     "type": {
+      "id": "1",
+      "text": "Standard",
+      "abbreviation": "STD",
+      "slug": "standard",
+      "type": "standard"
+     },
+     "timeValid": true,
+     "neutralSite": false,
+     "boxscoreAvailable": true,
+     "ticketsAvailable": false,
+     "venue": {
+      "fullName": "Huntington Bank Field",
+      "address": {
+       "city": "Cleveland",
+       "state": "OH",
+       "zipCode": "44114",
+       "country": "USA"
+      }
+     },
+     "competitors": [
+      {
+       "id": "5",
+       "type": "team",
+       "order": 0,
+       "homeAway": "home",
+       "winner": false,
+       "team": {
+        "id": "5",
+        "location": "Cleveland",
+        "nickname": "Browns",
+        "abbreviation": "CLE",
+        "displayName": "Cleveland Browns",
+        "shortDisplayName": "Browns"
+       },
+       "score": {
+        "value": 7,
+        "displayValue": "7"
+       },
+       "record": [
+        {
+         "id": "369",
+         "abbreviation": "Game",
+         "displayName": "Record Year To Date",
+         "shortDisplayName": "YTD",
+         "description": "Overall Record",
+         "type": "total",
+         "displayValue": "0-2"
+        },
+        {
+         "id": "13",
+         "displayName": "Home",
+         "shortDisplayName": "HOME",
+         "description": "Home Record",
+         "type": "home",
+         "displayValue": "0-1"
+        },
+        {
+         "id": "14",
+         "displayName": "Road",
+         "shortDisplayName": "AWAY",
+         "description": "Away Record",
+         "type": "road",
+         "displayValue": "0-1"
+        }
+       ]
+      },
+      {
+       "id": "2",
+       "type": "team",
+       "order": 1,
+       "homeAway": "away",
+       "winner": true,
+       "team": {
+        "id": "2",
+        "location": "Buffalo",
+        "nickname": "Bills",
+        "abbreviation": "BUF",
+        "displayName": "Buffalo Bills",
+        "shortDisplayName": "Bills"
+       },
+       "score": {
+        "value": 31,
+        "displayValue": "31"
+       },
+       "record": [
+        {
+         "id": "369",
+         "abbreviation": "Game",
+         "displayName": "Record Year To Date",
+         "shortDisplayName": "YTD",
+         "description": "Overall Record",
+         "type": "total",
+         "displayValue": "2-0"
+        },
+        {
+         "id": "13",
+         "displayName": "Home",
+         "shortDisplayName": "HOME",
+         "description": "Home Record",
+         "type": "home",
+         "displayValue": "1-0"
+        },
+        {
+         "id": "14",
+         "displayName": "Road",
+         "shortDisplayName": "AWAY",
+         "description": "Away Record",
+         "type": "road",
+         "displayValue": "1-0"
+        }
+       ]
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "NFL Net"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ],
+     "status": {
+      "clock": 0,
+      "displayClock": "0:00",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      },
+      "isTBDFlex": false
+     }
+    }
+   ]
+  },
+  {
+   "id": "401873298",
+   "date": "2026-08-27T23:00Z",
+   "name": "Pittsburgh Steelers at Buffalo Bills",
+   "shortName": "PIT @ BUF",
+   "season": {
+    "year": 2026,
+    "displayName": "2026"
+   },
+   "seasonType": {
+    "id": "1",
+    "type": 1,
+    "name": "Preseason",
+    "abbreviation": "pre"
+   },
+   "week": {
+    "number": 4,
+    "text": "Preseason Week 3"
+   },
+   "timeValid": true,
+   "competitions": [
+    {
+     "id": "401873298",
+     "date": "2026-08-27T23:00Z",
+     "attendance": 59001,
+     "type": {
+      "id": "1",
+      "text": "Standard",
+      "abbreviation": "STD",
+      "slug": "standard",
+      "type": "standard"
+     },
+     "timeValid": true,
+     "neutralSite": false,
+     "boxscoreAvailable": true,
+     "ticketsAvailable": false,
+     "venue": {
+      "fullName": "Highmark Stadium",
+      "address": {
+       "city": "Orchard Park",
+       "state": "NY",
+       "zipCode": "14127",
+       "country": "USA"
+      }
+     },
+     "competitors": [
+      {
+       "id": "2",
+       "type": "team",
+       "order": 0,
+       "homeAway": "home",
+       "winner": true,
+       "team": {
+        "id": "2",
+        "location": "Buffalo",
+        "nickname": "Bills",
+        "abbreviation": "BUF",
+        "displayName": "Buffalo Bills",
+        "shortDisplayName": "Bills"
+       },
+       "score": {
+        "value": 28,
+        "displayValue": "28"
+       },
+       "record": [
+        {
+         "id": "369",
+         "abbreviation": "Game",
+         "displayName": "Record Year To Date",
+         "shortDisplayName": "YTD",
+         "description": "Overall Record",
+         "type": "total",
+         "displayValue": "3-0"
+        },
+        {
+         "id": "13",
+         "displayName": "Home",
+         "shortDisplayName": "HOME",
+         "description": "Home Record",
+         "type": "home",
+         "displayValue": "2-0"
+        },
+        {
+         "id": "14",
+         "displayName": "Road",
+         "shortDisplayName": "AWAY",
+         "description": "Away Record",
+         "type": "road",
+         "displayValue": "1-0"
+        }
+       ]
+      },
+      {
+       "id": "23",
+       "type": "team",
+       "order": 1,
+       "homeAway": "away",
+       "winner": false,
+       "team": {
+        "id": "23",
+        "location": "Pittsburgh",
+        "nickname": "Steelers",
+        "abbreviation": "PIT",
+        "displayName": "Pittsburgh Steelers",
+        "shortDisplayName": "Steelers"
+       },
+       "score": {
+        "value": 27,
+        "displayValue": "27"
+       },
+       "record": [
+        {
+         "id": "369",
+         "abbreviation": "Game",
+         "displayName": "Record Year To Date",
+         "shortDisplayName": "YTD",
+         "description": "Overall Record",
+         "type": "total",
+         "displayValue": "1-2"
+        },
+        {
+         "id": "13",
+         "displayName": "Home",
+         "shortDisplayName": "HOME",
+         "description": "Home Record",
+         "type": "home",
+         "displayValue": "1-1"
+        },
+        {
+         "id": "14",
+         "displayName": "Road",
+         "shortDisplayName": "AWAY",
+         "description": "Away Record",
+         "type": "road",
+         "displayValue": "0-1"
+        }
+       ]
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "NFL Net"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "KDKA-TV"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ],
+     "status": {
+      "clock": 0,
+      "displayClock": "0:00",
+      "period": 4,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      },
+      "isTBDFlex": false
+     }
+    }
+   ]
+  }
+ ]
+}

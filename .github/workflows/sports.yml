@@ -1,0 +1,55 @@
+# Clubhouse sports feed (SPEC 5.4) — the FanSignal pattern: fetch server-side, commit data/sports.json only when it changed.
+#
+# NOT ACTIVE until the repo exists: app/ is the future root of Jcurry44/clubhouse, and nothing is pushed
+# without Joe. Until then run `node scripts/ingest-sports.mjs` by hand.
+#
+# Schedule is UTC. 03/09/15/21 = 11p / 5a / 11a / 5p Eastern in daylight time (one hour later on the clock in winter):
+# results land the same evening for 1 pm Sunday games, overnight for prime time.
+# The script writes nothing when nothing changed, except a freshness stamp at most once every ~20 hours, so a quiet
+# off-season costs about one commit a day and the app never calls a healthy feed "old".
+name: sports-feed
+
+on:
+  schedule:
+    - cron: '0 3,9,15,21 * * *'
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/ingest-sports.mjs'
+      - '.github/workflows/sports.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sports-feed
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Exits 0 even when a source is down (the script carries that team's last good data forward and flags it stale).
+      # Exits 1 only when its output fails validation or cannot be written.
+      - name: Build data/sports.json
+        run: node scripts/ingest-sports.mjs
+
+      - name: Commit if changed
+        run: |
+          git config user.name 'clubhouse-bot'
+          git config user.email 'clubhouse-bot@users.noreply.github.com'
+          git add data/sports.json
+          if git diff --cached --quiet; then
+            echo 'data/sports.json unchanged — nothing to commit'
+          else
+            git commit -m "sports: $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi

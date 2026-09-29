@@ -1,0 +1,893 @@
+{
+ "season": {
+  "year": 2027,
+  "type": 2,
+  "name": "Regular Season",
+  "displayName": "2026-27",
+  "half": 1
+ },
+ "events": [
+  {
+   "id": "401891781",
+   "date": "2026-10-01T23:00Z",
+   "name": "Buffalo Sabres at Columbus Blue Jackets",
+   "shortName": "BUF @ CBJ",
+   "season": {
+    "year": 2027,
+    "displayName": "2026-27"
+   },
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "timeValid": true,
+   "competitions": [
+    {
+     "id": "401891781",
+     "date": "2026-10-01T23:00Z",
+     "attendance": 0,
+     "type": {
+      "id": "1",
+      "text": "Standard",
+      "abbreviation": "STD",
+      "slug": "standard",
+      "type": "standard"
+     },
+     "timeValid": true,
+     "neutralSite": false,
+     "boxscoreAvailable": false,
+     "ticketsAvailable": true,
+     "venue": {
+      "fullName": "Nationwide Arena",
+      "address": {
+       "city": "Columbus",
+       "state": "OH",
+       "country": "USA"
+      }
+     },
+     "competitors": [
+      {
+       "id": "29",
+       "type": "team",
+       "order": 0,
+       "homeAway": "home",
+       "team": {
+        "id": "29",
+        "location": "Columbus",
+        "nickname": "Blue Jackets",
+        "abbreviation": "CBJ",
+        "displayName": "Columbus Blue Jackets",
+        "shortDisplayName": "Blue Jackets"
+       },
+       "probables": [
+        {
+         "name": "probableStartingGoalie",
+         "displayName": "Probable Starting Goalie",
+         "shortDisplayName": "Starter",
+         "abbreviation": "SG",
+         "playerId": 4894366,
+         "athlete": {
+          "id": "4894366",
+          "lastName": "Greaves",
+          "displayName": "Jet Greaves",
+          "shortName": "J. Greaves",
+          "team": {
+           "id": "29",
+           "name": "Blue Jackets"
+          }
+         }
+        }
+       ]
+      },
+      {
+       "id": "2",
+       "type": "team",
+       "order": 1,
+       "homeAway": "away",
+       "team": {
+        "id": "2",
+        "location": "Buffalo",
+        "nickname": "Sabres",
+        "abbreviation": "BUF",
+        "displayName": "Buffalo Sabres",
+        "shortDisplayName": "Sabres"
+       },
+       "probables": [
+        {
+         "name": "probableStartingGoalie",
+         "displayName": "Probable Starting Goalie",
+         "shortDisplayName": "Starter",
+         "abbreviation": "SG",
+         "playerId": 4233889,
+         "athlete": {
+          "id": "4233889",
+          "lastName": "Luukkonen",
+          "displayName": "Ukko-Pekka Luukkonen",
+          "shortName": "U. Luukkonen",
+          "team": {
+           "id": "2",
+           "name": "Sabres"
+          }
+         }
+        }
+       ]
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "ESPN+"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "MSGB"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "CBJNHL"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ],
+     "status": {
+      "clock": 0,
+      "displayClock": "0:00",
+      "period": 0,
+      "type": {
+       "id": "1",
+       "name": "STATUS_SCHEDULED",
+       "state": "pre",
+       "completed": false,
+       "description": "Scheduled",
+       "detail": "Thu, October 1st at 7:00 PM EDT",
+       "shortDetail": "10/1 - 7:00 PM EDT"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "401891776",
+   "date": "2026-10-03T23:00Z",
+   "name": "Chicago Blackhawks at Buffalo Sabres",
+   "shortName": "CHI @ BUF",
+   "season": {
+    "year": 2027,
+    "displayName": "2026-27"
+   },
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "timeValid": true,
+   "competitions": [
+    {
+     "id": "401891776",
+     "date": "2026-10-03T23:00Z",
+     "attendance": 0,
+     "type": {
+      "id": "1",
+      "text": "Standard",
+      "abbreviation": "STD",
+      "slug": "standard",
+      "type": "standard"
+     },
+     "timeValid": true,
+     "neutralSite": false,
+     "boxscoreAvailable": false,
+     "ticketsAvailable": true,
+     "venue": {
+      "fullName": "KeyBank Center",
+      "address": {
+       "city": "Buffalo",
+       "state": "NY",
+       "country": "USA"
+      }
+     },
+     "competitors": [
+      {
+       "id": "2",
+       "type": "team",
+       "order": 0,
+       "homeAway": "home",
+       "team": {
+        "id": "2",
+        "location": "Buffalo",
+        "nickname": "Sabres",
+        "abbreviation": "BUF",
+        "displayName": "Buffalo Sabres",
+        "shortDisplayName": "Sabres"
+       },
+       "probables": [
+        {
+         "name": "probableStartingGoalie",
+         "displayName": "Probable Starting Goalie",
+         "shortDisplayName": "Starter",
+         "abbreviation": "SG",
+         "playerId": 4233889,
+         "athlete": {
+          "id": "4233889",
+          "lastName": "Luukkonen",
+          "displayName": "Ukko-Pekka Luukkonen",
+          "shortName": "U. Luukkonen",
+          "team": {
+           "id": "2",
+           "name": "Sabres"
+          }
+         }
+        }
+       ]
+      },
+      {
+       "id": "4",
+       "type": "team",
+       "order": 1,
+       "homeAway": "away",
+       "team": {
+        "id": "4",
+        "location": "Chicago",
+        "nickname": "Blackhawks",
+        "abbreviation": "CHI",
+        "displayName": "Chicago Blackhawks",
+        "shortDisplayName": "Blackhawks"
+       },
+       "probables": [
+        {
+         "name": "probableStartingGoalie",
+         "displayName": "Probable Starting Goalie",
+         "shortDisplayName": "Starter",
+         "abbreviation": "SG",
+         "playerId": 4565234,
+         "athlete": {
+          "id": "4565234",
+          "lastName": "Knight",
+          "displayName": "Spencer Knight",
+          "shortName": "S. Knight",
+          "team": {
+           "id": "4",
+           "name": "Blackhawks"
+          }
+         }
+        }
+       ]
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "ESPN+"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "CHSN"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "MSGB"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ],
+     "status": {
+      "clock": 0,
+      "displayClock": "0:00",
+      "period": 0,
+      "type": {
+       "id": "1",
+       "name": "STATUS_SCHEDULED",
+       "state": "pre",
+       "completed": false,
+       "description": "Scheduled",
+       "detail": "Sat, October 3rd at 7:00 PM EDT",
+       "shortDetail": "10/3 - 7:00 PM EDT"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "401892453",
+   "date": "2026-10-06T23:00Z",
+   "name": "Minnesota Wild at Buffalo Sabres",
+   "shortName": "MIN @ BUF",
+   "season": {
+    "year": 2027,
+    "displayName": "2026-27"
+   },
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "timeValid": true,
+   "competitions": [
+    {
+     "id": "401892453",
+     "date": "2026-10-06T23:00Z",
+     "attendance": 0,
+     "type": {
+      "id": "1",
+      "text": "Standard",
+      "abbreviation": "STD",
+      "slug": "standard",
+      "type": "standard"
+     },
+     "timeValid": true,
+     "neutralSite": false,
+     "boxscoreAvailable": false,
+     "ticketsAvailable": true,
+     "venue": {
+      "fullName": "KeyBank Center",
+      "address": {
+       "city": "Buffalo",
+       "state": "NY",
+       "country": "USA"
+      }
+     },
+     "competitors": [
+      {
+       "id": "2",
+       "type": "team",
+       "order": 0,
+       "homeAway": "home",
+       "team": {
+        "id": "2",
+        "location": "Buffalo",
+        "nickname": "Sabres",
+        "abbreviation": "BUF",
+        "displayName": "Buffalo Sabres",
+        "shortDisplayName": "Sabres"
+       }
+      },
+      {
+       "id": "30",
+       "type": "team",
+       "order": 1,
+       "homeAway": "away",
+       "team": {
+        "id": "30",
+        "location": "Minnesota",
+        "nickname": "Wild",
+        "abbreviation": "MIN",
+        "displayName": "Minnesota Wild",
+        "shortDisplayName": "Wild"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "ESPN+"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "MSGB"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "MINNHL"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ],
+     "status": {
+      "clock": 0,
+      "displayClock": "0:00",
+      "period": 0,
+      "type": {
+       "id": "1",
+       "name": "STATUS_SCHEDULED",
+       "state": "pre",
+       "completed": false,
+       "description": "Scheduled",
+       "detail": "Tue, October 6th at 7:00 PM EDT",
+       "shortDetail": "10/6 - 7:00 PM EDT"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "401892458",
+   "date": "2026-10-08T23:00Z",
+   "name": "Dallas Stars at Buffalo Sabres",
+   "shortName": "DAL @ BUF",
+   "season": {
+    "year": 2027,
+    "displayName": "2026-27"
+   },
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "timeValid": true,
+   "competitions": [
+    {
+     "id": "401892458",
+     "date": "2026-10-08T23:00Z",
+     "attendance": 0,
+     "type": {
+      "id": "1",
+      "text": "Standard",
+      "abbreviation": "STD",
+      "slug": "standard",
+      "type": "standard"
+     },
+     "timeValid": true,
+     "neutralSite": false,
+     "boxscoreAvailable": false,
+     "ticketsAvailable": true,
+     "venue": {
+      "fullName": "KeyBank Center",
+      "address": {
+       "city": "Buffalo",
+       "state": "NY",
+       "country": "USA"
+      }
+     },
+     "competitors": [
+      {
+       "id": "2",
+       "type": "team",
+       "order": 0,
+       "homeAway": "home",
+       "team": {
+        "id": "2",
+        "location": "Buffalo",
+        "nickname": "Sabres",
+        "abbreviation": "BUF",
+        "displayName": "Buffalo Sabres",
+        "shortDisplayName": "Sabres"
+       }
+      },
+      {
+       "id": "9",
+       "type": "team",
+       "order": 1,
+       "homeAway": "away",
+       "team": {
+        "id": "9",
+        "location": "Dallas",
+        "nickname": "Stars",
+        "abbreviation": "DAL",
+        "displayName": "Dallas Stars",
+        "shortDisplayName": "Stars"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "ESPN+"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "MSGB"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ],
+     "status": {
+      "clock": 0,
+      "displayClock": "0:00",
+      "period": 0,
+      "type": {
+       "id": "1",
+       "name": "STATUS_SCHEDULED",
+       "state": "pre",
+       "completed": false,
+       "description": "Scheduled",
+       "detail": "Thu, October 8th at 7:00 PM EDT",
+       "shortDetail": "10/8 - 7:00 PM EDT"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "401892472",
+   "date": "2026-10-10T23:00Z",
+   "name": "Utah Mammoth at Buffalo Sabres",
+   "shortName": "UTA @ BUF",
+   "season": {
+    "year": 2027,
+    "displayName": "2026-27"
+   },
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "timeValid": true,
+   "competitions": [
+    {
+     "id": "401892472",
+     "date": "2026-10-10T23:00Z",
+     "attendance": 0,
+     "type": {
+      "id": "1",
+      "text": "Standard",
+      "abbreviation": "STD",
+      "slug": "standard",
+      "type": "standard"
+     },
+     "timeValid": true,
+     "neutralSite": false,
+     "boxscoreAvailable": false,
+     "ticketsAvailable": true,
+     "venue": {
+      "fullName": "KeyBank Center",
+      "address": {
+       "city": "Buffalo",
+       "state": "NY",
+       "country": "USA"
+      }
+     },
+     "competitors": [
+      {
+       "id": "2",
+       "type": "team",
+       "order": 0,
+       "homeAway": "home",
+       "team": {
+        "id": "2",
+        "location": "Buffalo",
+        "nickname": "Sabres",
+        "abbreviation": "BUF",
+        "displayName": "Buffalo Sabres",
+        "shortDisplayName": "Sabres"
+       }
+      },
+      {
+       "id": "129764",
+       "type": "team",
+       "order": 1,
+       "homeAway": "away",
+       "team": {
+        "id": "129764",
+        "location": "Utah",
+        "nickname": "Mammoth",
+        "abbreviation": "UTA",
+        "displayName": "Utah Mammoth",
+        "shortDisplayName": "Mammoth"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "ESPN+"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "MSGB"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "Utah 16"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ],
+     "status": {
+      "clock": 0,
+      "displayClock": "0:00",
+      "period": 0,
+      "type": {
+       "id": "1",
+       "name": "STATUS_SCHEDULED",
+       "state": "pre",
+       "completed": false,
+       "description": "Scheduled",
+       "detail": "Sat, October 10th at 7:00 PM EDT",
+       "shortDetail": "10/10 - 7:00 PM EDT"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "401892485",
+   "date": "2026-10-12T17:00Z",
+   "name": "Florida Panthers at Buffalo Sabres",
+   "shortName": "FLA @ BUF",
+   "season": {
+    "year": 2027,
+    "displayName": "2026-27"
+   },
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "timeValid": true,
+   "competitions": [
+    {
+     "id": "401892485",
+     "date": "2026-10-12T17:00Z",
+     "attendance": 0,
+     "type": {
+      "id": "1",
+      "text": "Standard",
+      "abbreviation": "STD",
+      "slug": "standard",
+      "type": "standard"
+     },
+     "timeValid": true,
+     "neutralSite": false,
+     "boxscoreAvailable": false,
+     "ticketsAvailable": true,
+     "venue": {
+      "fullName": "KeyBank Center",
+      "address": {
+       "city": "Buffalo",
+       "state": "NY",
+       "country": "USA"
+      }
+     },
+     "competitors": [
+      {
+       "id": "2",
+       "type": "team",
+       "order": 0,
+       "homeAway": "home",
+       "team": {
+        "id": "2",
+        "location": "Buffalo",
+        "nickname": "Sabres",
+        "abbreviation": "BUF",
+        "displayName": "Buffalo Sabres",
+        "shortDisplayName": "Sabres"
+       }
+      },
+      {
+       "id": "26",
+       "type": "team",
+       "order": 1,
+       "homeAway": "away",
+       "team": {
+        "id": "26",
+        "location": "Florida",
+        "nickname": "Panthers",
+        "abbreviation": "FLA",
+        "displayName": "Florida Panthers",
+        "shortDisplayName": "Panthers"
+       }
+      }
+     ],
+     "broadcasts": [
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "1",
+        "type": "National"
+       },
+       "media": {
+        "shortName": "ESPN+"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "4",
+        "shortName": "Streaming"
+       },
+       "market": {
+        "id": "3",
+        "type": "Away"
+       },
+       "media": {
+        "shortName": "Scripps Sports"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      },
+      {
+       "type": {
+        "id": "1",
+        "shortName": "TV"
+       },
+       "market": {
+        "id": "2",
+        "type": "Home"
+       },
+       "media": {
+        "shortName": "MSGB"
+       },
+       "lang": "en",
+       "region": "us",
+       "partnered": false
+      }
+     ],
+     "status": {
+      "clock": 0,
+      "displayClock": "0:00",
+      "period": 0,
+      "type": {
+       "id": "1",
+       "name": "STATUS_SCHEDULED",
+       "state": "pre",
+       "completed": false,
+       "description": "Scheduled",
+       "detail": "Mon, October 12th at 1:00 PM EDT",
+       "shortDetail": "10/12 - 1:00 PM EDT"
+      }
+     }
+    }
+   ]
+  }
+ ]
+}

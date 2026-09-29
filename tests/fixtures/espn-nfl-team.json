@@ -1,0 +1,37 @@
+{
+ "team": {
+  "id": "2",
+  "displayName": "Buffalo Bills",
+  "standingSummary": "1st in AFC East",
+  "record": {
+   "items": [
+    {
+     "type": "total",
+     "summary": "3-0",
+     "stats": [
+      {
+       "name": "gamesPlayed",
+       "value": 3
+      },
+      {
+       "name": "losses",
+       "value": 0
+      },
+      {
+       "name": "streak",
+       "value": 3
+      },
+      {
+       "name": "ties",
+       "value": 0
+      },
+      {
+       "name": "wins",
+       "value": 3
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

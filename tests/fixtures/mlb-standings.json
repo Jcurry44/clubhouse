@@ -1,0 +1,153 @@
+{
+ "records": [
+  {
+   "standingsType": "regularSeason",
+   "division": {
+    "id": 219,
+    "name": "International League East"
+   },
+   "teamRecords": [
+    {
+     "team": {
+      "id": 534,
+      "name": "Rochester Red Wings"
+     },
+     "wins": 90,
+     "losses": 58,
+     "divisionRank": "1",
+     "streak": {
+      "streakCode": "W2",
+      "streakType": "wins",
+      "streakNumber": 2
+     }
+    },
+    {
+     "team": {
+      "id": 494,
+      "name": "Charlotte Knights"
+     },
+     "wins": 81,
+     "losses": 68,
+     "divisionRank": "2",
+     "streak": {
+      "streakCode": "W2",
+      "streakType": "wins",
+      "streakNumber": 2
+     }
+    },
+    {
+     "team": {
+      "id": 552,
+      "name": "Syracuse Mets"
+     },
+     "wins": 81,
+     "losses": 68,
+     "divisionRank": "3",
+     "streak": {
+      "streakCode": "L1",
+      "streakType": "losses",
+      "streakNumber": 1
+     }
+    },
+    {
+     "team": {
+      "id": 531,
+      "name": "Scranton/Wilkes-Barre RailRiders"
+     },
+     "wins": 78,
+     "losses": 68,
+     "divisionRank": "4",
+     "streak": {
+      "streakCode": "W2",
+      "streakType": "wins",
+      "streakNumber": 2
+     }
+    },
+    {
+     "team": {
+      "id": 533,
+      "name": "Worcester Red Sox"
+     },
+     "wins": 76,
+     "losses": 67,
+     "divisionRank": "5",
+     "streak": {
+      "streakCode": "L1",
+      "streakType": "losses",
+      "streakNumber": 1
+     }
+    },
+    {
+     "team": {
+      "id": 564,
+      "name": "Jacksonville Jumbo Shrimp"
+     },
+     "wins": 73,
+     "losses": 74,
+     "divisionRank": "6",
+     "streak": {
+      "streakCode": "L2",
+      "streakType": "losses",
+      "streakNumber": 2
+     }
+    },
+    {
+     "team": {
+      "id": 422,
+      "name": "Buffalo Bisons"
+     },
+     "wins": 68,
+     "losses": 79,
+     "divisionRank": "7",
+     "streak": {
+      "streakCode": "L2",
+      "streakType": "losses",
+      "streakNumber": 2
+     }
+    },
+    {
+     "team": {
+      "id": 1410,
+      "name": "Lehigh Valley IronPigs"
+     },
+     "wins": 68,
+     "losses": 81,
+     "divisionRank": "8",
+     "streak": {
+      "streakCode": "W1",
+      "streakType": "wins",
+      "streakNumber": 1
+     }
+    },
+    {
+     "team": {
+      "id": 234,
+      "name": "Durham Bulls"
+     },
+     "wins": 67,
+     "losses": 81,
+     "divisionRank": "9",
+     "streak": {
+      "streakCode": "W1",
+      "streakType": "wins",
+      "streakNumber": 1
+     }
+    },
+    {
+     "team": {
+      "id": 568,
+      "name": "Norfolk Tides"
+     },
+     "wins": 58,
+     "losses": 89,
+     "divisionRank": "10",
+     "streak": {
+      "streakCode": "L2",
+      "streakType": "losses",
+      "streakNumber": 2
+     }
+    }
+   ]
+  }
+ ]
+}

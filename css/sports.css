@@ -1,0 +1,106 @@
+/* Clubhouse — Sports screen (#/sports). Direction B. Loaded by js/screens/sports.js (its own file so parallel lanes never
+   collide on screens.css). Tokens, .card, .section-h, .pill, .rounds, .insight and .ring-hero come from the shared CSS. */
+
+/* ---------- team cards ---------- */
+.sp-team { padding: 14px 14px 10px; }
+.sp-team .head { display: grid; grid-template-columns: 44px 1fr auto; gap: 12px; align-items: center; }
+.sp-team .lg {
+  width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center;
+  background: var(--ink); color: var(--bg); border: 1px solid var(--ink);
+  font: 700 15px/1 var(--display); letter-spacing: .04em;
+}
+.sp-team .who { min-width: 0; }
+.sp-team h3 { margin: 0; font: 700 22px/1 var(--display); text-transform: uppercase; letter-spacing: .02em; }
+.sp-team .st { margin-top: 5px; font: 500 12.5px/1.2 var(--body); color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sp-team .rec { text-align: right; }
+.sp-team .rec b { display: block; font: 700 32px/1 var(--display); letter-spacing: -0.02em; }
+.sp-team .rec small { display: block; margin-top: 4px; font: 600 10.5px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+
+.sp-stale {
+  display: flex; align-items: center; gap: 8px; margin-top: 12px; padding: 8px 10px; border-radius: 12px;
+  background: var(--amber-dim); border: 1px solid var(--amber-line); color: var(--amber); font: 600 12.5px/1.25 var(--body);
+}
+.sp-stale svg { width: 14px; height: 14px; flex: 0 0 auto; }
+
+.sp-form { display: flex; align-items: center; gap: 10px; margin-top: 12px; min-height: 30px; }
+.sp-form .lbl { flex: 0 0 auto; font: 600 10.5px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+.sp-form .sqs { display: flex; gap: 6px; }
+.sp-form .note { margin-left: auto; font: 500 11.5px/1.2 var(--body); color: var(--ink-3); text-align: right; }
+.sq {
+  position: relative; width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center;
+  font: 700 12px/1 var(--display); letter-spacing: .02em; color: var(--ink); background: var(--surface-3); border: 1.5px solid transparent;
+  transition: transform .12s var(--ease-out), box-shadow .15s;
+}
+.sq::after { content: ""; position: absolute; inset: -10px -3px; } /* ~31 × 45 hit area, no overlap at a 34 px pitch */
+.sq:active { transform: scale(.92); }
+.sq.w { background: var(--volt); color: var(--on-volt); }
+.sq.l { background: var(--surface-3); color: var(--ink); }
+.sq.otl, .sq.sol, .sq.t { background: transparent; color: var(--amber); border-color: var(--amber); }
+.sq.pre { opacity: .62; outline: 1.5px dashed var(--ink-3); outline-offset: 2px; } /* dashed + dimmer: preseason, the letter is still there */
+.sq.sel { box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--ink); opacity: 1; }
+
+.sp-next { margin-top: 12px; padding: 11px 12px 12px; border-radius: 16px; background: var(--surface-2); border: 1px solid var(--line); }
+.sp-next .r1 { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.sp-next .k { font: 600 10.5px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+.sp-next .cd { display: inline-flex; align-items: center; gap: 5px; font: 700 15px/1 var(--display); letter-spacing: .04em; text-transform: uppercase; color: var(--ink); white-space: nowrap; }
+.sp-next .cd svg { width: 13px; height: 13px; color: var(--ink-2); }
+.sp-next .nm { margin-top: 8px; font: 700 22px/1.05 var(--display); letter-spacing: .005em; }
+.sp-next .nm small { margin-left: 7px; font: 500 13px/1 var(--body); color: var(--ink-2); letter-spacing: 0; }
+.sp-next .nf { margin-top: 6px; font: 500 12.5px/1.35 var(--body); color: var(--ink-3); }
+.sp-next .nf b { color: var(--ink-2); font-weight: 600; }
+.sp-next .nw { white-space: nowrap; }
+.sp-next.off { display: flex; align-items: baseline; gap: 8px; padding: 12px; }
+.sp-next.off .nm { margin: 0; font: 700 17px/1 var(--display); text-transform: uppercase; letter-spacing: .04em; color: var(--ink-2); }
+.sp-next.off .nf { margin: 0; font: 500 13px/1 var(--body); color: var(--ink-3); }
+
+.sp-last { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 4px; min-height: 48px; }
+.sp-last .txt { min-width: 0; font: 500 13px/1.25 var(--body); color: var(--ink-2); }
+.sp-last .txt b { margin-right: 6px; font: 700 18px/1 var(--display); letter-spacing: .01em; color: var(--ink); }
+.sp-last .txt .k { display: block; margin-bottom: 3px; font: 600 10.5px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+
+/* ---------- Watched toggle: ink-on-white when set, dashed ring + check shape when not ---------- */
+.pill.wt { flex: 0 0 auto; gap: 7px; min-height: 36px; padding: 9px 12px; } /* 36 + the pill's 5 px ::after each side = 46 px hit area */
+.pill.wt .ring-o { width: 14px; height: 14px; border-radius: 50%; border: 1.5px dashed currentColor; display: block; }
+.pill.wt svg { width: 13px; height: 13px; }
+
+/* ---------- game rows (the Golf .rounds pattern) ---------- */
+.rounds.sp { overflow: hidden; }
+.rounds.sp .r { cursor: pointer; grid-template-columns: 44px 1fr auto; }
+.rounds.sp .r .course { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rounds.sp .r .meta { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rounds.sp .r .meta b.res { font: 700 16px/1 var(--display); letter-spacing: .01em; color: var(--ink); margin-right: 5px; }
+.rounds.sp .r .meta b.res.w { color: var(--volt); }
+.rounds.sp .r .score b { font-size: 24px; }
+.rounds.sp .r .score span { white-space: nowrap; }
+.rounds.sp .r.today .date b { color: var(--volt); }
+.pre-tag {
+  display: inline-block; margin-right: 6px; padding: 3px 5px; vertical-align: 1px; border-radius: 6px; border: 1px dashed var(--line-strong);
+  font: 700 10px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3);
+}
+.rounds.sp .grp {
+  padding: 9px 14px 7px; border-top: 1px solid var(--line); background: var(--surface-2);
+  font: 600 10.5px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3);
+}
+.rounds.sp .grp:first-child { border-top: 0; }
+.rounds.sp .none { padding: 16px 14px; font: 500 13.5px/1.4 var(--body); color: var(--ink-2); }
+
+.sp-foot { padding: 4px 6px 0; font: 500 12px/1.45 var(--body); color: var(--ink-3); text-align: center; }
+.sp-foot b { color: var(--ink-2); font-weight: 600; }
+
+/* ---------- 44 px hit areas for the shared controls this screen uses (scoped so other screens are untouched) ---------- */
+body[data-route="/sports"] .subtop .action::after { inset: -8px -4px; }
+body[data-route="/sports"] .section-h button.meta::after { inset: -16px -8px; }
+body[data-route="/sports"] .insight .pill { min-height: 38px; }
+
+/* ---------- repair 2026-09-28: 44 px targets — 32 px squares at a 48 px pitch (47 × 47 hit areas that never overlap);
+   the note moves under the squares so the row still fits at 375 ---------- */
+.sp-form { display: grid; grid-template-columns: auto 1fr; align-items: center; column-gap: 12px; row-gap: 5px; min-height: 0; }
+.sp-form .sqs { gap: 16px; }
+.sp-form .note { grid-column: 2; margin-left: 0; text-align: left; }
+.sq { width: 32px; height: 32px; font-size: 13px; }
+.sq::after { inset: -9px; } /* from the padding box (29 px inside the 1.5 px border): 47 x 47, 1 px clear of the next */
+.pill.wt { min-height: 44px; }
+@media (max-width: 359px) { .sp-form { grid-template-columns: 1fr; } .sp-form .note { grid-column: 1; } }
+
+/* ---------- reduced motion: no springy scale on the squares ---------- */
+@media (prefers-reduced-motion: reduce) { .sq { transition: none; } }

@@ -1,0 +1,106 @@
+/* Clubhouse — base: reset, body, type utilities, page scaffold, cards, entrance motion, safe areas. */
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { margin: 0; padding: 0; }
+html { background: var(--bg); -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--ink);
+  font: 15px/1.35 var(--body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-variant-numeric: tabular-nums;
+  overscroll-behavior-y: none;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { background: none; border: 0; padding: 0; cursor: pointer; }
+svg { display: block; }
+svg.i { width: 1em; height: 1em; flex: 0 0 auto; }
+img { max-width: 100%; display: block; }
+[hidden] { display: none !important; }
+:focus { outline: none; }
+:focus-visible { outline: 2px solid var(--volt); outline-offset: 2px; border-radius: 6px; }
+::selection { background: var(--volt); color: var(--on-volt); }
+.sr-only { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- Page scaffold ---------- */
+.page {
+  min-height: 100vh;
+  padding:
+    calc(max(var(--sat), 12px) + 4px)
+    calc(var(--gutter) + var(--sar))
+    calc(var(--nav-h) + var(--sab) + 96px)
+    calc(var(--gutter) + var(--sal));
+}
+.page > * + * { margin-top: 14px; }
+.page:focus { outline: none; }
+
+/* ---------- Type utilities ---------- */
+.eyebrow { font: 600 12px/1 var(--body); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
+.display { font-family: var(--display); font-weight: 700; }
+.caps { font: 600 11px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+.muted { color: var(--ink-3); }
+.soft { color: var(--ink-2); }
+.volt { color: var(--volt); }
+.warn, .amber { color: var(--amber); }
+.num { font-variant-numeric: tabular-nums; }
+
+/* ---------- Header rows ---------- */
+.top { padding: 6px 2px 2px; }
+.top .row1 { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 36px; }
+.top .side { display: flex; align-items: center; gap: 8px; flex: 0 0 auto; }
+.top .row1 .eyebrow { min-width: 0; white-space: nowrap; overflow: hidden; }
+h1.greet { font: 700 33px/1 var(--display); letter-spacing: -0.01em; margin: 10px 0 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+h1.greet em { font-style: normal; color: var(--volt); }
+h1.title { font: 700 40px/1 var(--display); text-transform: uppercase; letter-spacing: .01em; margin: 6px 0 0; display: flex; align-items: center; gap: 10px; }
+h1.title svg { width: 26px; height: 26px; color: var(--ink-2); flex: 0 0 auto; }
+
+.section-h { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; padding: 6px 2px 0; }
+.section-h h2 { font: 700 20px/1 var(--display); letter-spacing: .01em; text-transform: uppercase; margin: 0; }
+.section-h .meta { font: 500 13px/1 var(--body); color: var(--ink-3); }
+.section-h a.meta, .section-h button.meta { color: var(--ink-2); display: inline-flex; align-items: center; gap: 4px; position: relative; }
+.section-h a.meta svg, .section-h button.meta svg { width: 12px; height: 12px; }
+.section-h a.meta::after, .section-h button.meta::after { content: ""; position: absolute; inset: -14px -8px; }
+
+.subtop { display: flex; align-items: center; justify-content: space-between; min-height: 44px; padding: 0; }
+.subtop .back { display: inline-flex; align-items: center; gap: 4px; min-height: 44px; font: 600 15px/1 var(--body); color: var(--ink-2); padding-right: 8px; }
+.subtop .back svg { width: 18px; height: 18px; }
+.subtop .action {
+  position: relative; padding: 8px 12px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--line-strong);
+  font: 700 13px/1 var(--display); letter-spacing: .06em; text-transform: uppercase; display: inline-flex; gap: 6px; align-items: center;
+}
+.subtop .action svg { width: 14px; height: 14px; color: var(--volt); }
+.subtop .action::after { content: ""; position: absolute; inset: -6px -4px; }
+
+/* ---------- Cards ---------- */
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-card); padding: 16px; position: relative; }
+:where(a.card, a.press) { display: block; } /* zero specificity: components (.insight grid, .game…) set their own display */
+.card.press { transition: transform .12s var(--ease-out); }
+.card.press:active { transform: scale(.985); }
+.card.flush { padding: 0; overflow: hidden; }
+
+/* ---------- Entrance motion (§7.5) ---------- */
+.rise { opacity: 0; transform: translateY(14px); animation: rise .6s var(--ease-out) forwards; }
+.rise:nth-child(1) { animation-delay: .04s } .rise:nth-child(2) { animation-delay: .10s } .rise:nth-child(3) { animation-delay: .16s }
+.rise:nth-child(4) { animation-delay: .22s } .rise:nth-child(5) { animation-delay: .28s } .rise:nth-child(6) { animation-delay: .34s }
+.rise:nth-child(7) { animation-delay: .40s } .rise:nth-child(8) { animation-delay: .46s } .rise:nth-child(9) { animation-delay: .52s }
+.rise:nth-child(n+10) { animation-delay: .58s }
+@keyframes rise { to { opacity: 1; transform: none; } }
+.pop { animation: pop .5s var(--ease-spring) .9s both; }
+@keyframes pop { from { transform: scale(0); } to { transform: scale(1); } }
+/* A re-render in place (store change, refresh) must not replay the entrance. */
+.no-rise .rise { opacity: 1; transform: none; animation: none; }
+
+/* ---------- Boot + fatal panels ---------- */
+.boot { min-height: 60vh; display: grid; place-items: center; }
+.boot .spin { width: 28px; height: 28px; border-radius: 50%; border: 3px solid var(--track); border-top-color: var(--volt); animation: spin .8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.fatal { min-height: 100vh; display: grid; place-items: center; padding: 32px 24px; text-align: center; }
+.fatal .mark { width: 56px; height: 56px; margin: 0 auto 18px; border-radius: 16px; display: grid; place-items: center; background: var(--amber-dim); border: 1px solid var(--amber-line); color: var(--amber); }
+.fatal .mark svg { width: 26px; height: 26px; }
+.fatal h1 { font: 700 30px/1.05 var(--display); text-transform: uppercase; letter-spacing: .01em; margin: 0 0 10px; }
+.fatal p { margin: 0 auto; max-width: 300px; font: 500 15px/1.45 var(--body); color: var(--ink-2); }

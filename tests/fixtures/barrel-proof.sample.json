@@ -1,0 +1,445 @@
+{
+  "app": "barrel-proof",
+  "exportedAt": "2026-09-28T23:10:00.000Z",
+  "state": {
+    "schemaVersion": 12,
+    "activeBottleId": "eagle-rare-10",
+    "storePrice": 0,
+    "statuses": {
+      "eagle-rare-10": "owned",
+      "four-roses-single-barrel": "owned",
+      "old-forester-1920": "owned",
+      "russells-reserve-10": "owned",
+      "woodford-double-oaked": "owned",
+      "weller-antique-107": "owned",
+      "rare-breed": "owned",
+      "stagg": "finished",
+      "elijah-craig-barrel-proof": "finished",
+      "michters-us1-bourbon": "wishlist"
+    },
+    "tastings": [
+      {
+        "id": "taste-sample-01",
+        "bottleId": "eagle-rare-10",
+        "date": "2026-09-28",
+        "score": 8.6,
+        "context": "Neat pour",
+        "blind": false,
+        "tags": [
+          "cherry",
+          "oak"
+        ],
+        "note": "Monday reset."
+      },
+      {
+        "id": "taste-sample-night-A",
+        "bottleId": "four-roses-single-barrel",
+        "date": "2026-09-24",
+        "score": 9.1,
+        "context": "Blind — Tasting Night",
+        "blind": true,
+        "tags": [],
+        "note": "Glass A, scored blind",
+        "guess": "Four Roses"
+      },
+      {
+        "id": "taste-sample-night-B",
+        "bottleId": "old-forester-1920",
+        "date": "2026-09-24",
+        "score": 8.3,
+        "context": "Blind — Tasting Night",
+        "blind": true,
+        "tags": [],
+        "note": "Glass B, scored blind",
+        "guess": "Eagle Rare"
+      },
+      {
+        "id": "taste-sample-night-C",
+        "bottleId": "russells-reserve-10",
+        "date": "2026-09-24",
+        "score": 8.6,
+        "context": "Blind — Tasting Night",
+        "blind": true,
+        "tags": [],
+        "note": "Glass C, scored blind",
+        "guess": "Russell's"
+      },
+      {
+        "id": "taste-sample-02",
+        "bottleId": "four-roses-single-barrel",
+        "date": "2026-09-22",
+        "score": 9,
+        "context": "Neat pour",
+        "blind": false,
+        "tags": [
+          "cherry",
+          "spice"
+        ],
+        "note": "Big finish. Buy another."
+      },
+      {
+        "id": "taste-sample-03",
+        "bottleId": "old-forester-1920",
+        "date": "2026-09-16",
+        "score": 8.2,
+        "context": "Neat pour",
+        "blind": false,
+        "tags": [
+          "chocolate"
+        ],
+        "note": ""
+      },
+      {
+        "id": "taste-sample-04",
+        "bottleId": "eagle-rare-10",
+        "date": "2026-09-12",
+        "score": 8.4,
+        "context": "Neat pour",
+        "blind": false,
+        "tags": [],
+        "note": ""
+      },
+      {
+        "id": "taste-sample-05",
+        "bottleId": "stagg",
+        "date": "2026-09-10",
+        "score": 9.3,
+        "context": "Neat pour",
+        "blind": false,
+        "tags": [
+          "dark fruit",
+          "leather"
+        ],
+        "note": "Last pour of the bottle."
+      },
+      {
+        "id": "taste-sample-06",
+        "bottleId": "russells-reserve-10",
+        "date": "2026-09-08",
+        "score": 8.1,
+        "context": "Neat pour",
+        "blind": false,
+        "tags": [
+          "vanilla"
+        ],
+        "note": ""
+      },
+      {
+        "id": "taste-sample-07",
+        "bottleId": "rare-breed",
+        "date": "2026-09-05",
+        "score": 8.1,
+        "context": "Neat pour",
+        "blind": false,
+        "tags": [
+          "spice"
+        ],
+        "note": ""
+      },
+      {
+        "id": "taste-sample-08",
+        "bottleId": "woodford-double-oaked",
+        "date": "2026-09-01",
+        "score": 7.9,
+        "context": "Big cube",
+        "blind": false,
+        "tags": [
+          "caramel"
+        ],
+        "note": "Dessert bourbon."
+      },
+      {
+        "id": "taste-sample-09",
+        "bottleId": "stagg",
+        "date": "2026-08-29",
+        "score": 9.1,
+        "context": "Neat pour",
+        "blind": false,
+        "tags": [],
+        "note": ""
+      },
+      {
+        "id": "taste-sample-10",
+        "bottleId": "four-roses-single-barrel",
+        "date": "2026-08-26",
+        "score": 8.8,
+        "context": "Neat pour",
+        "blind": false,
+        "tags": [],
+        "note": ""
+      },
+      {
+        "id": "taste-sample-11",
+        "bottleId": "weller-antique-107",
+        "date": "2026-08-19",
+        "score": 8.7,
+        "context": "Neat pour",
+        "blind": false,
+        "tags": [
+          "wheat",
+          "honey"
+        ],
+        "note": "Saving the rest for a good day."
+      },
+      {
+        "id": "taste-sample-12",
+        "bottleId": "eagle-rare-10",
+        "date": "2026-08-15",
+        "score": 8.3,
+        "context": "Neat pour",
+        "blind": false,
+        "tags": [],
+        "note": ""
+      },
+      {
+        "id": "taste-sample-13",
+        "bottleId": "old-forester-1920",
+        "date": "2026-08-12",
+        "score": 8,
+        "context": "Neat pour",
+        "blind": false,
+        "tags": [],
+        "note": ""
+      },
+      {
+        "id": "taste-sample-14",
+        "bottleId": "stagg",
+        "date": "2026-08-07",
+        "score": 9.4,
+        "context": "Neat pour",
+        "blind": false,
+        "tags": [],
+        "note": "Birthday pour."
+      },
+      {
+        "id": "taste-sample-15",
+        "bottleId": "elijah-craig-barrel-proof",
+        "date": "2026-08-04",
+        "score": 8.8,
+        "context": "Neat pour",
+        "blind": false,
+        "tags": [
+          "toffee"
+        ],
+        "note": ""
+      },
+      {
+        "id": "taste-sample-16",
+        "bottleId": "russells-reserve-10",
+        "date": "2026-08-01",
+        "score": 8.3,
+        "context": "Neat pour",
+        "blind": false,
+        "tags": [],
+        "note": ""
+      },
+      {
+        "id": "taste-sample-17",
+        "bottleId": "woodford-double-oaked",
+        "date": "2026-07-26",
+        "score": 7.6,
+        "context": "Old fashioned",
+        "blind": false,
+        "tags": [],
+        "note": ""
+      },
+      {
+        "id": "taste-sample-18",
+        "bottleId": "eagle-rare-10",
+        "date": "2026-07-19",
+        "score": 8.5,
+        "context": "Neat pour",
+        "blind": false,
+        "tags": [],
+        "note": ""
+      },
+      {
+        "id": "taste-sample-19",
+        "bottleId": "elijah-craig-barrel-proof",
+        "date": "2026-07-12",
+        "score": 8.6,
+        "context": "Neat pour",
+        "blind": false,
+        "tags": [],
+        "note": ""
+      },
+      {
+        "id": "taste-sample-20",
+        "bottleId": "four-roses-single-barrel",
+        "date": "2026-07-02",
+        "score": 8.7,
+        "context": "Neat pour",
+        "blind": false,
+        "tags": [],
+        "note": ""
+      },
+      {
+        "id": "taste-sample-21",
+        "bottleId": "weller-antique-107",
+        "date": "2026-06-25",
+        "score": 8.9,
+        "context": "Neat pour",
+        "blind": false,
+        "tags": [],
+        "note": "Opened it."
+      }
+    ],
+    "huntLog": [],
+    "matchups": [],
+    "collection": {
+      "eagle-rare-10": {
+        "count": 2,
+        "batches": [],
+        "note": ""
+      },
+      "four-roses-single-barrel": {
+        "count": 1,
+        "batches": [],
+        "note": ""
+      },
+      "old-forester-1920": {
+        "count": 1,
+        "batches": [],
+        "note": ""
+      },
+      "russells-reserve-10": {
+        "count": 1,
+        "batches": [],
+        "note": ""
+      },
+      "woodford-double-oaked": {
+        "count": 1,
+        "batches": [],
+        "note": ""
+      },
+      "weller-antique-107": {
+        "count": 1,
+        "batches": [],
+        "note": ""
+      },
+      "rare-breed": {
+        "count": 1,
+        "batches": [],
+        "note": ""
+      }
+    },
+    "prices": {},
+    "club": {
+      "friends": []
+    },
+    "activeFlight": null,
+    "flights": [
+      {
+        "id": "flight-sample-1",
+        "createdAt": "2026-09-25T00:10:00.000Z",
+        "savedAt": "2026-09-25T01:40:00.000Z",
+        "status": "revealed",
+        "pours": [
+          {
+            "glass": "A",
+            "bottleId": "four-roses-single-barrel",
+            "bottleName": "Four Roses Single Barrel"
+          },
+          {
+            "glass": "B",
+            "bottleId": "old-forester-1920",
+            "bottleName": "Old Forester 1920"
+          },
+          {
+            "glass": "C",
+            "bottleId": "russells-reserve-10",
+            "bottleName": "Russell's Reserve 10 Year"
+          }
+        ],
+        "tasters": [
+          "Joe",
+          "Mike",
+          "Dan"
+        ],
+        "scores": {
+          "A": {
+            "Joe": 9.1,
+            "Mike": 8.8,
+            "Dan": 9
+          },
+          "B": {
+            "Joe": 8.3,
+            "Mike": 8.6,
+            "Dan": 8.2
+          },
+          "C": {
+            "Joe": 8.6,
+            "Mike": 8.4,
+            "Dan": 8.7
+          }
+        },
+        "guesses": {
+          "A": "Four Roses",
+          "B": "Eagle Rare",
+          "C": "Russell's"
+        }
+      }
+    ],
+    "barcodeLinks": {},
+    "killLog": [
+      {
+        "bottleId": "elijah-craig-barrel-proof",
+        "date": "2026-08-09",
+        "rebuy": true,
+        "sample": true
+      },
+      {
+        "bottleId": "stagg",
+        "date": "2026-09-13",
+        "rebuy": null,
+        "sample": true
+      }
+    ],
+    "identityLinks": {},
+    "clubProfiles": {
+      "joe": {
+        "name": "Joe",
+        "role": "This device"
+      }
+    },
+    "activeTastingGame": null,
+    "tastingGames": [],
+    "clubhouseSample": {
+      "v": 1,
+      "bottles": [
+        "eagle-rare-10",
+        "four-roses-single-barrel",
+        "old-forester-1920",
+        "russells-reserve-10",
+        "woodford-double-oaked",
+        "weller-antique-107",
+        "rare-breed",
+        "stagg",
+        "elijah-craig-barrel-proof",
+        "michters-us1-bourbon"
+      ]
+    }
+  },
+  "clubhousePours": [
+    {
+      "id": "pour-sample-1",
+      "date": "2026-09-28",
+      "at": "2026-09-28T23:30:00.000Z",
+      "bottleId": "rare-breed",
+      "bottleName": "Wild Turkey Rare Breed",
+      "score": 8,
+      "note": "After nine at Deerwood.",
+      "source": "clubhouse"
+    },
+    {
+      "id": "pour-sample-2",
+      "date": "2026-09-19",
+      "at": "2026-09-19T22:15:00.000Z",
+      "bottleId": null,
+      "bottleName": "Buffalo Trace",
+      "score": 7.5,
+      "note": "Clubhouse bar.",
+      "source": "clubhouse"
+    }
+  ]
+}
