@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-16T23:17:32Z",
-  "window": {"from":"2026-08-17","to":"2026-11-15"},
+  "generatedAt": "2026-10-17T07:35:11Z",
+  "window": {"from":"2026-08-18","to":"2026-11-16"},
   "sources": [
-    {"id":"espn-nfl","label":"ESPN NFL (Bills)","ok":true,"fetchedAt":"2026-10-16T23:17:32Z","error":null,"itemCount":20},
-    {"id":"nhl-web","label":"NHL api-web (Sabres)","ok":true,"fetchedAt":"2026-10-16T23:17:32Z","error":null,"itemCount":88},
-    {"id":"mlb-stats","label":"MLB StatsAPI (Bisons)","ok":true,"fetchedAt":"2026-10-16T23:17:32Z","error":null,"itemCount":28}
+    {"id":"espn-nfl","label":"ESPN NFL (Bills)","ok":true,"fetchedAt":"2026-10-17T07:35:11Z","error":null,"itemCount":20},
+    {"id":"nhl-web","label":"NHL api-web (Sabres)","ok":true,"fetchedAt":"2026-10-17T07:35:11Z","error":null,"itemCount":88},
+    {"id":"mlb-stats","label":"MLB StatsAPI (Bisons)","ok":true,"fetchedAt":"2026-10-17T07:35:11Z","error":null,"itemCount":28}
   ],
   "teams": {
-    "bills": {"id":"bills","name":"Buffalo Bills","short":"Bills","abbr":"BUF","league":"NFL","tag":"NFL","season":"2026","phase":"regular","record":"4-1","recordDetail":{"w":4,"l":1,"t":0,"otl":null},"standing":"1st in AFC East","streak":"W1","stale":false,"asOf":"2026-10-16T23:17:32Z","nextGameId":"nfl-401873005","lastGameId":"nfl-401872994"},
-    "sabres": {"id":"sabres","name":"Buffalo Sabres","short":"Sabres","abbr":"BUF","league":"NHL","tag":"NHL","season":"2026-27","phase":"regular","record":"4-3-1","recordDetail":{"w":4,"l":3,"t":null,"otl":1},"standing":"5th in Atlantic","streak":"W1","stale":false,"asOf":"2026-10-16T23:17:32Z","nextGameId":"nhl-2026020126","lastGameId":"nhl-2026020108"},
-    "bisons": {"id":"bisons","name":"Buffalo Bisons","short":"Bisons","abbr":"BUF","league":"MiLB · Triple-A","tag":"AAA","season":"2026","phase":"offseason","record":"68-79","recordDetail":{"w":68,"l":79,"t":null,"otl":null},"standing":"7th in IL East","streak":"L2","stale":false,"asOf":"2026-10-16T23:17:32Z","nextGameId":null,"lastGameId":"milb-816903"}
+    "bills": {"id":"bills","name":"Buffalo Bills","short":"Bills","abbr":"BUF","league":"NFL","tag":"NFL","season":"2026","phase":"regular","record":"4-1","recordDetail":{"w":4,"l":1,"t":0,"otl":null},"standing":"1st in AFC East","streak":"W1","stale":false,"asOf":"2026-10-17T07:35:11Z","nextGameId":"nfl-401873005","lastGameId":"nfl-401872994"},
+    "sabres": {"id":"sabres","name":"Buffalo Sabres","short":"Sabres","abbr":"BUF","league":"NHL","tag":"NHL","season":"2026-27","phase":"regular","record":"4-3-1","recordDetail":{"w":4,"l":3,"t":null,"otl":1},"standing":"5th in Atlantic","streak":"W1","stale":false,"asOf":"2026-10-17T07:35:11Z","nextGameId":"nhl-2026020126","lastGameId":"nhl-2026020108"},
+    "bisons": {"id":"bisons","name":"Buffalo Bisons","short":"Bisons","abbr":"BUF","league":"MiLB · Triple-A","tag":"AAA","season":"2026","phase":"offseason","record":"68-79","recordDetail":{"w":68,"l":79,"t":null,"otl":null},"standing":"7th in IL East","streak":"L2","stale":false,"asOf":"2026-10-17T07:35:11Z","nextGameId":null,"lastGameId":"milb-816903"}
   },
   "games": [
     {"id":"milb-816923","team":"bisons","league":"MiLB","seasonType":"regular","week":null,"date":"2026-08-18","startUTC":"2026-08-18T22:35:00Z","tbd":false,"home":true,"opponent":{"name":"Lehigh Valley IronPigs","short":"IronPigs","abbr":"LHV","record":"59-62"},"venue":"Sahlen Field","tv":"Bally Sports Live","line":null,"overUnder":null,"status":"final","score":{"us":1,"them":5},"result":"L","note":null},
